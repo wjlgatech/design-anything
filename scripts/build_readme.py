@@ -70,6 +70,20 @@ SECTIONS = {
 }
 
 
+def llms_txt():
+    """Flat, token-cheap agent index — one line per entry, grouped by file."""
+    meta = yaml.safe_load((DATA / "meta.yml").read_text())
+    lines = [f"# {meta['title']} — {meta['tagline']}",
+             "# generated from data/*.yml by scripts/build_readme.py — do not hand-edit", ""]
+    for fname, header in (("registry.yml", "skills"), ("tools.yml", "tools"),
+                          ("papers.yml", "papers-and-standards"), ("community.yml", "community")):
+        lines.append(f"## {header}")
+        for e in load(fname):
+            lines.append(f"{e['name']} — {e['blurb']} [{e['url']}]")
+        lines.append("")
+    return "\n".join(lines)
+
+
 def render(text):
     for key, fn in SECTIONS.items():
         begin, end = f"<!-- BEGIN:{key} -->", f"<!-- END:{key} -->"
@@ -85,14 +99,23 @@ def render(text):
 def main():
     current = README.read_text()
     generated = render(current)
+    llms_path = ROOT / "llms.txt"
+    llms_current = llms_path.read_text() if llms_path.exists() else ""
+    llms_generated = llms_txt()
     if "--check" in sys.argv:
+        drift = []
         if generated != current:
-            print("build_readme: DRIFT — README.md does not match data/*.yml; run `make readme`")
+            drift.append("README.md")
+        if llms_generated != llms_current:
+            drift.append("llms.txt")
+        if drift:
+            print(f"build_readme: DRIFT in {', '.join(drift)} — edit data/*.yml, run `make readme`")
             sys.exit(1)
         print("build_readme: OK (no drift)")
         return
     README.write_text(generated)
-    print("build_readme: README.md regenerated")
+    llms_path.write_text(llms_generated)
+    print("build_readme: README.md + llms.txt regenerated")
 
 
 if __name__ == "__main__":

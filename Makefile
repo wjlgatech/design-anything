@@ -18,11 +18,13 @@ readme:
 readme-check:
 	$(PY) scripts/build_readme.py --check
 
-gate: demo  ## the vertical slice must stay READY
+gate: demo  ## the vertical slices must stay READY
 	$(PY) pipeline/ready_gate.py /tmp/design-anything-planter.stl --min-feature 3.0
+	$(PY) pipeline/construction_gate.py /tmp/design-anything-studio.json
 
 demo:
 	$(PY) examples/planter/generate.py /tmp/design-anything-planter.stl
+	$(PY) examples/studio-flat/generate.py /tmp/design-anything-studio.json
 
 clean:
-	rm -f /tmp/design-anything-planter.stl
+	rm -f /tmp/design-anything-planter.stl /tmp/design-anything-studio.json

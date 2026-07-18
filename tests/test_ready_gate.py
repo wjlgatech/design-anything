@@ -5,16 +5,26 @@ independent; these tests hold them against each other and against analytic
 ground truth.
 """
 
-import struct
+import importlib.util
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "pipeline"))
-sys.path.insert(0, str(ROOT / "examples" / "planter"))
 
-import generate  # noqa: E402
 import ready_gate  # noqa: E402
+
+
+def _load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# both golden examples are modules named generate.py — load by path under a
+# unique name so pytest's module cache can't serve the wrong one
+generate = _load("planter_generate", ROOT / "examples" / "planter" / "generate.py")
 
 BED = (220.0, 220.0, 250.0)
 

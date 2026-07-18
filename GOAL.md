@@ -45,13 +45,18 @@ No output may claim "ready" without passing its gate. **No evidence ⇒ Not read
 
 ## 4. Verifiable milestones (un-bundled)
 
-| Milestone | Done means (machine-checkable) |
-|---|---|
-| **M0 — Repo live** | Public repo exists; `make check` passes in CI; README states the ready-gate contract. |
-| **M1 — Knowledge base** | 3 research digests (30d/30y/300y) with ≥15 cited entries each; principles + best-practices docs; community roster with ≥20 verified people/labs, each with a URL. |
-| **M2 — Tooling** | ≥6 SKILL.md skills, ≥1 bundle, ≥1 dynamic workflow — all schema-valid (tested by `make check`). |
-| **M3 — Vertical slice** | One end-to-end demo: text brief → parametric model → STL/3MF that **passes the print gate** (watertight, wall-thickness, bed-fit) via `tests/test_ready_gate.py`. |
-| **M4 — Community flywheel** | CONTRIBUTING.md with a skill-submission path; issues templated; first external-facing release tagged. |
+| Milestone | Done means (machine-checkable) | Status |
+|---|---|---|
+| **M0 — Repo live** | Public repo exists; `make check` passes in CI; README states the ready-gate contract. | ✅ v0.1.0 |
+| **M1 — Knowledge base** | 3 research digests (30d/30y/300y) with ≥15 cited entries each; principles + best-practices docs; community roster with ≥20 verified people/labs, each with a URL. | ✅ v0.1.0 |
+| **M2 — Tooling** | ≥6 SKILL.md skills, ≥1 bundle, ≥1 dynamic workflow — all schema-valid (tested by `make check`). | ✅ v0.1.0 |
+| **M3 — Vertical slice** | One end-to-end demo: text brief → parametric model → STL/3MF that **passes the print gate** (watertight, wall-thickness, bed-fit) via `tests/test_ready_gate.py`. | ✅ v0.1.0 |
+| **M4 — Community flywheel** | CONTRIBUTING.md with a skill-submission path; issues templated; first external-facing release tagged. | ✅ v0.2.0 |
+| **M5 — Construction gate** | Layout validator against clearance tables as data: topology, clearances, habitability/daylight, egress, module grid; golden floor plan passes; 7+ known-bad mutations fail (`tests/test_construction_gate.py`). Explicitly ≠ permit. | ✅ v0.2.0 |
+| **M6 — Agent index** | `llms.txt` compiled from `data/*.yml`, covered by the drift gate. | ✅ v0.2.0 |
+| **M7 — Game/sim gate** | glTF/USD validity, poly budget, true-scale units, collision mesh; golden scene passes; known-bad scenes fail. | 🚧 next |
+| **M8 — IFC deepening** | Construction gate emits/validates IFC (ifcopenshell, optional dep); golden studio flat round-trips. | 🚧 next |
+| **M9 — Knowledge map** | Interactive graph + map compiled from data (awesome_kg.py port); auto-recompiled by CI on merge. | 🚧 next |
 
 ## 5. Non-goals (v0.x)
 

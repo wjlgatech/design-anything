@@ -19,7 +19,7 @@ text | image → brief (schema) → parametric model (source) → 3D blueprint �
 | Target | Status | Checks |
 |---|---|---|
 | **3D-print** | ✅ v0.1 (`ready_gate.py`) | G1 watertight 2-manifold · G2 outward normals (signed volume) · G3 bed-fit · G4 min-feature ≥ 2× nozzle |
-| **Construction** | 🚧 roadmap (GOAL.md) | IFC validity (ifcopenshell) · span/clearance sanity tables · code-compliance checklist (IBC/IRC refs, explicitly ≠ PE stamp) · shearing-layer audit |
+| **Construction** | ✅ v0.1 (`construction_gate.py`) | C1 topology · C2 clearances vs [`data/clearances.yml`](../data/clearances.yml) (Neufert/IRC/ADA lineage) · C3 habitability (area, dimension, daylight, ceiling) · C4 egress connectivity · C5 ISO 2848 module grid. Explicitly ≠ permit/PE stamp. Roadmap: IFC validity (ifcopenshell), span tables, shearing-layer audit |
 | **Game/sim** | 🚧 roadmap | glTF/USD validation · poly/texture budget · true-to-scale units · collision mesh present |
 
 ## Interface bets (the Lindy rule)

@@ -20,17 +20,25 @@ text | image  →  brief (schema)  →  parametric model (source)  →  3D bluep
                                                                       │
                                           READY-GATE (machine-checkable, per target)
                                           ├─ 3D-print:     watertight · outward normals · bed-fit · min-feature
-                                          ├─ construction: IFC validity · structural sanity · code checklist   (roadmap)
+                                          ├─ construction: topology · clearance tables · habitability · egress · module grid
                                           └─ game/sim:     glTF/USD validity · poly budget · true scale        (roadmap)
 ```
 
-**Try the vertical slice** (stdlib-only, no dependencies):
+**Try the vertical slices:**
 
 ```bash
-python3 examples/planter/generate.py planter.stl      # text brief → parametric solid → STL
-python3 pipeline/ready_gate.py planter.stl --min-feature 3.0   # READY or NOT READY, with evidence
-make check                                            # the whole finish line CI runs
+# print target (stdlib-only): text brief → parametric solid → STL → gate
+python3 examples/planter/generate.py planter.stl
+python3 pipeline/ready_gate.py planter.stl --min-feature 3.0
+
+# construction target: text brief → parametric floor plan → layout JSON → gate
+python3 examples/studio-flat/generate.py layout.json
+python3 pipeline/construction_gate.py layout.json
+
+make check   # the whole finish line CI runs
 ```
+
+Agents: a flat, token-cheap index of everything curated here is compiled to [`llms.txt`](llms.txt).
 
 ## Design principles
 
@@ -46,6 +54,7 @@ Skills are packaged agent capabilities (one folder, one `SKILL.md`, eval-with-te
 |---|---|---|
 | [brief-to-blueprint](https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint) | dogfooded | Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate. |
 | [print-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check) | dogfooded | Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. |
+| [construction-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check) | dogfooded | Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. |
 | [blueprint-validate](https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate) | dogfooded | Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). |
 | [pattern-library](https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library) | dogfooded | Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. |
 | [scene-to-layout](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout) | dogfooded | Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. |
@@ -187,9 +196,9 @@ Two-line PR: edit a `data/*.yml` entry, run `make check`, open a PR. Every entry
 
 ## Honest edges
 
-- The ready gate v0.1 covers the 3D-print target only; construction (IFC/code) and game (glTF/USD) gates are roadmap (see GOAL.md M-next).
-- A passing gate means *printable*, not *good* — principles cover taste; the gate covers physics.
-- A code-compliance checklist is not a structural engineer's stamp, and outputs must say so.
+- Gates shipped: 3D-print (`ready_gate.py`) and construction v0.1 (`construction_gate.py` — layout graph + clearance tables, not structural spans or IFC yet). The game/sim gate is roadmap (GOAL.md M7).
+- A passing gate means *buildable/printable*, not *good* — principles cover taste; the gate covers physics and tables.
+- The construction gate is a design-sanity check, **not a permit and not a structural engineer's stamp** — every report says so, and jurisdiction codes override.
 
 ## License
 

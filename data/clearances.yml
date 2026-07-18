@@ -1,0 +1,38 @@
+# Clearance & habitability tables — the constraint database (principle P2:
+# tables beat slogans). Sources: Neufert Architects' Data lineage, IRC/IBC
+# minima, ADA/ISO 21542. Values in mm unless noted. A layout violating these
+# is a BUG, not a style choice. Jurisdiction codes always override.
+
+units: mm
+
+openings:
+  door_entry:      {min_width: 810,  source: "IRC R311.2 egress door 32in clear"}
+  door_interior:   {min_width: 762,  source: "Neufert / common IRC practice 30in"}
+  door_bathroom:   {min_width: 610,  source: "IRC minimum practice 24in"}
+  door_accessible: {min_width: 815,  source: "ADA 404.2.3 / ISO 21542"}
+
+circulation:
+  corridor_min_width:        {value: 900,  source: "IRC R311.6 hallway 36in"}
+  corridor_accessible_width: {value: 915,  source: "ADA 403.5.1"}
+  stair_min_width:           {value: 914,  source: "IRC R311.7.1 36in"}
+
+rooms:
+  # min_area in m^2, min_dimension in mm, habitable rooms require daylight (>=1 window)
+  bedroom:  {min_area: 6.5, min_dimension: 2100, habitable: true,  source: "IRC R304 70sqft + Neufert"}
+  living:   {min_area: 11.0, min_dimension: 3000, habitable: true,  source: "Neufert living-room minima"}
+  kitchen:  {min_area: 4.6, min_dimension: 1800, habitable: true,  source: "Neufert working kitchen minima"}
+  bathroom: {min_area: 2.2, min_dimension: 1400, habitable: false, source: "Neufert compact bath"}
+  hall:     {min_area: 1.0, min_dimension: 900,  habitable: false, source: "corridor rule applied to halls"}
+  storage:  {min_area: 0.5, min_dimension: 600,  habitable: false, source: "practice minimum"}
+
+heights:
+  ceiling_habitable_min: {value: 2300, source: "IRC R305 7ft nominal, EU practice 2300-2500"}
+  ceiling_service_min:   {value: 2100, source: "bath/storage/corridor practice"}
+
+kitchen_rules:
+  work_triangle_min_m: {value: 4.0, source: "classic kitchen work-triangle research"}
+  work_triangle_max_m: {value: 7.9, source: "classic kitchen work-triangle research"}
+
+grid:
+  module: {value: 100, source: "ISO 2848 basic module M=100mm"}
+  min_on_module_pct: {value: 90, source: "principle P2/P19 — off-module dims are counted exceptions"}
