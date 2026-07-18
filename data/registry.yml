@@ -1,0 +1,37 @@
+# Skill/tooling registry. status: dogfooded (in-repo, exercised by tests) | submitted.
+
+- name: brief-to-blueprint
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint
+  blurb: Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate.
+  path: skills/brief-to-blueprint
+  status: dogfooded
+
+- name: print-ready-check
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check
+  blurb: Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence.
+  path: skills/print-ready-check
+  status: dogfooded
+
+- name: blueprint-validate
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate
+  blurb: Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers).
+  path: skills/blueprint-validate
+  status: dogfooded
+
+- name: pattern-library
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library
+  blurb: Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form.
+  path: skills/pattern-library
+  status: dogfooded
+
+- name: scene-to-layout
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout
+  blurb: Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools.
+  path: skills/scene-to-layout
+  status: dogfooded
+
+- name: design-research
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/design-research
+  blurb: Run the three-window research method (30 days/30 years/300 years) on any design question, with grounding rules.
+  path: skills/design-research
+  status: dogfooded

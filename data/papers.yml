@@ -1,0 +1,91 @@
+# Foundational + frontier academic work. tier: survivor (30y-proven) | young (momentum, unproven).
+
+- name: IFC / ISO 16739
+  url: https://www.buildingsmart.org/standards/ifc/
+  blurb: The open BIM interchange standard (born 1996) — legally mandated for public projects in several countries; the survival-grade architecture output target.
+  tier: survivor
+  category: standards
+
+- name: OpenUSD Core Specification
+  url: https://aousd.org/news/core-spec-announcement/
+  blurb: Pixar's scene-graph format, now an industry consortium spec heading to ISO — the presumptive digital-twin standard.
+  tier: survivor
+  category: standards
+
+- name: glTF (ISO/IEC 12113)
+  url: https://www.khronos.org/gltf/
+  blurb: The JPEG of 3D — default web/AR delivery format.
+  tier: survivor
+  category: standards
+
+- name: 3MF
+  url: https://3mf.io/
+  blurb: STL's slow-motion successor for 3D printing, default in Bambu Studio/PrusaSlicer/Cura.
+  tier: survivor
+  category: standards
+
+- name: Topology optimization (SIMP; Bendsoe 1988, Sigmund 2001)
+  url: https://www.topopt.mek.dtu.dk/
+  blurb: The math inside every generative-design tool; survived the hype cycle — how blueprints get structurally validated.
+  tier: survivor
+  category: geometry-and-structure
+
+- name: Screened Poisson Surface Reconstruction (Kazhdan 2013)
+  url: https://www.cs.jhu.edu/~misha/MyPapers/ToG13.pdf
+  blurb: Still the default mesh-from-points algorithm in MeshLab/CloudCompare/Open3D.
+  tier: survivor
+  category: geometry-and-structure
+
+- name: WaveFunctionCollapse (Gumin 2016)
+  url: https://github.com/mxgmn/WaveFunctionCollapse
+  blurb: Constraint-based procedural generation shipping in Townscaper, Bad North, Caves of Qud — the PCG open-source success story.
+  tier: survivor
+  category: procedural-generation
+
+- name: libigl / discrete differential geometry
+  url: https://libigl.github.io/
+  blurb: The standard mesh-processing toolkit (SGP Software Award); any repair/remesh step sits on it.
+  tier: survivor
+  category: geometry-and-structure
+
+- name: A Pattern Language (Alexander 1977)
+  url: https://en.wikipedia.org/wiki/A_Pattern_Language
+  blurb: Composable context/problem/solution patterns — never out of print in 49 years; pre-specifies the architecture of a blueprint generator.
+  tier: survivor
+  category: design-theory
+
+- name: Architects' Data (Neufert, 1936-)
+  url: https://en.wikipedia.org/wiki/Ernst_Neufert
+  blurb: ~43 editions of anthropometric clearance tables — the generator's hard-constraint database.
+  tier: survivor
+  category: design-theory
+
+- name: NeRF (Mildenhall et al. 2020)
+  url: https://www.matthewtancik.com/nerf
+  blurb: Revolutionized 3D representation; already partially displaced by 3DGS — methods churn, representations persist.
+  tier: young
+  category: neural-3D
+
+- name: 3D Gaussian Splatting (Kerbl et al. 2023)
+  url: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
+  blurb: The production real-time capture representation (Polycam, Luma, Scaniverse).
+  tier: young
+  category: neural-3D
+
+- name: DreamFusion / Score Distillation Sampling (Poole et al. 2022)
+  url: https://dreamfusion3d.github.io/
+  blurb: The mechanism behind most text-to-3D; now challenged by native 3D generators — may be the first of its batch to die.
+  tier: young
+  category: neural-3D
+
+- name: Instant-NGP (Mueller et al. 2022)
+  url: https://nvlabs.github.io/instant-ngp/
+  blurb: SIGGRAPH 2022 Best Paper; the hash encoding baked into most neural-field trainers.
+  tier: young
+  category: neural-3D
+
+- name: Denoising Diffusion Probabilistic Models (Ho et al. 2020)
+  url: https://arxiv.org/abs/2006.11239
+  blurb: The text-to-image half of the pipeline; Stable Diffusion and successors descend from it.
+  tier: young
+  category: neural-3D

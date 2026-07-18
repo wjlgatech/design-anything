@@ -1,0 +1,134 @@
+# Influential figures & labs — inclusion requires survival evidence, not fame.
+# kind: person | lab | company
+
+- name: Gramazio Kohler Research (ETH Zurich)
+  url: https://gramaziokohler.arch.ethz.ch/
+  blurb: Invented "digital fabrication in architecture" as a discipline (2005); alumni seeded labs worldwide.
+  kind: lab
+  domain: architecture
+
+- name: Block Research Group (ETH Zurich)
+  url: https://block.arch.ethz.ch/
+  blurb: Philippe Block — compression-only structures, 3D-printed floors, and the open-source COMPAS framework.
+  kind: lab
+  domain: architecture
+
+- name: Ole Sigmund (DTU TopOpt)
+  url: https://www.topopt.mek.dtu.dk/
+  blurb: Topology optimization's living anchor; the group's free codes are the field's curriculum.
+  kind: person
+  domain: structural-optimization
+
+- name: NVIDIA Research
+  url: https://research.nvidia.com/
+  blurb: Instant-NGP, Kaolin, Omniverse/OpenUSD, Warp — the graphics/simulation engine room.
+  kind: lab
+  domain: simulation
+
+- name: IAAC Barcelona
+  url: https://iaac.net/
+  blurb: Academic pipeline for computational and 3D-printed architecture (Open Thesis Fabrication, 3D-printed bridge).
+  kind: lab
+  domain: architecture
+
+- name: Bartlett UCL (B-Pro)
+  url: https://www.ucl.ac.uk/bartlett/
+  blurb: One of the three main academic talent pipelines for computational design.
+  kind: lab
+  domain: architecture
+
+- name: TU Delft
+  url: https://www.tudelft.nl/en/architecture-and-the-built-environment
+  blurb: Built-environment research at scale — the third leg of the computational-architecture academy.
+  kind: lab
+  domain: architecture
+
+- name: Behrokh Khoshnevis
+  url: https://contourcrafting.com/
+  blurb: Contour Crafting — every gantry-extrusion construction printer descends from his patents.
+  kind: person
+  domain: construction-3D-printing
+
+- name: Fei-Fei Li (World Labs)
+  url: https://www.worldlabs.ai/
+  blurb: Spatial-intelligence world models (Marble) — the strongest current text-to-world lineage.
+  kind: person
+  domain: simulation
+
+- name: Maxim Gumin
+  url: https://github.com/mxgmn
+  blurb: WaveFunctionCollapse — one person's algorithm shipping in a generation of games.
+  kind: person
+  domain: game-design
+
+- name: Shigeru Miyamoto
+  url: https://en.wikipedia.org/wiki/Shigeru_Miyamoto
+  blurb: Still shipping after 45 years — the deep-time control for game design craft.
+  kind: person
+  domain: game-design
+
+- name: Will Wright
+  url: https://en.wikipedia.org/wiki/Will_Wright_(game_designer)
+  blurb: SimCity/The Sims — his systems survived better than his career; an honest split.
+  kind: person
+  domain: game-design
+
+- name: Pat Hanrahan & Ed Catmull
+  url: https://amturing.acm.org/
+  blurb: 2019 Turing Award for fundamental contributions to 3D computer graphics — the certified foundation of this whole pipeline.
+  kind: person
+  domain: graphics
+
+- name: Christopher Alexander (1936-2022)
+  url: https://www.patternlanguage.com/
+  blurb: A Pattern Language — the design book that already survived one substrate change (buildings to software).
+  kind: person
+  domain: design-theory
+
+- name: Jan Gehl
+  url: https://gehlpeople.com/
+  blurb: Human-scale metrics that transformed Copenhagen and were exported worldwide.
+  kind: person
+  domain: urbanism
+
+- name: Jane Jacobs (1916-2006)
+  url: https://en.wikipedia.org/wiki/Jane_Jacobs
+  blurb: Overturned the urban-renewal paradigm and stayed overturned; her four conditions live in 2020s zoning reform.
+  kind: person
+  domain: urbanism
+
+- name: Neri Oxman (MIT Media Lab lineage / OXMAN)
+  url: https://oxman.com/
+  blurb: Material ecology — biology-informed digital fabrication; the Mediated Matter lineage.
+  kind: person
+  domain: fabrication
+
+- name: COBOD
+  url: https://cobod.com/
+  blurb: The construction-printing company that survived by arming builders instead of being one.
+  kind: company
+  domain: construction-3D-printing
+
+- name: ICON
+  url: https://www.iconbuild.com/
+  blurb: ~250 printed structures and an AI-architect roadmap; restructured 2025 and kept building.
+  kind: company
+  domain: construction-3D-printing
+
+- name: buildingSMART International
+  url: https://www.buildingsmart.org/
+  blurb: Stewards of IFC — the 30-year-old open standard everything interoperates through.
+  kind: lab
+  domain: standards
+
+- name: Alliance for OpenUSD (AOUSD)
+  url: https://aousd.org/
+  blurb: Pixar, Apple, Adobe, Autodesk, NVIDIA, Epic aligning the 3D scene-graph standard.
+  kind: lab
+  domain: standards
+
+- name: Keenan Crane (CMU)
+  url: https://www.cs.cmu.edu/~kmcrane/
+  blurb: Discrete differential geometry — the curriculum every mesh-processing engineer learns from.
+  kind: person
+  domain: graphics

@@ -1,0 +1,140 @@
+# Curated tools, ranked by observed evidence (see research/ digests for method).
+# Every entry: name, url, blurb (one sentence, non-hypey), tier, category.
+# tier: gold | silver | bronze | watch   category groups the README table.
+
+- name: Microsoft TRELLIS.2
+  url: https://github.com/microsoft/TRELLIS.2
+  blurb: Open (MIT) 4B image-to-3D flow-matching model; any topology, full PBR, GLB/PLY/OBJ export.
+  tier: gold
+  category: text/image-to-3D
+  evidence: "8,786 stars, pushed 2026-07-10; released 2025-12-18"
+
+- name: Zoo.dev Text-to-CAD (Zookeeper)
+  url: https://zoo.dev/research/zookeeper
+  blurb: Conversational agent emitting true parametric CAD (STEP/DXF, dimensioned) — blueprints, not meshes; open-source, self-hostable.
+  tier: gold
+  category: text/image-to-3D
+  evidence: "shipped with Design Studio v1.1, 2026-01"
+
+- name: Meshy-6
+  url: https://www.meshy.ai/blog/meshy-6-launch
+  blurb: Market-leader SaaS mesh pipeline with PBR texturing, auto-rig, engine plugins, and multi-color 3D-print export.
+  tier: silver
+  category: text/image-to-3D
+  evidence: "GA 2026-01-18"
+
+- name: Hunyuan3D-2
+  url: https://github.com/Tencent-Hunyuan/Hunyuan3D-2
+  blurb: Fully open asset generator (weights + training code, PBR); momentum shifting to TRELLIS.2.
+  tier: bronze
+  category: text/image-to-3D
+  evidence: "14,299 stars; last push 2025-10-28"
+
+- name: blender-mcp
+  url: https://github.com/ahujasid/blender-mcp
+  blurb: Drive Blender from any LLM via MCP — the natural execution backbone from agent to printable geometry.
+  tier: gold
+  category: agent-infrastructure
+  evidence: "24,410 stars, pushed 2026-07-14"
+
+- name: SpatialLM
+  url: https://github.com/manycore-research/SpatialLM
+  blurb: LLM for structured indoor modeling — point cloud/scene to walls, doors, and furniture layout as structured output.
+  tier: gold
+  category: interior-design
+  evidence: "NeurIPS 2025; 4,615 stars, pushed 2026-06-26"
+
+- name: Autodesk Forma (Building Layout Explorer)
+  url: https://adsknews.autodesk.com/en/news/building-layout-explorer-in-autodesk-forma/
+  blurb: Generative interior-layout variants with solar/carbon analysis, pushing straight into Revit.
+  tier: gold
+  category: architecture
+  evidence: "bundled free with Revit/AEC Collection, 2026"
+
+- name: Finch3D
+  url: https://parametric-architecture.com/finch-launches-forma-extension/
+  blurb: AI floor-plan copilot; Forma extension unifying massing, space planning, and Revit BIM.
+  tier: silver
+  category: architecture
+
+- name: ICON (Titan + Vitruvius)
+  url: https://www.iconbuild.com/newsroom/icon-unveils-new-construction-technologies-for-lowest-cost-fastest-and-most-sustainable-way-to-build-at-scale
+  blurb: ~250 printed structures; multi-story robotic printing plus an AI architect aiming at permit-ready designs.
+  tier: silver
+  category: construction-3D-printing
+  evidence: "Titan announced ~2026-03; survived Jan-2025 restructuring"
+
+- name: COBOD
+  url: https://cobod.com/
+  blurb: Best-selling construction printers in 35+ countries — the "arm the builder" survival pattern.
+  tier: gold
+  category: construction-3D-printing
+
+- name: WASP
+  url: https://www.3dwasp.com/
+  blurb: Earth-material construction printing (TECLA habitat) — the sustainable branch that persisted.
+  tier: bronze
+  category: construction-3D-printing
+
+- name: Marble (World Labs)
+  url: https://www.worldlabs.ai/blog/marble-world-model
+  blurb: Multimodal world model — text/image/video/layout to editable 3D worlds exporting splats, meshes, or video.
+  tier: gold
+  category: game-and-simulation
+  evidence: "GA 2026-06-03"
+
+- name: NVIDIA Cosmos 3 + Isaac Lab 3.0
+  url: https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/
+  blurb: First fully open "omnimodel" world foundation model plus robot-sim stack on the Newton physics engine.
+  tier: gold
+  category: game-and-simulation
+  evidence: "GTC 2026-03"
+
+- name: Project Genie (Genie 3)
+  url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/
+  blurb: Real-time navigable worlds from text — an ideation layer, not an engine replacement.
+  tier: silver
+  category: game-and-simulation
+  evidence: "public demo 2026-01-29"
+
+- name: Blender
+  url: https://www.blender.org/
+  blurb: The free 3D DCC that survived bankruptcy and won an Oscar — 30-year survivor, default research render tool.
+  tier: gold
+  category: survivor-foundations
+
+- name: Rhino + Grasshopper
+  url: https://www.rhino3d.com/
+  blurb: The computational-design environment of architecture; never acquired, outlived every challenger.
+  tier: gold
+  category: survivor-foundations
+
+- name: OpenSCAD
+  url: https://openscad.org/
+  blurb: Code-CAD for printable parametric parts — the natural target for LLM text-to-CAD since code is an LLM's native 3D output.
+  tier: silver
+  category: survivor-foundations
+
+- name: FreeCAD
+  url: https://www.freecad.org/
+  blurb: The open BRep/parametric CAD; reached 1.0 after 22 years.
+  tier: silver
+  category: survivor-foundations
+
+- name: COLMAP
+  url: https://colmap.github.io/
+  blurb: Default structure-from-motion pipeline every NeRF/3DGS workflow assumes.
+  tier: silver
+  category: survivor-foundations
+
+- name: Spacely AI
+  url: https://www.spacely.ai/
+  blurb: Photoreal room renders with element-level masking, used by boutique studios.
+  tier: silver
+  category: interior-design
+
+- name: Planner 5D AI
+  url: https://planner5d.com/use/ai-interior-design
+  blurb: CAD-lite 3D floor planner with an AI layout/style module.
+  tier: bronze
+  category: interior-design

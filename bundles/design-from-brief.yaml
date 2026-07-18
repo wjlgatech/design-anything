@@ -1,0 +1,29 @@
+# Bundle: design-from-brief — the flagship composition.
+# One command, skills chained with a shared instruction; missing skills are
+# skipped-not-fatal; external skills are used ephemerally, never auto-installed.
+
+name: design-from-brief
+description: >
+  Any design intent (text/picture) → structured brief → patterns → parametric
+  blueprint → ready gate → honest verdict.
+shared_instruction: >
+  Never silently drop a stated constraint. Never claim READY without the gate's
+  exit 0. Unmeasured checks are NOT-MEASURED, never assumed passes. Emit
+  parametric source, not opaque meshes.
+steps:
+  - skill: scene-to-layout        # only if the input includes a picture
+    optional: true
+    on_missing: skip
+  - skill: design-research        # only if the brief names an unfamiliar tool/material
+    optional: true
+    on_missing: skip
+  - skill: pattern-library
+    optional: false
+  - skill: brief-to-blueprint
+    optional: false
+  - skill: print-ready-check      # or the target-matching gate
+    optional: false
+    gate: "exit 0 required to declare success"
+  - skill: blueprint-validate     # principles review on the passing artifact
+    optional: true
+    on_missing: skip
