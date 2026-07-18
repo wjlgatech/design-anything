@@ -36,14 +36,22 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from typing import Any, Callable, Iterable
 
 import yaml
+
+from gate import CheckResult, Gate, emit_report
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLES_PATH = ROOT / "data" / "garment.yml"
 
+Polygon = list[list[float]]
+Marker = dict[str, Any]
+Box = tuple[float, float, float, float]
 
-def area_mm2(poly):
+
+def area_mm2(poly: Polygon) -> float:
+    """Absolute polygon area via the shoelace formula, in mm^2."""
     s = 0.0
     for i in range(len(poly)):
         x0, y0 = poly[i]
@@ -52,80 +60,100 @@ def area_mm2(poly):
     return abs(s) / 2.0
 
 
-def bbox(poly):
+def bbox(poly: Polygon) -> Box:
+    """Axis-aligned bounding box (min_x, min_y, max_x, max_y)."""
     xs = [p[0] for p in poly]
     ys = [p[1] for p in poly]
     return min(xs), min(ys), max(xs), max(ys)
 
 
-def bboxes_overlap(a, b):
+def bboxes_overlap(a: Box, b: Box) -> bool:
+    """True if two bounding boxes intersect."""
     return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
 
 
-def run_gate(marker, tables):
-    gates = {}
-    pieces = marker.get("pieces", [])
-    names = [p["name"] for p in pieces]
+class PatternGate(Gate):
+    """Marker gate: pieces, grain, fabric fit, seam, zero-waste, fit tables."""
 
-    # F1 pieces
-    problems = []
-    if len(set(names)) != len(names):
-        problems.append("duplicate piece names")
-    allowed = tables["grain"]["allowed_angles_deg"]["values"]
-    for p in pieces:
-        poly = p.get("polygon", [])
-        if len(poly) < 3 or area_mm2(poly) <= 0:
-            problems.append(f"{p.get('name', '?')}: invalid polygon")
-        if p.get("grain_angle_deg") not in allowed:
-            problems.append(f"{p.get('name', '?')}: grain angle {p.get('grain_angle_deg')} "
-                            f"not declared/allowed {allowed}")
-    gates["F1_pieces"] = {"pass": not problems,
-                          "detail": "; ".join(problems) or f"{len(pieces)} pieces, grain declared"}
+    disclaimer = "marker-and-tables gate; drape/sewability need a muslin"
 
-    # F2 fabric-fit
-    problems = []
-    width = marker.get("fabric", {}).get("width", 0)
-    boxes = {}
-    for p in pieces:
-        b = bbox(p["polygon"])
-        boxes[p["name"]] = b
-        if b[0] < 0 or b[1] < 0 or b[2] > width:
-            problems.append(f"{p['name']}: outside fabric width {width}mm")
-    checked = sorted(boxes)
-    for i, a in enumerate(checked):
-        for b in checked[i + 1:]:
-            if bboxes_overlap(boxes[a], boxes[b]):
-                problems.append(f"{a} overlaps {b} (bbox)")
-    gates["F2_fabric_fit"] = {"pass": not problems,
-                              "detail": "; ".join(problems) or
-                              f"all pieces within {width}mm width, no bbox overlaps"}
+    def __init__(self, tables: dict[str, Any]) -> None:
+        self.tables = tables
 
-    # F3 seam allowance
-    sa = marker.get("seam_allowance", 0)
-    sa_min = tables["seam_allowance"]["min"]["value"]
-    gates["F3_seam_allowance"] = {"pass": sa >= sa_min,
-                                  "detail": f"{sa}mm vs table min {sa_min}mm"}
+    def checks(self) -> Iterable[tuple[str, Callable[[Marker], CheckResult]]]:
+        return [
+            ("F1_pieces", self.check_pieces),
+            ("F2_fabric_fit", self.check_fabric_fit),
+            ("F3_seam_allowance", self.check_seam_allowance),
+            ("F4_marker_efficiency", self.check_marker_efficiency),
+            ("F5_human_fit", self.check_human_fit),
+        ]
 
-    # F4 marker efficiency
-    if pieces and width:
-        marker_len = max(bbox(p["polygon"])[3] for p in pieces)
-        used = width * marker_len
-        piece_area = sum(area_mm2(p["polygon"]) for p in pieces)
-        pct = 100.0 * piece_area / used if used else 0.0
-    else:
-        marker_len, pct = 0, 0.0
-    floor = tables["marker"]["min_efficiency_pct"]["value"]
-    gates["F4_marker_efficiency"] = {"pass": pct >= floor,
-                                     "detail": f"{pct:.0f}% of {width}x{marker_len:.0f}mm "
-                                               f"fabric used (floor {floor}%)"}
+    def check_pieces(self, marker: Marker) -> CheckResult:
+        """F1: valid polygons, unique names, grain declared and allowed."""
+        pieces = marker.get("pieces", [])
+        names = [p["name"] for p in pieces]
+        problems = []
+        if len(set(names)) != len(names):
+            problems.append("duplicate piece names")
+        allowed = self.tables["grain"]["allowed_angles_deg"]["values"]
+        for p in pieces:
+            poly = p.get("polygon", [])
+            if len(poly) < 3 or area_mm2(poly) <= 0:
+                problems.append(f"{p.get('name', '?')}: invalid polygon")
+            if p.get("grain_angle_deg") not in allowed:
+                problems.append(f"{p.get('name', '?')}: grain angle "
+                                f"{p.get('grain_angle_deg')} not declared/allowed {allowed}")
+        return CheckResult.from_problems(problems, f"{len(pieces)} pieces, grain declared")
 
-    # F5 human fit
-    problems = []
-    gtype = marker.get("garment_type", "")
-    fit_table = tables.get(f"fit_{gtype}")
-    if fit_table is None:
-        problems.append(f"unknown garment type '{gtype}' (no fit table => not measured => fail)")
-    else:
+    def check_fabric_fit(self, marker: Marker) -> CheckResult:
+        """F2: pieces inside the fabric width; no bbox overlaps."""
+        width = marker.get("fabric", {}).get("width", 0)
+        problems = []
+        boxes: dict[str, Box] = {}
+        for p in marker.get("pieces", []):
+            b = bbox(p["polygon"])
+            boxes[p["name"]] = b
+            if b[0] < 0 or b[1] < 0 or b[2] > width:
+                problems.append(f"{p['name']}: outside fabric width {width}mm")
+        names = sorted(boxes)
+        for i, a in enumerate(names):
+            for b in names[i + 1:]:
+                if bboxes_overlap(boxes[a], boxes[b]):
+                    problems.append(f"{a} overlaps {b} (bbox)")
+        return CheckResult.from_problems(
+            problems, f"all pieces within {width}mm width, no bbox overlaps")
+
+    def check_seam_allowance(self, marker: Marker) -> CheckResult:
+        """F3: declared seam allowance meets the table minimum."""
+        sa = marker.get("seam_allowance", 0)
+        sa_min = self.tables["seam_allowance"]["min"]["value"]
+        return CheckResult(sa >= sa_min, f"{sa}mm vs table min {sa_min}mm")
+
+    def check_marker_efficiency(self, marker: Marker) -> CheckResult:
+        """F4: piece area over fabric-used area beats the zero-waste floor."""
+        pieces = marker.get("pieces", [])
+        width = marker.get("fabric", {}).get("width", 0)
+        if pieces and width:
+            marker_len = max(bbox(p["polygon"])[3] for p in pieces)
+            used = width * marker_len
+            piece_area = sum(area_mm2(p["polygon"]) for p in pieces)
+            pct = 100.0 * piece_area / used if used else 0.0
+        else:
+            marker_len, pct = 0.0, 0.0
+        floor = self.tables["marker"]["min_efficiency_pct"]["value"]
+        return CheckResult(
+            pct >= floor,
+            f"{pct:.0f}% of {width}x{marker_len:.0f}mm fabric used (floor {floor}%)")
+
+    def check_human_fit(self, marker: Marker) -> CheckResult:
+        """F5: declared fit dimensions inside the garment's fit table."""
+        gtype = marker.get("garment_type", "")
+        fit_table = self.tables.get(f"fit_{gtype}")
+        if fit_table is None:
+            return CheckResult(
+                False, f"unknown garment type '{gtype}' (no fit table => not measured => fail)")
+        problems = []
         fit = marker.get("fit", {})
         for dim, spec in fit_table.items():
             val = fit.get(dim)
@@ -136,29 +164,22 @@ def run_gate(marker, tables):
                 problems.append(f"fit.{dim}: {val} < {spec['min']} ({spec['source']})")
             if "max" in spec and val > spec["max"]:
                 problems.append(f"fit.{dim}: {val} > {spec['max']} ({spec['source']})")
-    gates["F5_human_fit"] = {"pass": not problems,
-                             "detail": "; ".join(problems) or f"fit table '{gtype}' satisfied"}
-
-    return {"file": marker.get("name", "?"), "gates": gates,
-            "ready": all(g["pass"] for g in gates.values()),
-            "disclaimer": "marker-and-tables gate; drape/sewability need a muslin"}
+        return CheckResult.from_problems(problems, f"fit table '{gtype}' satisfied")
 
 
-def main():
+def run_gate(marker: Marker, tables: dict[str, Any]) -> dict[str, Any]:
+    """Module-level entry point (kept stable for tests, skills, and evals)."""
+    return PatternGate(tables).run(marker)
+
+
+def main() -> None:
     args = [a for a in sys.argv[1:] if a != "--json"]
     if not args:
         print(__doc__)
         sys.exit(2)
     marker = json.loads(Path(args[0]).read_text())
     tables = yaml.safe_load(TABLES_PATH.read_text())
-    report = run_gate(marker, tables)
-    if "--json" in sys.argv:
-        print(json.dumps(report, indent=2))
-    else:
-        for gid, g in report["gates"].items():
-            print(f"  {'PASS' if g['pass'] else 'FAIL'}  {gid}: {g['detail']}")
-        print(f"{'READY' if report['ready'] else 'NOT READY'}: {report['file']}  ({report['disclaimer']})")
-    sys.exit(0 if report["ready"] else 1)
+    emit_report(run_gate(marker, tables), as_json="--json" in sys.argv)
 
 
 if __name__ == "__main__":

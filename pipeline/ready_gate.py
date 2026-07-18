@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ready_gate.py — the machine-checkable definition of "3D-print ready".
 
-Stdlib-only, deterministic. A blueprint may not claim "ready" unless this gate
-passes. No evidence => Not ready.
+Stdlib-only geometry, deterministic. A blueprint may not claim "ready" unless
+this gate passes. No evidence => Not ready.
 
 Checks (print target):
   G1 watertight     every directed edge is matched by exactly one reverse edge
@@ -21,12 +21,16 @@ Exit code 0 = READY, 1 = NOT READY (gates CI).
 from __future__ import annotations
 
 import argparse
-import json
 import struct
-import sys
+from typing import Any, Callable, Iterable
+
+from gate import CheckResult, Gate, emit_report
+
+Triangle = tuple[tuple[float, ...], tuple[float, ...], tuple[float, ...]]
+Mesh = dict[str, Any]  # {"path": str, "tris": list[Triangle]}
 
 
-def read_stl(path):
+def read_stl(path: str) -> list[Triangle]:
     """Parse binary or ASCII STL. Returns a list of triangles [(v0, v1, v2)]."""
     with open(path, "rb") as f:
         data = f.read()
@@ -35,7 +39,8 @@ def read_stl(path):
     return _read_binary(data)
 
 
-def _read_binary(data):
+def _read_binary(data: bytes) -> list[Triangle]:
+    """Binary STL: 80-byte header, uint32 count, 50 bytes per facet."""
     (n,) = struct.unpack_from("<I", data, 80)
     tris = []
     off = 84
@@ -46,21 +51,23 @@ def _read_binary(data):
     return tris
 
 
-def _read_ascii(data):
-    verts, tris = [], []
+def _read_ascii(data: bytes) -> list[Triangle]:
+    """ASCII STL: collect vertex triplets between facet markers."""
+    verts: list[tuple[float, ...]] = []
+    tris: list[Triangle] = []
     for line in data.decode("ascii", "replace").splitlines():
         parts = line.split()
         if parts[:1] == ["vertex"]:
             verts.append(tuple(float(x) for x in parts[1:4]))
             if len(verts) == 3:
-                tris.append(tuple(verts))
+                tris.append((verts[0], verts[1], verts[2]))
                 verts = []
     return tris
 
 
-def check_watertight(tris):
+def check_watertight(tris: list[Triangle]) -> tuple[bool, str]:
     """G1: each directed edge must be matched by exactly one reverse edge."""
-    edges = {}
+    edges: dict[tuple, int] = {}
     for tri in tris:
         for i in range(3):
             e = (tri[i], tri[(i + 1) % 3])
@@ -69,7 +76,7 @@ def check_watertight(tris):
     return bad == 0, f"{bad} unmatched/duplicate directed edges" if bad else "closed 2-manifold"
 
 
-def signed_volume(tris):
+def signed_volume(tris: list[Triangle]) -> float:
     """G2: sum of tetra volumes; positive iff consistently outward-wound."""
     v = 0.0
     for (x0, y0, z0), (x1, y1, z1), (x2, y2, z2) in tris:
@@ -79,43 +86,80 @@ def signed_volume(tris):
     return v / 6.0
 
 
-def bounds(tris):
-    xs = [v[i] for t in tris for v in t for i in (0,)]
+def bounds(tris: list[Triangle]) -> tuple[float, float, float]:
+    """Bounding-box extents (dx, dy, dz) of the mesh, in mm."""
+    xs = [v[0] for t in tris for v in t]
     ys = [v[1] for t in tris for v in t]
     zs = [v[2] for t in tris for v in t]
     return (max(xs) - min(xs), max(ys) - min(ys), max(zs) - min(zs))
 
 
-def run_gate(path, bed, nozzle_mm, min_feature_mm):
-    tris = read_stl(path)
-    report = {"file": path, "triangles": len(tris), "gates": {}, "ready": False}
-    if not tris:
-        report["gates"]["G0_nonempty"] = {"pass": False, "detail": "no triangles"}
-        return report
+class PrintReadyGate(Gate):
+    """Mesh gate: watertight, outward normals, bed fit, minimum feature."""
 
-    ok1, d1 = check_watertight(tris)
-    report["gates"]["G1_watertight"] = {"pass": ok1, "detail": d1}
+    disclaimer = ""  # honest edges live in the module docstring
 
-    vol = signed_volume(tris)
-    report["gates"]["G2_outward_normals"] = {
-        "pass": vol > 0, "detail": f"signed volume {vol:.1f} mm^3"}
+    def __init__(self, bed: tuple[float, float, float], nozzle_mm: float,
+                 min_feature_mm: float) -> None:
+        self.bed = bed
+        self.nozzle_mm = nozzle_mm
+        self.min_feature_mm = min_feature_mm
 
-    dims = bounds(tris)
-    fits = all(d <= b for d, b in zip(sorted(dims), sorted(bed)))
-    report["gates"]["G3_bed_fit"] = {
-        "pass": fits,
-        "detail": f"model {tuple(round(d, 1) for d in dims)} mm vs bed {bed} mm"}
+    def checks(self) -> Iterable[tuple[str, Callable[[Mesh], CheckResult]]]:
+        return [
+            ("G1_watertight", self.check_watertight),
+            ("G2_outward_normals", self.check_outward_normals),
+            ("G3_bed_fit", self.check_bed_fit),
+            ("G4_min_feature", self.check_min_feature),
+        ]
 
-    ok4 = min_feature_mm >= nozzle_mm * 2
-    report["gates"]["G4_min_feature"] = {
-        "pass": ok4,
-        "detail": f"min feature {min_feature_mm} mm vs 2x nozzle {nozzle_mm * 2} mm"}
+    def subject_name(self, subject: Mesh) -> str:
+        return subject["path"]
 
-    report["ready"] = all(g["pass"] for g in report["gates"].values())
-    return report
+    def extra_report_fields(self, subject: Mesh) -> dict[str, Any]:
+        return {"triangles": len(subject["tris"])}
+
+    def run(self, subject: Any) -> dict[str, Any]:
+        """Parse the STL once; an empty mesh short-circuits as G0."""
+        if isinstance(subject, str):
+            subject = {"path": subject, "tris": read_stl(subject)}
+        if not subject["tris"]:
+            return {"file": subject["path"], "triangles": 0,
+                    "gates": {"G0_nonempty": {"pass": False, "detail": "no triangles"}},
+                    "ready": False, "disclaimer": self.disclaimer}
+        return super().run(subject)
+
+    def check_watertight(self, subject: Mesh) -> CheckResult:
+        """G1: closed 2-manifold with consistent winding."""
+        ok, detail = check_watertight(subject["tris"])
+        return CheckResult(ok, detail)
+
+    def check_outward_normals(self, subject: Mesh) -> CheckResult:
+        """G2: positive signed volume means the mesh is not inside-out."""
+        vol = signed_volume(subject["tris"])
+        return CheckResult(vol > 0, f"signed volume {vol:.1f} mm^3")
+
+    def check_bed_fit(self, subject: Mesh) -> CheckResult:
+        """G3: bounding box fits the declared printer bed (any orientation axis-sorted)."""
+        dims = bounds(subject["tris"])
+        fits = all(d <= b for d, b in zip(sorted(dims), sorted(self.bed)))
+        return CheckResult(
+            fits, f"model {tuple(round(d, 1) for d in dims)} mm vs bed {self.bed} mm")
+
+    def check_min_feature(self, subject: Mesh) -> CheckResult:
+        """G4: smallest declared feature must be at least two nozzle widths."""
+        ok = self.min_feature_mm >= self.nozzle_mm * 2
+        return CheckResult(
+            ok, f"min feature {self.min_feature_mm} mm vs 2x nozzle {self.nozzle_mm * 2} mm")
 
 
-def main():
+def run_gate(path: str, bed: tuple[float, float, float], nozzle_mm: float,
+             min_feature_mm: float) -> dict[str, Any]:
+    """Module-level entry point (kept stable for tests, skills, and evals)."""
+    return PrintReadyGate(bed, nozzle_mm, min_feature_mm).run(path)
+
+
+def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("stl")
     ap.add_argument("--bed", default="220x220x250", help="printer bed WxDxH in mm")
@@ -126,15 +170,7 @@ def main():
     args = ap.parse_args()
 
     bed = tuple(float(x) for x in args.bed.lower().split("x"))
-    report = run_gate(args.stl, bed, args.nozzle, args.min_feature)
-
-    if args.json:
-        print(json.dumps(report, indent=2))
-    else:
-        for gid, g in report["gates"].items():
-            print(f"  {'PASS' if g['pass'] else 'FAIL'}  {gid}: {g['detail']}")
-        print(f"{'READY' if report['ready'] else 'NOT READY'}: {args.stl}")
-    sys.exit(0 if report["ready"] else 1)
+    emit_report(run_gate(args.stl, bed, args.nozzle, args.min_feature), as_json=args.json)
 
 
 if __name__ == "__main__":

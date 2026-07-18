@@ -19,11 +19,11 @@ TIER = {"gold": "🥇", "silver": "🥈", "bronze": "🥉", "watch": "👀",
         "survivor": "🏛", "young": "🌱"}
 
 
-def load(name):
+def load(name: str) -> list:
     return yaml.safe_load((DATA / name).read_text())
 
 
-def tools_section():
+def tools_section() -> str:
     entries = load("tools.yml")
     cats = []
     for e in entries:
@@ -40,14 +40,14 @@ def tools_section():
     return "\n".join(out) + "\n"
 
 
-def papers_section():
+def papers_section() -> str:
     out = ["", "| Tier | Work | Why it matters |", "|---|---|---|"]
     for e in load("papers.yml"):
         out.append(f"| {TIER.get(e.get('tier'), '—')} | [{e['name']}]({e['url']}) | {e['blurb']} |")
     return "\n".join(out) + "\n"
 
 
-def community_section():
+def community_section() -> str:
     out = ["", "| Who | Kind | Domain | Why they matter |", "|---|---|---|---|"]
     for e in load("community.yml"):
         out.append(f"| [{e['name']}]({e['url']}) | {e.get('kind', '—')} | "
@@ -55,14 +55,14 @@ def community_section():
     return "\n".join(out) + "\n"
 
 
-def skills_section():
+def skills_section() -> str:
     out = ["", "| Skill | Status | What it does |", "|---|---|---|"]
     for e in load("registry.yml"):
         out.append(f"| [{e['name']}]({e['url']}) | {e.get('status', '—')} | {e['blurb']} |")
     return "\n".join(out) + "\n"
 
 
-def news_section():
+def news_section() -> str:
     out = [""]
     for e in load("news.yml"):
         title = f"[{e['title']}]({e['link']})" if e.get("link") else f"**{e['title']}**"
@@ -79,7 +79,7 @@ SECTIONS = {
 }
 
 
-def llms_txt():
+def llms_txt() -> str:
     """Flat, token-cheap agent index — one line per entry, grouped by file."""
     meta = yaml.safe_load((DATA / "meta.yml").read_text())
     lines = [f"# {meta['title']} — {meta['tagline']}",
@@ -93,7 +93,7 @@ def llms_txt():
     return "\n".join(lines)
 
 
-def render(text):
+def render(text: str) -> str:
     for key, fn in SECTIONS.items():
         begin, end = f"<!-- BEGIN:{key} -->", f"<!-- END:{key} -->"
         if begin not in text or end not in text:
@@ -105,7 +105,7 @@ def render(text):
     return text
 
 
-def main():
+def main() -> None:
     current = README.read_text()
     generated = render(current)
     llms_path = ROOT / "llms.txt"

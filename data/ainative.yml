@@ -1,0 +1,55 @@
+# AI-native operating principles — rubric-as-data (the FM-os pattern).
+# scripts/ainative.py audits the repo against these with in-repo evidence;
+# a regression in HOW the repo operates fails CI, same as a code regression.
+# check types: file (path exists) | grep (pattern found in path).
+
+gate: 90
+
+principles:
+  - id: spec-as-data
+    why: curated knowledge lives in data/*.yml, never hand-edited artifacts
+    check: {type: file, path: data/tools.yml}
+
+  - id: drift-gate
+    why: generated surfaces (README, llms.txt) must byte-match their generator
+    check: {type: grep, path: Makefile, pattern: "--check"}
+
+  - id: ready-is-a-gate
+    why: no output claims ready without a machine check; exit codes gate CI
+    check: {type: grep, path: pipeline/gate.py, pattern: "sys.exit(0 if report"}
+
+  - id: no-evidence-means-no
+    why: unknown/unmeasured items fail, never fake-pass
+    check: {type: grep, path: pipeline/construction_gate.py, pattern: "not measured => fail"}
+
+  - id: maker-is-not-checker
+    why: generators (examples/) and gates (pipeline/) are independent, held together by tests
+    check: {type: grep, path: tests/test_ready_gate.py, pattern: "Maker != checker"}
+
+  - id: eval-with-teeth
+    why: every skill declares a Verification section with a real assertion
+    check: {type: grep, path: tests/test_structure.py, pattern: "## Verification"}
+
+  - id: golden-examples
+    why: executable specs of quality anchor every gate in CI
+    check: {type: file, path: examples/planter/generate.py}
+
+  - id: honest-edges
+    why: limitations are stated where users read, not buried
+    check: {type: grep, path: README.md, pattern: "## Honest edges"}
+
+  - id: compounding-memory
+    why: significant updates and lessons land in data (news, tables), not chat
+    check: {type: file, path: data/news.yml}
+
+  - id: human-gated-irreversible
+    why: contribution and dispute flows are templated; merges stay human
+    check: {type: file, path: .github/ISSUE_TEMPLATE/gate-dispute.md}
+
+  - id: state-outside-the-window
+    why: the roadmap is a durable, machine-checkable milestone table (loop engineering)
+    check: {type: grep, path: GOAL.md, pattern: "| Milestone |"}
+
+  - id: skill-cannot-drift
+    why: the flagship skill's references are CI-asserted against the engine
+    check: {type: file, path: tests/test_skill.py}

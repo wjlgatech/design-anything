@@ -4,7 +4,10 @@ PY := python3
 
 .PHONY: check test validate gate demo readme readme-check clean
 
-check: validate test readme-check gate  ## everything CI runs; exit 0 = green
+check: validate test readme-check gate ainative  ## everything CI runs; exit 0 = green
+
+ainative:  ## self-audit: a regression in HOW the repo operates fails CI
+	$(PY) scripts/ainative.py
 
 test:
 	$(PY) -m pytest tests/ -q

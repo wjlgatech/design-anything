@@ -29,7 +29,8 @@ STRAP_W, STRAP_L = 60, 600    # neck strap
 # ------------------------------------------------------------------------------
 
 
-def apron():
+def apron() -> dict:
+    """The parametric apron marker: body + ties + strap + pocket on one fabric width."""
     waist_y = BODY_L - BIB_DROP
     side = (BODY_W - BIB_W) / 2
     body = [[0, 0], [BODY_W, 0], [BODY_W, waist_y],

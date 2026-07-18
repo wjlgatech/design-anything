@@ -23,12 +23,14 @@ BASE = 4.0                    # base thickness (mm)
 # ----------------------------------------------------------------------------
 
 
-def quad(a, b, c, d):
+def quad(a: tuple, b: tuple, c: tuple, d: tuple) -> list:
+    """One rectangular face as two triangles, preserving winding."""
     """One rectangular face -> two triangles, preserving winding."""
     return [(a, b, c), (a, c, d)]
 
 
-def planter(w, d, h, t, base):
+def planter(w: float, d: float, h: float, t: float, base: float) -> list:
+    """Open-top rectangular planter as a closed 2-manifold solid (28 tris)."""
     """Open-top rectangular planter as a closed 2-manifold solid (28 tris)."""
     # outer shell corners
     o = {(x, y, z): (w * x, d * y, h * z) for x in (0, 1) for y in (0, 1) for z in (0, 1)}
@@ -60,7 +62,8 @@ def planter(w, d, h, t, base):
     return tris
 
 
-def write_stl(path, tris):
+def write_stl(path: str, tris: list) -> None:
+    """Write triangles as binary STL (normals left to the slicer)."""
     with open(path, "wb") as f:
         f.write(b"design-anything planter (parametric golden example)".ljust(80, b"\0"))
         f.write(struct.pack("<I", len(tris)))

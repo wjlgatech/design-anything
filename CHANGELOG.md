@@ -2,6 +2,15 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.7.0] — 2026-07-18
+
+### Changed
+- **OOP refactor around the `Gate` seam** (GOAL.md M16): new `pipeline/gate.py` — `CheckResult`, abstract `Gate` (named checks → honest report → shared CLI/exit surface). All three gates are now classes (`PrintReadyGate`, `ConstructionGate`, `PatternGate`) with one method per check; the two 80-94-line god-functions are gone; module-level `run_gate()` entry points kept stable for tests/skills/evals. `anyagent analyze`: **50 → 83** (typing/function-size/nesting/testing at 100%; remaining "structure" findings declined as over-engineering for compiler scripts).
+- `scripts/validate.py` flattened into per-concern check functions (nesting finding closed); full type annotations across pipeline, scripts, and example generators.
+
+### Added
+- **AI-native self-audit in CI** (the FM-os rubric-as-data pattern): `data/ainative.yml` — 12 operating principles (spec-as-data, drift-gate, ready-is-a-gate, no-evidence⇒no, maker≠checker, eval-with-teeth, golden-examples, honest-edges, compounding-memory, human-gated-irreversible, state-outside-the-window, skill-cannot-drift), each with in-repo evidence probes; `scripts/ainative.py` scores them (currently 12/12, gate 90) and **fails `make check` on a regression in how the repo operates**, not just what the code does. Audited by `tests/test_ainative.py` including the no-fake-pass property.
+
 ## [0.6.0] — 2026-07-18
 
 ### Added

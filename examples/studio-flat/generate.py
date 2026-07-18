@@ -26,11 +26,13 @@ WIDTH = HALL_W + BATH_W + KITCHEN_W   # 5000 overall
 # ------------------------------------------------------------------------------
 
 
-def rect(x0, y0, x1, y1):
+def rect(x0: int, y0: int, x1: int, y1: int) -> list:
+    """Axis-aligned rectangle as a 4-point polygon."""
     return [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]
 
 
-def studio():
+def studio() -> dict:
+    """The parametric studio flat: service row (hall/bath/kitchen) + living room."""
     x_bath = HALL_W
     x_kitchen = HALL_W + BATH_W
     return {
