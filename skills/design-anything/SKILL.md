@@ -88,8 +88,11 @@ rationale: `docs/SKILL_DESIGN.md`.
 This skill's own integrity is CI-tested — `python3 -m pytest tests/test_skill.py -q`
 asserts every repo path referenced above exists (the skill cannot drift from
 the engine), the description stays within Anthropic's budgets, and the body
-stays under 500 lines. A design run's success is verified ONLY by its gate's
-exit 0 — never by this skill's say-so.
+stays under 500 lines. Behavioral eval scenarios (routing, honesty, trigger
+accuracy incl. should-NOT-trigger) live in `skills/design-anything/evals/evals.json`
+— schema and fixture integrity CI-gated by `tests/test_skill_evals.py`; run
+model-graded passes via the skill-creator plugin. A design run's success is
+verified ONLY by its gate's exit 0 — never by this skill's say-so.
 
 ## Honest edges
 

@@ -61,6 +61,7 @@ No output may claim "ready" without passing its gate. **No evidence ⇒ Not read
 | **M11 — Body-fit expansion** | Next domains per [docs/DESIGN_DISCIPLINES.md](docs/DESIGN_DISCIPLINES.md) Tier 2: dental/prosthetics/footwear/eyewear share one pattern — anthropometric tables + scan-to-parametric + print gate. Pick one, ship its gate + golden example. | 🚧 next |
 | **M12 — Pattern-gate deepening** | DXF-AAMA export, grading check across a size run (ASTM D5585), seam-line length matching, GarmentCode emission. | 🚧 next |
 | **M13 — /design-anything flagship skill** | Thin-router SKILL.md per Anthropic guidance ([docs/SKILL_DESIGN.md](docs/SKILL_DESIGN.md)): backbone vs disclosure split, intent discovery ≤2 questions, self-aware/heal/improve as protocols; every referenced repo path CI-asserted (`tests/test_skill.py`); installed via symlink. | ✅ v0.4.0 |
+| **M14 — Skill eval scenarios** | ≥3 scenarios in skill-creator format covering every gated route + should-NOT-trigger cases; fixtures exist and the broken fixture provably fails its gate (`tests/test_skill_evals.py`). | ✅ v0.5.0 |
 
 ## 5. Non-goals (v0.x)
 

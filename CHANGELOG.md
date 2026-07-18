@@ -2,6 +2,13 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.5.0] — 2026-07-18
+
+### Added
+- **Skill eval scenarios** (GOAL.md M14) — `skills/design-anything/evals/evals.json`, skill-creator-compatible: 10 scenarios covering every gated route (print/construction/garment), the honest-gap game route, photo input, the one-fork-question discipline, the curated-index answer path, an honest-NOT-READY case against a real broken fixture, and 2 should-NOT-trigger cases (logo, database schema) measuring the description's NOT-for clause.
+- **`tests/test_skill_evals.py`** — the deterministic slice CI can enforce: schema validity, both trigger classes present, every gated route exercised, fixtures exist, and `broken-hole.stl` **provably fails G1** (an eval against a healthy fixture would be a fake test).
+- `.gitignore` exception so the eval fixture STL ships with the repo.
+
 ## [0.4.0] — 2026-07-18
 
 ### Added

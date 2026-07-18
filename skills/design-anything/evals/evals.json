@@ -1,0 +1,117 @@
+{
+  "description": "Eval scenarios for /design-anything, skill-creator compatible. Two classes: should_trigger=true cases measure routing + behavior; should_trigger=false cases measure the description's NOT-for discipline. Run via the skill-creator plugin's eval harness (fresh-session, with/without baseline); the deterministic slice (fixture integrity, schema) is CI-gated by tests/test_skill_evals.py.",
+  "evals": [
+    {
+      "id": "print-route-with-defaults",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "design me a phone stand I can print on my Ender 3",
+      "expected_behavior": [
+        "routes to the 3D-print target without asking what an STL is",
+        "states visible defaults (Ender 3 bed 220x220x250, 0.4mm nozzle) and proceeds instead of interrogating",
+        "emits deterministic parametric Python source modeled on examples/planter/generate.py, not an opaque mesh",
+        "runs pipeline/ready_gate.py and relays PASS/FAIL lines verbatim",
+        "never claims ready without the gate's exit 0"
+      ]
+    },
+    {
+      "id": "construction-route",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "turn this into a floor plan: a 2-bedroom flat around 60 square meters on a narrow 6m-wide lot",
+      "expected_behavior": [
+        "routes to the construction target and reads data/clearances.yml",
+        "emits a rooms+openings layout JSON modeled on examples/studio-flat/generate.py",
+        "runs pipeline/construction_gate.py; a failing clearance is fixed and re-run, not talked around",
+        "output carries the not-a-permit disclaimer",
+        "narrow-lot brief retrieves the courtyard/lightwell pattern before massing (pattern-library step)"
+      ]
+    },
+    {
+      "id": "garment-route",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "make me a sewing pattern for a chef's apron, I have 1400mm wide canvas",
+      "expected_behavior": [
+        "routes to the garment target with fabric width 1400 from the brief (no re-asking)",
+        "emits a marker JSON modeled on examples/apron/generate.py with grain declared per piece",
+        "runs pipeline/pattern_gate.py and reports marker efficiency as a number",
+        "mentions the muslin disclaimer (gate checks the marker, not drape)"
+      ]
+    },
+    {
+      "id": "game-route-honest-gap",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "design a medieval courtyard arena level for my game",
+      "expected_behavior": [
+        "states explicitly that no game/sim gate exists yet (roadmap M7) — self-aware from the gate table, not from claims",
+        "still delivers composition + principles: play-type mix (agon geometry), magic-circle boundary, prospect/refuge",
+        "does not fake a READY verdict of any kind"
+      ]
+    },
+    {
+      "id": "photo-input-routes-through-scene-to-layout",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "here's a photo of my living room — redesign it with a reading corner",
+      "files": ["a room photo"],
+      "expected_behavior": [
+        "routes through skills/scene-to-layout/SKILL.md before any generation",
+        "asks for exactly one reference measurement (photo dimensions are ESTIMATED otherwise)",
+        "reading corner placed with daylight justification (principle P10), not wall-of-convenience"
+      ]
+    },
+    {
+      "id": "ambiguous-brief-one-fork-question",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "design me a chair",
+      "expected_behavior": [
+        "asks at most ONE clarifying question (printable object vs interior layout context), not an interrogation",
+        "after the answer, proposes visible defaults for everything else and proceeds"
+      ]
+    },
+    {
+      "id": "broken-stl-honest-not-ready",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "is this STL print-ready?",
+      "files": ["skills/design-anything/evals/fixtures/broken-hole.stl"],
+      "expected_behavior": [
+        "runs pipeline/ready_gate.py on the file",
+        "reports NOT READY with the failing gate named (G1 watertight — unmatched edges), verbatim",
+        "offers the fix path (close the hole / regenerate from parametric source), never softens the verdict"
+      ]
+    },
+    {
+      "id": "landscape-question-uses-curated-index",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "what's the best text-to-3D tool right now?",
+      "expected_behavior": [
+        "answers from llms.txt / the README landscape tables with evidence dates, not from vibes",
+        "distinguishes tiers and marks anything unverified as UNVERIFIED",
+        "offers the three-window deep dive (skills/design-research) only if the user wants more"
+      ]
+    },
+    {
+      "id": "not-for-logo",
+      "should_trigger": false,
+      "skills": ["design-anything"],
+      "query": "design a logo for my startup",
+      "expected_behavior": [
+        "the skill does not trigger — graphic/logo design is in the description's NOT-for clause"
+      ]
+    },
+    {
+      "id": "not-for-software-schema",
+      "should_trigger": false,
+      "skills": ["design-anything"],
+      "query": "design a database schema for my users and orders tables",
+      "expected_behavior": [
+        "the skill does not trigger — software/data design has no spatial artifact or gate here"
+      ]
+    }
+  ]
+}
