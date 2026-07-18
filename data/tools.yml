@@ -138,3 +138,45 @@
   blurb: CAD-lite 3D floor planner with an AI layout/style module.
   tier: bronze
   category: interior-design
+
+- name: Seamly2D
+  url: https://github.com/FashionFreedom/Seamly2D
+  blurb: Open-source parametric pattern-making CAD — the most active open pattern tool.
+  tier: gold
+  category: garment-design
+  evidence: "913 stars, pushed 2026-07-18"
+
+- name: GarmentCode (ETH)
+  url: https://github.com/maria-korosteleva/GarmentCode
+  blurb: Sewing patterns as programs — the substrate the AI pattern-generation wave targets.
+  tier: gold
+  category: garment-design
+  evidence: "386 stars; Design2GarmentCode and successors build on it"
+
+- name: Marvelous Designer / CLO
+  url: https://www.cgchannel.com/2026/04/clo-virtual-fashion-releases-marvelous-designer-2026-0/
+  blurb: Flagship 3D garment tool for games/VFX/fashion; 2026.0 bets on interaction, notably not generation.
+  tier: gold
+  category: garment-design
+  evidence: "2026.0 released 2026-04"
+
+- name: Style3D + GarmageNet
+  url: https://github.com/Style3D/garmagenet-impl
+  blurb: The most AI-aggressive fashion suite — a commercial CAD vendor open-sourcing its generative garment model.
+  tier: silver
+  category: garment-design
+  evidence: "pushed 2026-01-16"
+
+- name: unspun Vega
+  url: https://www.textileworld.com/textile-world/knitting-apparel/2026/05/unspun-focused-on-creating-a-new-category-of-apparel-production/
+  blurb: 3D-weaves shaped garment components directly from yarn, routing around cut-and-sew entirely.
+  tier: silver
+  category: garment-design
+  evidence: "$32M Series B, Walmart pilot, 2026-05"
+
+- name: DressX
+  url: https://www.forbes.com/sites/moinroberts-islam/2026/04/14/google-dressx-and-the-new-fashion-ai-virtual-try-on-stack/
+  blurb: The digital-fashion survivor — pivoted from NFT-era hype to AI try-on utility with 200+ brands.
+  tier: bronze
+  category: garment-design
+  evidence: "Forbes 2026-04; contrast the RTFKT anti-portfolio entry"

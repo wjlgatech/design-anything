@@ -132,3 +132,39 @@
   blurb: Discrete differential geometry — the curriculum every mesh-processing engineer learns from.
   kind: person
   domain: graphics
+
+- name: Maria Korosteleva (ETH Zurich)
+  url: https://github.com/maria-korosteleva/GarmentCode
+  blurb: NeuralTailor and GarmentCode — seeded the entire neural sewing-pattern generation wave.
+  kind: person
+  domain: garment-design
+
+- name: Holly McQuillan
+  url: https://www.hollymcquillan.com/publications
+  blurb: Codified zero-waste pattern cutting; still publishing on woven textile-form.
+  kind: person
+  domain: garment-design
+
+- name: Issey Miyake / A-POC ABLE
+  url: https://us.isseymiyake.com/pages/apocable
+  blurb: Garment logic programmed into the textile itself — the process survived its founder.
+  kind: lab
+  domain: garment-design
+
+- name: Madeleine Vionnet (1876-1975)
+  url: https://en.wikipedia.org/wiki/Madeleine_Vionnet
+  blurb: The bias cut — proof that grain direction is a design material; nearly extinct, permanently revived.
+  kind: person
+  domain: garment-design
+
+- name: Herbert Simon (1916-2001)
+  url: https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/
+  blurb: Defined design as a discipline in The Sciences of the Artificial — the wisdom-tier anchor of design thinking.
+  kind: person
+  domain: design-theory
+
+- name: Stanford d.school / IDEO lineage
+  url: https://dschool.stanford.edu/
+  blurb: Popularized design thinking (Kelley, Brown); the kernel survives the workshop-theater critique wave.
+  kind: lab
+  domain: design-theory

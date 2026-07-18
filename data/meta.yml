@@ -1,6 +1,7 @@
 title: design-anything
 tagline: "Any design intent in (text, picture) → execution-ready 3D blueprint out (construction- and 3D-print-verified)."
 why_different:
+  - "One mental model - DIKW compression vs expression: research compresses the world into principles; the pipeline expresses principles into gated artifacts (principles/DIKW_MODEL.md)."
   - "Ready is a gate, not a vibe — no output claims print/construction-ready without passing machine checks (pipeline/ready_gate.py)."
   - "Three-window research — ranked by current engagement (30 days), survival (30 years), and civilizational endurance (300 years), never by hype."
   - "Spec-as-data — curated knowledge lives in data/*.yml; README tables are compiled artifacts with a drift gate."
@@ -12,3 +13,4 @@ domains:
   - commercial architecture (3D printing + AI)
   - interior design (furniture, kitchen, bedroom, living room, balcony)
   - garden & landscape
+  - garment & cloth design

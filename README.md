@@ -2,7 +2,7 @@
 
 **Any design intent in (text, picture) → execution-ready 3D blueprint out — construction- and 3D-print-verified.**
 
-Covering: game design · 3D simulation · residential & commercial architecture (3D printing + AI) · interior design (furniture, kitchen, bedroom, living room, balcony) · garden & landscape.
+Covering: game design · 3D simulation · residential & commercial architecture (3D printing + AI) · interior design (furniture, kitchen, bedroom, living room, balcony) · garden & landscape · garment & cloth design. The full map of design-centric disciplines (and what qualifies one for this repo): [docs/DESIGN_DISCIPLINES.md](docs/DESIGN_DISCIPLINES.md).
 
 Sibling of [animate-anything](https://github.com/wjlgatech/animate-anything) and [FM-os](https://github.com/wjlgatech/FM-os) — same operating system, new domain.
 
@@ -21,6 +21,7 @@ text | image  →  brief (schema)  →  parametric model (source)  →  3D bluep
                                           READY-GATE (machine-checkable, per target)
                                           ├─ 3D-print:     watertight · outward normals · bed-fit · min-feature
                                           ├─ construction: topology · clearance tables · habitability · egress · module grid
+                                          ├─ garment:      pieces+grain · fabric fit · seam · zero-waste efficiency · fit tables
                                           └─ game/sim:     glTF/USD validity · poly budget · true scale        (roadmap)
 ```
 
@@ -35,6 +36,10 @@ python3 pipeline/ready_gate.py planter.stl --min-feature 3.0
 python3 examples/studio-flat/generate.py layout.json
 python3 pipeline/construction_gate.py layout.json
 
+# garment target: text brief → parametric pattern → marker JSON → gate
+python3 examples/apron/generate.py marker.json
+python3 pipeline/pattern_gate.py marker.json
+
 make check   # the whole finish line CI runs
 ```
 
@@ -42,7 +47,7 @@ Agents: a flat, token-cheap index of everything curated here is compiled to [`ll
 
 ## Design principles
 
-The distilled, survival-tested rules — each traceable to its research window — live in [`principles/DESIGN_PRINCIPLES.md`](principles/DESIGN_PRINCIPLES.md). Best practices for building with AI in this domain: [`best-practices/BEST_PRACTICES.md`](best-practices/BEST_PRACTICES.md). The 10X goal contract that governs the roadmap: [`GOAL.md`](GOAL.md).
+The distilled, survival-tested rules — each traceable to its research window — live in [`principles/DESIGN_PRINCIPLES.md`](principles/DESIGN_PRINCIPLES.md). The organizing mental model — **DIKW compression ↔ expression** (research compresses the world into principles; the pipeline expresses principles into gated artifacts) — is [`principles/DIKW_MODEL.md`](principles/DIKW_MODEL.md). Design thinking, honestly tiered (keep the kernel, drop the theater): [`principles/DESIGN_THINKING.md`](principles/DESIGN_THINKING.md). Best practices: [`best-practices/BEST_PRACTICES.md`](best-practices/BEST_PRACTICES.md). The 10X goal contract that governs the roadmap: [`GOAL.md`](GOAL.md).
 
 ## AI tooling — skills, bundles, workflows
 
@@ -55,6 +60,7 @@ Skills are packaged agent capabilities (one folder, one `SKILL.md`, eval-with-te
 | [brief-to-blueprint](https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint) | dogfooded | Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate. |
 | [print-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check) | dogfooded | Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. |
 | [construction-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check) | dogfooded | Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. |
+| [garment-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check) | dogfooded | Run the pattern gate on a garment marker — pieces, grain, fabric fit, seam allowance, zero-waste efficiency, fit tables. |
 | [blueprint-validate](https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate) | dogfooded | Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). |
 | [pattern-library](https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library) | dogfooded | Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. |
 | [scene-to-layout](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout) | dogfooded | Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. |
@@ -122,6 +128,17 @@ Ranked by observed evidence (recency, engagement, survival). Full method + dates
 | 🥈 | [OpenSCAD](https://openscad.org/) | Code-CAD for printable parametric parts — the natural target for LLM text-to-CAD since code is an LLM's native 3D output. |
 | 🥈 | [FreeCAD](https://www.freecad.org/) | The open BRep/parametric CAD; reached 1.0 after 22 years. |
 | 🥈 | [COLMAP](https://colmap.github.io/) | Default structure-from-motion pipeline every NeRF/3DGS workflow assumes. |
+
+### garment-design
+
+| Tier | Tool | What it is |
+|---|---|---|
+| 🥇 | [Seamly2D](https://github.com/FashionFreedom/Seamly2D) | Open-source parametric pattern-making CAD — the most active open pattern tool. |
+| 🥇 | [GarmentCode (ETH)](https://github.com/maria-korosteleva/GarmentCode) | Sewing patterns as programs — the substrate the AI pattern-generation wave targets. |
+| 🥇 | [Marvelous Designer / CLO](https://www.cgchannel.com/2026/04/clo-virtual-fashion-releases-marvelous-designer-2026-0/) | Flagship 3D garment tool for games/VFX/fashion; 2026.0 bets on interaction, notably not generation. |
+| 🥈 | [Style3D + GarmageNet](https://github.com/Style3D/garmagenet-impl) | The most AI-aggressive fashion suite — a commercial CAD vendor open-sourcing its generative garment model. |
+| 🥈 | [unspun Vega](https://www.textileworld.com/textile-world/knitting-apparel/2026/05/unspun-focused-on-creating-a-new-category-of-apparel-production/) | 3D-weaves shaped garment components directly from yarn, routing around cut-and-sew entirely. |
+| 🥉 | [DressX](https://www.forbes.com/sites/moinroberts-islam/2026/04/14/google-dressx-and-the-new-fashion-ai-virtual-try-on-stack/) | The digital-fashion survivor — pivoted from NFT-era hype to AI try-on utility with 200+ brands. |
 <!-- END:tools -->
 
 ## Foundational work — papers & standards
@@ -145,6 +162,12 @@ Ranked by observed evidence (recency, engagement, survival). Full method + dates
 | 🌱 | [DreamFusion / Score Distillation Sampling (Poole et al. 2022)](https://dreamfusion3d.github.io/) | The mechanism behind most text-to-3D; now challenged by native 3D generators — may be the first of its batch to die. |
 | 🌱 | [Instant-NGP (Mueller et al. 2022)](https://nvlabs.github.io/instant-ngp/) | SIGGRAPH 2022 Best Paper; the hash encoding baked into most neural-field trainers. |
 | 🌱 | [Denoising Diffusion Probabilistic Models (Ho et al. 2020)](https://arxiv.org/abs/2006.11239) | The text-to-image half of the pipeline; Stable Diffusion and successors descend from it. |
+| 🏛 | [Large Steps in Cloth Simulation (Baraff & Witkin 1998)](https://dl.acm.org/doi/10.1145/280814.280821) | Implicit integration made cloth simulation stable — the canonical citation 28 years on. |
+| 🏛 | [PBD → XPBD (Mueller 2007, Macklin 2016)](https://www.emergentmind.com/topics/extended-position-based-dynamics-xpbd) | What actually ships in real-time engines — traded accuracy for stability and won the games market. |
+| 🏛 | [SMPL body model (Loper et al. 2015)](https://meshcapade.com/smpl/) | Still THE parametric human body standard in 2026; challengers fix anatomy but have not displaced it. |
+| 🏛 | [DXF-AAMA / ASTM D6673 pattern exchange](https://store.astm.org/d6673-10.html) | Standard formally withdrawn in 2019 yet every pattern CAD still speaks it — de facto formats outlive their standards bodies. |
+| 🌱 | [Text-to-sewing-pattern wave (GarmentDiffusion, ChatGarment, 2025-26)](https://www.ijcai.org/proceedings/2025/163) | The field pivoted from mesh generation to manufacturable pattern generation — cm-precise, vectorized, gradable. |
+| 🏛 | [The Sciences of the Artificial (Simon 1969)](https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/) | The intellectual root defining design as a discipline — "everyone designs who devises courses of action aimed at changing existing situations into preferred ones." |
 <!-- END:papers -->
 
 ## Community — influential figures & labs
@@ -177,6 +200,12 @@ Inclusion requires survival evidence, not fame. See the [anti-portfolio](researc
 | [buildingSMART International](https://www.buildingsmart.org/) | lab | standards | Stewards of IFC — the 30-year-old open standard everything interoperates through. |
 | [Alliance for OpenUSD (AOUSD)](https://aousd.org/) | lab | standards | Pixar, Apple, Adobe, Autodesk, NVIDIA, Epic aligning the 3D scene-graph standard. |
 | [Keenan Crane (CMU)](https://www.cs.cmu.edu/~kmcrane/) | person | graphics | Discrete differential geometry — the curriculum every mesh-processing engineer learns from. |
+| [Maria Korosteleva (ETH Zurich)](https://github.com/maria-korosteleva/GarmentCode) | person | garment-design | NeuralTailor and GarmentCode — seeded the entire neural sewing-pattern generation wave. |
+| [Holly McQuillan](https://www.hollymcquillan.com/publications) | person | garment-design | Codified zero-waste pattern cutting; still publishing on woven textile-form. |
+| [Issey Miyake / A-POC ABLE](https://us.isseymiyake.com/pages/apocable) | lab | garment-design | Garment logic programmed into the textile itself — the process survived its founder. |
+| [Madeleine Vionnet (1876-1975)](https://en.wikipedia.org/wiki/Madeleine_Vionnet) | person | garment-design | The bias cut — proof that grain direction is a design material; nearly extinct, permanently revived. |
+| [Herbert Simon (1916-2001)](https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/) | person | design-theory | Defined design as a discipline in The Sciences of the Artificial — the wisdom-tier anchor of design thinking. |
+| [Stanford d.school / IDEO lineage](https://dschool.stanford.edu/) | lab | design-theory | Popularized design thinking (Kelley, Brown); the kernel survives the workshop-theater critique wave. |
 <!-- END:community -->
 
 ## Domain guides
@@ -189,6 +218,7 @@ Inclusion requires survival evidence, not fame. See the [anti-portfolio](researc
 | Commercial architecture (3DCP + AI) | [domains/architecture-commercial](domains/architecture-commercial/README.md) |
 | Interior design | [domains/interior-design](domains/interior-design/README.md) |
 | Garden & landscape | [domains/landscape](domains/landscape/README.md) |
+| Garment & cloth design | [domains/garment-design](domains/garment-design/README.md) |
 
 ## Contributing
 
@@ -196,9 +226,9 @@ Two-line PR: edit a `data/*.yml` entry, run `make check`, open a PR. Every entry
 
 ## Honest edges
 
-- Gates shipped: 3D-print (`ready_gate.py`) and construction v0.1 (`construction_gate.py` — layout graph + clearance tables, not structural spans or IFC yet). The game/sim gate is roadmap (GOAL.md M7).
-- A passing gate means *buildable/printable*, not *good* — principles cover taste; the gate covers physics and tables.
-- The construction gate is a design-sanity check, **not a permit and not a structural engineer's stamp** — every report says so, and jurisdiction codes override.
+- Gates shipped: 3D-print (`ready_gate.py`), construction v0.1 (`construction_gate.py` — layout graph + clearance tables, not structural spans or IFC yet), and garment v0.1 (`pattern_gate.py` — marker + fit tables, not drape or sewability; overlap check is bbox-level). The game/sim gate is roadmap (GOAL.md M7).
+- A passing gate means *buildable/printable/cuttable*, not *good* — principles cover taste; the gate covers physics and tables.
+- The construction gate is a design-sanity check, **not a permit and not a structural engineer's stamp**; the pattern gate is not a muslin — every report says so, and jurisdiction codes / real fittings override.
 
 ## License
 

@@ -89,3 +89,39 @@
   blurb: The text-to-image half of the pipeline; Stable Diffusion and successors descend from it.
   tier: young
   category: neural-3D
+
+- name: Large Steps in Cloth Simulation (Baraff & Witkin 1998)
+  url: https://dl.acm.org/doi/10.1145/280814.280821
+  blurb: Implicit integration made cloth simulation stable — the canonical citation 28 years on.
+  tier: survivor
+  category: cloth-and-body
+
+- name: PBD → XPBD (Mueller 2007, Macklin 2016)
+  url: https://www.emergentmind.com/topics/extended-position-based-dynamics-xpbd
+  blurb: What actually ships in real-time engines — traded accuracy for stability and won the games market.
+  tier: survivor
+  category: cloth-and-body
+
+- name: SMPL body model (Loper et al. 2015)
+  url: https://meshcapade.com/smpl/
+  blurb: Still THE parametric human body standard in 2026; challengers fix anatomy but have not displaced it.
+  tier: survivor
+  category: cloth-and-body
+
+- name: DXF-AAMA / ASTM D6673 pattern exchange
+  url: https://store.astm.org/d6673-10.html
+  blurb: Standard formally withdrawn in 2019 yet every pattern CAD still speaks it — de facto formats outlive their standards bodies.
+  tier: survivor
+  category: standards
+
+- name: Text-to-sewing-pattern wave (GarmentDiffusion, ChatGarment, 2025-26)
+  url: https://www.ijcai.org/proceedings/2025/163
+  blurb: The field pivoted from mesh generation to manufacturable pattern generation — cm-precise, vectorized, gradable.
+  tier: young
+  category: cloth-and-body
+
+- name: The Sciences of the Artificial (Simon 1969)
+  url: https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/
+  blurb: The intellectual root defining design as a discipline — "everyone designs who devises courses of action aimed at changing existing situations into preferred ones."
+  tier: survivor
+  category: design-theory

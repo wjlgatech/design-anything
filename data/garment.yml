@@ -1,0 +1,24 @@
+# Garment constraint tables — the pattern gate's database (principle P2).
+# Sources: industry seam standards, common woven bolt widths, zero-waste
+# marker practice, ASTM sizing lineage. Values in mm unless noted.
+
+units: mm
+
+fabric:
+  standard_widths: {values: [1100, 1400, 1500], source: "common woven bolt widths (43/55/59 in)"}
+
+seam_allowance:
+  min: {value: 10, source: "industry 3/8in = 9.5mm rounded; home sewing 15mm"}
+
+marker:
+  # zero-waste lineage: kimono/sari cut with ~0 waste; industry markers hit 80-85%
+  min_efficiency_pct: {value: 60, source: "floor for a defensible marker; industry 80-85%, zero-waste ~100%"}
+
+grain:
+  allowed_angles_deg: {values: [0, 45, 90], source: "lengthwise, bias (Vionnet), crosswise"}
+
+fit_apron:
+  # unisex M reference — anthropometric lineage (ASTM sizing tables)
+  waist_tie_total: {min: 1700, source: "waist girth p95 + wrap + bow allowance"}
+  neck_strap: {min: 500, max: 700, source: "over-head clearance + adjustability range"}
+  body_length: {min: 750, max: 1050, source: "chest-to-knee coverage, unisex M"}

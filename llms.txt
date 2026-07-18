@@ -5,6 +5,7 @@
 brief-to-blueprint — Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate. [https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint]
 print-ready-check — Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. [https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check]
 construction-ready-check — Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. [https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check]
+garment-ready-check — Run the pattern gate on a garment marker — pieces, grain, fabric fit, seam allowance, zero-waste efficiency, fit tables. [https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check]
 blueprint-validate — Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). [https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate]
 pattern-library — Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. [https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library]
 scene-to-layout — Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. [https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout]
@@ -32,6 +33,12 @@ FreeCAD — The open BRep/parametric CAD; reached 1.0 after 22 years. [https://w
 COLMAP — Default structure-from-motion pipeline every NeRF/3DGS workflow assumes. [https://colmap.github.io/]
 Spacely AI — Photoreal room renders with element-level masking, used by boutique studios. [https://www.spacely.ai/]
 Planner 5D AI — CAD-lite 3D floor planner with an AI layout/style module. [https://planner5d.com/use/ai-interior-design]
+Seamly2D — Open-source parametric pattern-making CAD — the most active open pattern tool. [https://github.com/FashionFreedom/Seamly2D]
+GarmentCode (ETH) — Sewing patterns as programs — the substrate the AI pattern-generation wave targets. [https://github.com/maria-korosteleva/GarmentCode]
+Marvelous Designer / CLO — Flagship 3D garment tool for games/VFX/fashion; 2026.0 bets on interaction, notably not generation. [https://www.cgchannel.com/2026/04/clo-virtual-fashion-releases-marvelous-designer-2026-0/]
+Style3D + GarmageNet — The most AI-aggressive fashion suite — a commercial CAD vendor open-sourcing its generative garment model. [https://github.com/Style3D/garmagenet-impl]
+unspun Vega — 3D-weaves shaped garment components directly from yarn, routing around cut-and-sew entirely. [https://www.textileworld.com/textile-world/knitting-apparel/2026/05/unspun-focused-on-creating-a-new-category-of-apparel-production/]
+DressX — The digital-fashion survivor — pivoted from NFT-era hype to AI try-on utility with 200+ brands. [https://www.forbes.com/sites/moinroberts-islam/2026/04/14/google-dressx-and-the-new-fashion-ai-virtual-try-on-stack/]
 
 ## papers-and-standards
 IFC / ISO 16739 — The open BIM interchange standard (born 1996) — legally mandated for public projects in several countries; the survival-grade architecture output target. [https://www.buildingsmart.org/standards/ifc/]
@@ -49,6 +56,12 @@ NeRF (Mildenhall et al. 2020) — Revolutionized 3D representation; already part
 DreamFusion / Score Distillation Sampling (Poole et al. 2022) — The mechanism behind most text-to-3D; now challenged by native 3D generators — may be the first of its batch to die. [https://dreamfusion3d.github.io/]
 Instant-NGP (Mueller et al. 2022) — SIGGRAPH 2022 Best Paper; the hash encoding baked into most neural-field trainers. [https://nvlabs.github.io/instant-ngp/]
 Denoising Diffusion Probabilistic Models (Ho et al. 2020) — The text-to-image half of the pipeline; Stable Diffusion and successors descend from it. [https://arxiv.org/abs/2006.11239]
+Large Steps in Cloth Simulation (Baraff & Witkin 1998) — Implicit integration made cloth simulation stable — the canonical citation 28 years on. [https://dl.acm.org/doi/10.1145/280814.280821]
+PBD → XPBD (Mueller 2007, Macklin 2016) — What actually ships in real-time engines — traded accuracy for stability and won the games market. [https://www.emergentmind.com/topics/extended-position-based-dynamics-xpbd]
+SMPL body model (Loper et al. 2015) — Still THE parametric human body standard in 2026; challengers fix anatomy but have not displaced it. [https://meshcapade.com/smpl/]
+DXF-AAMA / ASTM D6673 pattern exchange — Standard formally withdrawn in 2019 yet every pattern CAD still speaks it — de facto formats outlive their standards bodies. [https://store.astm.org/d6673-10.html]
+Text-to-sewing-pattern wave (GarmentDiffusion, ChatGarment, 2025-26) — The field pivoted from mesh generation to manufacturable pattern generation — cm-precise, vectorized, gradable. [https://www.ijcai.org/proceedings/2025/163]
+The Sciences of the Artificial (Simon 1969) — The intellectual root defining design as a discipline — "everyone designs who devises courses of action aimed at changing existing situations into preferred ones." [https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/]
 
 ## community
 Gramazio Kohler Research (ETH Zurich) — Invented "digital fabrication in architecture" as a discipline (2005); alumni seeded labs worldwide. [https://gramaziokohler.arch.ethz.ch/]
@@ -73,3 +86,9 @@ ICON — ~250 printed structures and an AI-architect roadmap; restructured 2025 
 buildingSMART International — Stewards of IFC — the 30-year-old open standard everything interoperates through. [https://www.buildingsmart.org/]
 Alliance for OpenUSD (AOUSD) — Pixar, Apple, Adobe, Autodesk, NVIDIA, Epic aligning the 3D scene-graph standard. [https://aousd.org/]
 Keenan Crane (CMU) — Discrete differential geometry — the curriculum every mesh-processing engineer learns from. [https://www.cs.cmu.edu/~kmcrane/]
+Maria Korosteleva (ETH Zurich) — NeuralTailor and GarmentCode — seeded the entire neural sewing-pattern generation wave. [https://github.com/maria-korosteleva/GarmentCode]
+Holly McQuillan — Codified zero-waste pattern cutting; still publishing on woven textile-form. [https://www.hollymcquillan.com/publications]
+Issey Miyake / A-POC ABLE — Garment logic programmed into the textile itself — the process survived its founder. [https://us.isseymiyake.com/pages/apocable]
+Madeleine Vionnet (1876-1975) — The bias cut — proof that grain direction is a design material; nearly extinct, permanently revived. [https://en.wikipedia.org/wiki/Madeleine_Vionnet]
+Herbert Simon (1916-2001) — Defined design as a discipline in The Sciences of the Artificial — the wisdom-tier anchor of design thinking. [https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/]
+Stanford d.school / IDEO lineage — Popularized design thinking (Kelley, Brown); the kernel survives the workshop-theater critique wave. [https://dschool.stanford.edu/]

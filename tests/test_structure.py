@@ -15,7 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_DOCS = [
     "README.md", "GOAL.md", "CONTRIBUTING.md", "LICENSE", "Makefile",
     "principles/DESIGN_PRINCIPLES.md", "best-practices/BEST_PRACTICES.md",
-    "pipeline/README.md", "pipeline/ready_gate.py",
+    "pipeline/README.md", "pipeline/ready_gate.py", "pipeline/pattern_gate.py",
+    "principles/DIKW_MODEL.md", "principles/DESIGN_THINKING.md",
+    "docs/DESIGN_DISCIPLINES.md",
     "bundles/design-from-brief.yaml", "workflows/README.md",
 ]
 
@@ -26,7 +28,7 @@ DIGESTS = [
 ]
 
 DOMAINS = ["game-design", "simulation", "architecture-residential",
-           "architecture-commercial", "interior-design", "landscape"]
+           "architecture-commercial", "interior-design", "landscape", "garment-design"]
 
 
 def _frontmatter(text):

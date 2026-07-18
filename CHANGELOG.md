@@ -2,6 +2,16 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.3.0] — 2026-07-18
+
+### Added
+- **Garment & cloth design domain** (GOAL.md M10): `domains/garment-design/` guide + full three-window research digest (RESEARCH.md — sewing patterns as the AI↔manufacturing interchange; GarmentCode + DXF-AAMA as the load-bearing formats; RTFKT joins the anti-portfolio at −99.8%).
+- **Pattern gate v0.1** (`pipeline/pattern_gate.py`) + `data/garment.yml` tables: pieces+grain, fabric fit, seam allowance, marker efficiency (zero-waste as a number), human-fit tables. Golden example #3: `examples/apron/` (5 pieces, 67% marker efficiency); 9 tests with 8 known-bad mutations.
+- **`principles/DIKW_MODEL.md`** — the organizing mental model: DIKW compression (research → principles) ↔ expression (principles → gated artifacts), with the domain-inclusion rule.
+- **`docs/DESIGN_DISCIPLINES.md`** — the map of design-centric disciplines in three tiers: covered, gateable-next (dental/prosthetics/footwear lead — where 3D printing already won), and design-dominated-but-non-spatial (chip design's DRC as the strongest external validation of the gate thesis).
+- **`principles/DESIGN_THINKING.md`** — design thinking survival-tiered: Simon/Rittel kernel 🏛, d.school/Double Diamond 🌳, workshop theater ⚠️ (critique wave cited); the kernel mapped to repo practice.
+- **New skill**: `garment-ready-check` (8 skills total); 6 garment tools, 6 papers/standards, 6 people/labs added to the data layer.
+
 ## [0.2.0] — 2026-07-18
 
 ### Added
