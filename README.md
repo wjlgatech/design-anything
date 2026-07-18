@@ -53,10 +53,19 @@ The distilled, survival-tested rules — each traceable to its research window �
 
 Skills are packaged agent capabilities (one folder, one `SKILL.md`, eval-with-teeth). Bundles compose them; workflows orchestrate them dynamically. See [`skills/`](skills/), [`bundles/`](bundles/), [`workflows/`](workflows/).
 
+**The flagship is `/design-anything`** — a thin router over this engine that discovers your design intent (no toolset knowledge needed), routes to the matching domain + gate, and drives compose→gate→reflect. Install into Claude Code with one symlink (updates then flow with `git pull`):
+
+```bash
+ln -sfn "$(pwd)/skills/design-anything" ~/.claude/skills/design-anything
+```
+
+Design rationale — what's backbone vs progressively disclosed, and how self-aware/self-heal/self-improve are made testable: [`docs/SKILL_DESIGN.md`](docs/SKILL_DESIGN.md).
+
 <!-- BEGIN:skills -->
 
 | Skill | Status | What it does |
 |---|---|---|
+| [design-anything](https://github.com/wjlgatech/design-anything/tree/main/skills/design-anything) | dogfooded | The flagship slash-skill — discovers any design intent, routes to the matching domain and gate, drives compose-gate-reflect; a thin router over this engine, CI-tested against drift. |
 | [brief-to-blueprint](https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint) | dogfooded | Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate. |
 | [print-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check) | dogfooded | Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. |
 | [construction-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check) | dogfooded | Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. |

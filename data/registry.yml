@@ -1,5 +1,11 @@
 # Skill/tooling registry. status: dogfooded (in-repo, exercised by tests) | submitted.
 
+- name: design-anything
+  url: https://github.com/wjlgatech/design-anything/tree/main/skills/design-anything
+  blurb: The flagship slash-skill — discovers any design intent, routes to the matching domain and gate, drives compose-gate-reflect; a thin router over this engine, CI-tested against drift.
+  path: skills/design-anything
+  status: dogfooded
+
 - name: brief-to-blueprint
   url: https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint
   blurb: Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate.

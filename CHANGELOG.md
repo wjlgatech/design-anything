@@ -2,6 +2,14 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.4.0] — 2026-07-18
+
+### Added
+- **`/design-anything` flagship skill** (GOAL.md M13) — `skills/design-anything/SKILL.md`, built to Anthropic's skill-authoring guidance (≤500-line body, third-person ≤1024-char description with triggers + NOT-for, references one level deep, dynamic engine probe). A **thin router over this engine**: intent discovery (≤2 questions at genuine forks, visible defaults), the absorb→route→retrieve→compose→gate→reflect backbone, per-target routing table as progressive disclosure.
+- **Self-aware / self-heal / self-improve as protocols, not adjectives** (`docs/SKILL_DESIGN.md`): capabilities read from artifacts (`llms.txt`, gate table, `make check`); red-check-first, 3-strike escalation, not-measured⇒fail+propose-the-table; lessons bank as repo artifacts (data PRs, gate-dispute issues, golden examples).
+- **`tests/test_skill.py`** — the skill's integrity is CI-gated: every referenced engine path must exist (no drift), Anthropic budgets enforced, registry entry required.
+- Installed to `~/.claude/skills/design-anything` by symlink — one source of truth; updates flow with `git pull`.
+
 ## [0.3.0] — 2026-07-18
 
 ### Added

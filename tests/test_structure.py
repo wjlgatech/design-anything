@@ -17,7 +17,8 @@ CORE_DOCS = [
     "principles/DESIGN_PRINCIPLES.md", "best-practices/BEST_PRACTICES.md",
     "pipeline/README.md", "pipeline/ready_gate.py", "pipeline/pattern_gate.py",
     "principles/DIKW_MODEL.md", "principles/DESIGN_THINKING.md",
-    "docs/DESIGN_DISCIPLINES.md",
+    "docs/DESIGN_DISCIPLINES.md", "docs/SKILL_DESIGN.md",
+    "skills/design-anything/SKILL.md",
     "bundles/design-from-brief.yaml", "workflows/README.md",
 ]
 

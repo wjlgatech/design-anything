@@ -2,6 +2,7 @@
 # generated from data/*.yml by scripts/build_readme.py — do not hand-edit
 
 ## skills
+design-anything — The flagship slash-skill — discovers any design intent, routes to the matching domain and gate, drives compose-gate-reflect; a thin router over this engine, CI-tested against drift. [https://github.com/wjlgatech/design-anything/tree/main/skills/design-anything]
 brief-to-blueprint — Compile a text/image design brief into a parametric blueprint plan with explicit constraints and a target ready-gate. [https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint]
 print-ready-check — Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. [https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check]
 construction-ready-check — Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. [https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check]
