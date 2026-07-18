@@ -62,11 +62,20 @@ def skills_section():
     return "\n".join(out) + "\n"
 
 
+def news_section():
+    out = [""]
+    for e in load("news.yml"):
+        title = f"[{e['title']}]({e['link']})" if e.get("link") else f"**{e['title']}**"
+        out.append(f"- **{e['date']}** — {title} — {e['note']}")
+    return "\n".join(out) + "\n"
+
+
 SECTIONS = {
     "tools": tools_section,
     "papers": papers_section,
     "community": community_section,
     "skills": skills_section,
+    "news": news_section,
 }
 
 

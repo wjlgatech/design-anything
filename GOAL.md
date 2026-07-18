@@ -62,6 +62,7 @@ No output may claim "ready" without passing its gate. **No evidence ⇒ Not read
 | **M12 — Pattern-gate deepening** | DXF-AAMA export, grading check across a size run (ASTM D5585), seam-line length matching, GarmentCode emission. | 🚧 next |
 | **M13 — /design-anything flagship skill** | Thin-router SKILL.md per Anthropic guidance ([docs/SKILL_DESIGN.md](docs/SKILL_DESIGN.md)): backbone vs disclosure split, intent discovery ≤2 questions, self-aware/heal/improve as protocols; every referenced repo path CI-asserted (`tests/test_skill.py`); installed via symlink. | ✅ v0.4.0 |
 | **M14 — Skill eval scenarios** | ≥3 scenarios in skill-creator format covering every gated route + should-NOT-trigger cases; fixtures exist and the broken fixture provably fails its gate (`tests/test_skill_evals.py`). | ✅ v0.5.0 |
+| **M15 — Visual README + news** | Architecture system-design diagram + a brand-themed Mermaid on every major section (≥6, brand header on each — CI-tested); 📰 News compiled from `data/news.yml` under the drift gate; diagrams pass `anyagent brand --check`. | ✅ v0.6.0 |
 
 ## 5. Non-goals (v0.x)
 

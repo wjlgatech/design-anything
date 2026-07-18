@@ -43,6 +43,18 @@ def main():
         if key not in meta:
             errors.append(f"meta.yml: missing '{key}'")
 
+    news = yaml.safe_load((DATA / "news.yml").read_text())
+    if not isinstance(news, list) or not news:
+        errors.append("news.yml: must be a non-empty list")
+    else:
+        for i, e in enumerate(news):
+            for key in ("date", "title", "note"):
+                if key not in e:
+                    errors.append(f"news.yml[{i}]: missing '{key}'")
+        dates = [str(e.get("date", "")) for e in news]
+        if dates != sorted(dates, reverse=True):
+            errors.append("news.yml: entries must be newest first")
+
     if errors:
         print(f"validate: {len(errors)} violation(s)")
         for e in errors:

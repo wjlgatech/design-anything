@@ -2,6 +2,14 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.6.0] — 2026-07-18
+
+### Added
+- **📰 News section** (GOAL.md M15) — significant updates curated in `data/news.yml` (date/title/note/link, newest-first enforced by `scripts/validate.py`), compiled into README under the drift gate like every other table. Seeded with the v0.1.0–v0.5.0 release history.
+- **Architecture — the system design**: a brand-themed Mermaid diagram of the two coupled loops (research compresses → data spine → pipeline expresses → gates → disputes feed back).
+- **A diagram on every major section** (6 total, Anthropic palette per anyagent's brand-as-code): pipeline flowchart (replaces the ASCII art), DIKW compression↔expression loop, three-window research funnel, skill-routing map, contribution flywheel.
+- **CI keeps the visuals honest**: `test_readme_visuals_and_news` asserts ≥6 mermaid blocks each carrying the brand init header + news markers present; diagrams verified with `anyagent brand --check`.
+
 ## [0.5.0] — 2026-07-18
 
 ### Added

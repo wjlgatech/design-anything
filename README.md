@@ -6,6 +6,65 @@ Covering: game design · 3D simulation · residential & commercial architecture 
 
 Sibling of [animate-anything](https://github.com/wjlgatech/animate-anything) and [FM-os](https://github.com/wjlgatech/FM-os) — same operating system, new domain.
 
+## 📰 News
+
+Significant updates, newest first (curated in [`data/news.yml`](data/news.yml), drift-gated like everything else).
+
+<!-- BEGIN:news -->
+
+- **2026-07-18** — [v0.5.0 — eval scenarios: the skill gets its own gate](https://github.com/wjlgatech/design-anything/releases/tag/v0.5.0) — 10 skill-creator-format scenarios covering every gated route plus should-NOT-trigger cases; CI proves the broken-STL fixture genuinely fails its gate, so the eval can't be fake. Closes Anthropic's pre-share checklist.
+- **2026-07-18** — [v0.4.0 — /design-anything: the engine gets a front door](https://github.com/wjlgatech/design-anything/releases/tag/v0.4.0) — A Claude Code slash-skill built to Anthropic's authoring guidance — a thin router that discovers design intent (≤2 questions), routes to the matching gate, and cannot drift from the engine (every referenced path is CI-asserted). Self-aware/heal/improve defined as protocols, not adjectives.
+- **2026-07-18** — [v0.3.0 — garment design + the DIKW organizing model](https://github.com/wjlgatech/design-anything/releases/tag/v0.3.0) — 7th domain with pattern gate v0.1 (zero-waste marker efficiency as a number); DIKW compression↔expression becomes the stated organizing model; the design-disciplines map lands with the inclusion rule. RTFKT joins the anti-portfolio at −99.8%.
+- **2026-07-18** — [v0.2.0 — the construction ready-gate](https://github.com/wjlgatech/design-anything/releases/tag/v0.2.0) — Floor plans validated against Neufert/IRC/ADA-lineage clearance tables as data — topology, clearances, habitability, egress, module grid. Golden 28.5 m² studio flat passes; 7 known-bad mutations fail by test. Gate-dispute issue template ships ("a false READY is a bug in the definition of ready").
+- **2026-07-18** — [v0.1.0 — launch: ready is a gate, not a vibe](https://github.com/wjlgatech/design-anything/releases/tag/v0.1.0) — Public launch with the 3D-print ready gate, three-window research digests (30 days / 30 years / 300 years), 13 survival-tested principles, spec-as-data with a CI drift gate, and the finding that set the roadmap — meshes are solved, blueprints are not.
+<!-- END:news -->
+
+## Architecture — the system design
+
+Two coupled loops around one data spine: research **compresses** the world into
+tables and principles; the pipeline **expresses** them back as gated artifacts.
+Nothing reaches the user unverified, and every verified failure feeds the spine.
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart TB
+    classDef anthroOrange fill:#d97757,color:#faf9f5,stroke:#141413;
+    classDef anthroBlue fill:#6a9bcc,color:#faf9f5,stroke:#141413;
+    classDef anthroGreen fill:#788c5d,color:#faf9f5,stroke:#141413;
+    classDef anthroInk fill:#141413,color:#faf9f5,stroke:#141413;
+
+    subgraph COMPRESS["🔬 compression — research/"]
+        W1[🗞️ last 30 days<br/>engagement] --> DIG[📋 digests<br/>dated + sourced]
+        W2[🏛 last 30 years<br/>survival] --> DIG
+        W3[⏳ last 300 years<br/>endurance] --> DIG
+    end
+
+    subgraph SPINE["🧬 the data spine — data/*.yml"]
+        TABLES[(📐 constraint tables<br/>clearances · garment · news)]
+        CURATED[(🗂️ tools · papers ·<br/>community · registry)]
+    end
+
+    subgraph EXPRESS["🛠️ expression — pipeline/ + skills/"]
+        U([🙋 you: text or picture]) --> SK[🧭 /design-anything<br/>intent discovery ≤2 questions]
+        SK --> SRC[📜 parametric source<br/>the composition, never the render]
+        SRC --> GATE{🚦 ready-gate<br/>print · construction · garment}
+        GATE -- exit 0 --> OUT([✅ READY blueprint<br/>STL · layout · marker])
+        GATE -- fail --> FIX[🔧 fix the named gate] --> SRC
+    end
+
+    DIG --> CURATED
+    CURATED -->|compiled, drift-gated| GEN[📖 README · llms.txt]
+    TABLES --> GATE
+    OUT -.->|gate-dispute = new data| TABLES
+
+    class GATE anthroOrange
+    class SK,SRC anthroBlue
+    class TABLES,CURATED anthroGreen
+    class OUT anthroInk
+```
+
+`make check` is the finish line CI runs over all of it: schema validation + the full test suite + the README/llms.txt drift gate + all three golden slices re-gated.
+
 ## Why this repo is different
 
 1. **"Ready" is a gate, not a vibe.** No output may claim print/construction-ready without passing machine checks ([`pipeline/ready_gate.py`](pipeline/ready_gate.py)). No evidence ⇒ Not ready.
@@ -15,14 +74,23 @@ Sibling of [animate-anything](https://github.com/wjlgatech/animate-anything) and
 
 ## The pipeline
 
-```
-text | image  →  brief (schema)  →  parametric model (source)  →  3D blueprint
-                                                                      │
-                                          READY-GATE (machine-checkable, per target)
-                                          ├─ 3D-print:     watertight · outward normals · bed-fit · min-feature
-                                          ├─ construction: topology · clearance tables · habitability · egress · module grid
-                                          ├─ garment:      pieces+grain · fabric fit · seam · zero-waste efficiency · fit tables
-                                          └─ game/sim:     glTF/USD validity · poly budget · true scale        (roadmap)
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart LR
+    classDef anthroOrange fill:#d97757,color:#faf9f5,stroke:#141413;
+    classDef anthroBlue fill:#6a9bcc,color:#faf9f5,stroke:#141413;
+    classDef anthroGreen fill:#788c5d,color:#faf9f5,stroke:#141413;
+    IN([📝 text 🖼️ image]) --> BRIEF[🧾 brief<br/>schema] --> SRC[📜 parametric source]
+    SRC --> G1{🚦 3D-print gate<br/>watertight · normals ·<br/>bed-fit · min-feature}
+    SRC --> G2{🚦 construction gate<br/>topology · clearances ·<br/>habitability · egress · grid}
+    SRC --> G3{🚦 garment gate<br/>pieces+grain · fabric fit ·<br/>seam · zero-waste · fit}
+    SRC -.-> G4[game/sim gate<br/>roadmap M7]
+    G1 --> STL([🧊 STL/3MF])
+    G2 --> IFC([🏠 layout → IFC])
+    G3 --> DXF([✂️ marker → DXF-AAMA])
+    class G1,G2,G3 anthroOrange
+    class SRC,BRIEF anthroBlue
+    class STL,IFC,DXF anthroGreen
 ```
 
 **Try the vertical slices:**
@@ -47,11 +115,42 @@ Agents: a flat, token-cheap index of everything curated here is compiled to [`ll
 
 ## Design principles
 
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart LR
+    classDef anthroBlue fill:#6a9bcc,color:#faf9f5,stroke:#141413;
+    classDef anthroGreen fill:#788c5d,color:#faf9f5,stroke:#141413;
+    D[🌍 DATA<br/>papers · stars ·<br/>what survived] -->|digest| I[📋 INFORMATION<br/>dated, sourced]
+    I -->|curate| K[📐 KNOWLEDGE<br/>tables · patterns]
+    K -->|distill| W[💡 WISDOM<br/>P1-P13 · the Lindy rule]
+    W -->|apply| K2[🧾 brief + its tables]
+    K2 -->|compose| I2[📜 parametric source]
+    I2 -->|compile| D2[🧊 geometry, gated]
+    D2 -.->|gate-dispute:<br/>new data| D
+    class D,I,K,W anthroGreen
+    class K2,I2,D2 anthroBlue
+```
+
 The distilled, survival-tested rules — each traceable to its research window — live in [`principles/DESIGN_PRINCIPLES.md`](principles/DESIGN_PRINCIPLES.md). The organizing mental model — **DIKW compression ↔ expression** (research compresses the world into principles; the pipeline expresses principles into gated artifacts) — is [`principles/DIKW_MODEL.md`](principles/DIKW_MODEL.md). Design thinking, honestly tiered (keep the kernel, drop the theater): [`principles/DESIGN_THINKING.md`](principles/DESIGN_THINKING.md). Best practices: [`best-practices/BEST_PRACTICES.md`](best-practices/BEST_PRACTICES.md). The 10X goal contract that governs the roadmap: [`GOAL.md`](GOAL.md).
 
 ## AI tooling — skills, bundles, workflows
 
 Skills are packaged agent capabilities (one folder, one `SKILL.md`, eval-with-teeth). Bundles compose them; workflows orchestrate them dynamically. See [`skills/`](skills/), [`bundles/`](bundles/), [`workflows/`](workflows/).
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart LR
+    classDef anthroOrange fill:#d97757,color:#faf9f5,stroke:#141413;
+    classDef anthroBlue fill:#6a9bcc,color:#faf9f5,stroke:#141413;
+    U([🙋 "design me a…"<br/>no toolset knowledge needed]) --> FA[🧭 /design-anything<br/>absorb → route<br/>≤2 questions, visible defaults]
+    FA -->|photo?| S1[📷 scene-to-layout]
+    FA -->|open brief?| S2[📚 pattern-library] --> S3[🧾 brief-to-blueprint]
+    FA -->|tool question?| S4[🔬 design-research]
+    S1 & S3 --> CHK[🚦 the matching<br/>*-ready-check skill]
+    CHK -->|exit 0 only| R([✅ verified answer])
+    class FA anthroBlue
+    class CHK anthroOrange
+```
 
 **The flagship is `/design-anything`** — a thin router over this engine that discovers your design intent (no toolset knowledge needed), routes to the matching domain + gate, and drives compose→gate→reflect. Install into Claude Code with one symlink (updates then flow with `git pull`):
 
@@ -79,6 +178,20 @@ Design rationale — what's backbone vs progressively disclosed, and how self-aw
 ## The landscape — curated tools
 
 Ranked by observed evidence (recency, engagement, survival). Full method + dates in [`research/`](research/).
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart LR
+    classDef anthroOrange fill:#d97757,color:#faf9f5,stroke:#141413;
+    classDef anthroGreen fill:#788c5d,color:#faf9f5,stroke:#141413;
+    Q([❓ any design question]) --> A[🗞️ 30 days<br/>what's alive NOW<br/>stars · releases · dates]
+    Q --> B[🏛 30 years<br/>what's LOAD-BEARING<br/>still-used · built-upon · hype-survived]
+    Q --> C[⏳ 300 years<br/>what GOVERNS taste<br/>multi-generational, Whig-guarded]
+    A & B & C --> V{🧪 evidence check<br/>no URL+date ⇒ UNVERIFIED}
+    V --> T([🏆 tiered tables below<br/>+ the anti-portfolio])
+    class V anthroOrange
+    class A,B,C anthroGreen
+```
 
 <!-- BEGIN:tools -->
 
@@ -232,6 +345,20 @@ Inclusion requires survival evidence, not fame. See the [anti-portfolio](researc
 ## Contributing
 
 Two-line PR: edit a `data/*.yml` entry, run `make check`, open a PR. Every entry needs a working URL and a one-sentence non-hypey blurb. Skills need a Verification section that actually asserts. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8e6dc','primaryTextColor':'#141413','primaryBorderColor':'#b0aea5','lineColor':'#b0aea5','secondaryColor':'#faf9f5','tertiaryColor':'#faf9f5','fontFamily':'Poppins, ui-sans-serif, system-ui, -apple-system, Arial, sans-serif'}}}%%
+flowchart LR
+    classDef anthroOrange fill:#d97757,color:#faf9f5,stroke:#141413;
+    classDef anthroGreen fill:#788c5d,color:#faf9f5,stroke:#141413;
+    E[✏️ edit one YAML entry<br/>or file a gate-dispute] --> C{make check}
+    C -- green --> PR[🔀 two-line PR] --> M[merge: README + llms.txt<br/>recompile themselves]
+    M --> F[🌀 the flywheel turns:<br/>better tables → better gates<br/>→ better blueprints → new disputes]
+    F -.-> E
+    C -- red --> FIX[the check names the fix] --> E
+    class C anthroOrange
+    class M,F anthroGreen
+```
 
 ## Honest edges
 

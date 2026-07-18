@@ -78,6 +78,16 @@ def test_registry_paths_resolve():
                 f"registry entry {e['name']}: path does not resolve to a SKILL.md"
 
 
+def test_readme_visuals_and_news():
+    text = (ROOT / "README.md").read_text()
+    assert text.count("```mermaid") >= 6, \
+        "README must keep a diagram on every major section (architecture, pipeline, principles, tooling, landscape, contributing)"
+    assert "<!-- BEGIN:news -->" in text and "<!-- END:news -->" in text
+    # every diagram carries the brand init header (brand-as-code, not eyeballed)
+    assert text.count("%%{init:") == text.count("```mermaid"), \
+        "every mermaid block needs the brand theme header"
+
+
 def test_goal_contract_defines_ready():
     text = (ROOT / "GOAL.md").read_text()
     for marker in ("READY-GATE", "watertight", "Milestone", "Non-goals"):

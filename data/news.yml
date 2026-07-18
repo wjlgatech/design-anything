@@ -1,0 +1,28 @@
+# 📰 News — significant updates, newest first. Rendered into README by
+# scripts/build_readme.py (drift-gated). Entry: date, title, note (2-3 sentences,
+# what + why it matters), optional link.
+
+- date: 2026-07-18
+  title: "v0.5.0 — eval scenarios: the skill gets its own gate"
+  note: 10 skill-creator-format scenarios covering every gated route plus should-NOT-trigger cases; CI proves the broken-STL fixture genuinely fails its gate, so the eval can't be fake. Closes Anthropic's pre-share checklist.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.5.0
+
+- date: 2026-07-18
+  title: "v0.4.0 — /design-anything: the engine gets a front door"
+  note: A Claude Code slash-skill built to Anthropic's authoring guidance — a thin router that discovers design intent (≤2 questions), routes to the matching gate, and cannot drift from the engine (every referenced path is CI-asserted). Self-aware/heal/improve defined as protocols, not adjectives.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.4.0
+
+- date: 2026-07-18
+  title: "v0.3.0 — garment design + the DIKW organizing model"
+  note: 7th domain with pattern gate v0.1 (zero-waste marker efficiency as a number); DIKW compression↔expression becomes the stated organizing model; the design-disciplines map lands with the inclusion rule. RTFKT joins the anti-portfolio at −99.8%.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.3.0
+
+- date: 2026-07-18
+  title: "v0.2.0 — the construction ready-gate"
+  note: Floor plans validated against Neufert/IRC/ADA-lineage clearance tables as data — topology, clearances, habitability, egress, module grid. Golden 28.5 m² studio flat passes; 7 known-bad mutations fail by test. Gate-dispute issue template ships ("a false READY is a bug in the definition of ready").
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.2.0
+
+- date: 2026-07-18
+  title: "v0.1.0 — launch: ready is a gate, not a vibe"
+  note: Public launch with the 3D-print ready gate, three-window research digests (30 days / 30 years / 300 years), 13 survival-tested principles, spec-as-data with a CI drift gate, and the finding that set the roadmap — meshes are solved, blueprints are not.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.1.0
