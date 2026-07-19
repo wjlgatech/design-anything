@@ -13,5 +13,5 @@
 - **True scale is non-negotiable** — a simulation world that isn't dimensionally true poisons everything downstream (robotics, daylight, ergonomics).
 - **Maker ≠ checker** — generated scenes get validated by independent physics sanity checks, not by the generator's own confidence.
 
-## Ready gate (roadmap)
-USD validity · units + gravity declared · collision geometry present · physics stability probe (N-second settle test without explosion).
+## Ready gate — scene gate v0.1 (`pipeline/scene_gate.py`)
+glTF structure · poly budget · true scale in meters (the units-bug catcher) · collision present. Roadmap: USD validity, gravity declaration, physics settle-test probe.

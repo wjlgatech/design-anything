@@ -2,6 +2,14 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.8.0] — 2026-07-18
+
+### Added
+- **Game/sim scene gate v0.1** (GOAL.md M7 — the last roadmap gate; every pipeline route is now verifiable): `pipeline/scene_gate.py` + `data/scene.yml` — S1 glTF 2.0 structure (buffers decode to declared lengths, accessors fit views), S2 poly budget vs declared target platform, S3 true scale (meters declared + extent sanity — the units-bug catcher), S4 collision node present. Built as a `Gate` subclass (the v0.7.0 seam paying off).
+- **Golden example #4**: `examples/arena/` — parametric 40m courtyard arena (50 tris, walls, collision node) emitting valid glTF 2.0 with embedded buffers; 9 tests with 7 known-bad mutations (`tests/test_scene_gate.py`).
+- **New skill**: `scene-ready-check` (10 skills total); flagship routing table updated — the game route now gates instead of declaring an honest gap; eval scenario updated to match; garment row added to the pipeline gate table (a v0.3.0 doc gap caught during wiring).
+- **Roadmap prioritized by ROI** in GOAL.md: M12 (DXF-AAMA + grading) → M8 (IFC) → M11 (body-fit domain) → M9 (knowledge map).
+
 ## [0.7.0] — 2026-07-18
 
 ### Changed

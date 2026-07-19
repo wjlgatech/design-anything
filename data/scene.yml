@@ -1,0 +1,20 @@
+# Game/sim scene constraint tables — the scene gate's database (principle P2).
+# Sources: common engine budgets (order-of-magnitude, per-scene), the
+# true-scale rule from domains/simulation (a wrongly-scaled world poisons
+# everything downstream), collision-required practice.
+
+units_required: meters
+
+budgets:
+  # max triangles per scene by declared target platform
+  mobile: {max_triangles: 100000, source: "common mobile per-scene budget order"}
+  pc:     {max_triangles: 1500000, source: "common PC/console per-scene budget order"}
+
+scale_sanity:
+  min_extent_m: {value: 0.5, source: "a playable space under 0.5m is a units bug"}
+  max_extent_m: {value: 500, source: "a single scene over 500m is a units bug (stream instead)"}
+
+collision:
+  required: true
+  marker: "_collision"
+  source: "a navigable scene without collision geometry is not playable"

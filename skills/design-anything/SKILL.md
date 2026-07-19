@@ -33,8 +33,8 @@ rationale: `docs/SKILL_DESIGN.md`.
 - Before real work, run `make check` in the repo. **Red ⇒ fix the regression
   first; never build on red.** Capabilities come from artifacts, not claims:
   `llms.txt` (what's curated), the gate table in `pipeline/README.md` (what's
-  verifiable). State roadmap gaps plainly — a game/sim brief gets composition
-  + principles and an explicit "no gate yet".
+  verifiable). State roadmap gaps plainly, reading the current gate table rather than
+  assuming this document is fresh.
 
 ## 1. The loop (backbone — every request)
 
@@ -67,7 +67,7 @@ rationale: `docs/SKILL_DESIGN.md`.
 | 3D-print (objects, furniture, planters, hardscape) | `python3 pipeline/ready_gate.py <stl> --min-feature <wall>` | `examples/planter/generate.py` | `domains/interior-design/README.md` or `domains/landscape/README.md` |
 | Construction (rooms, floor plans, houses) | `python3 pipeline/construction_gate.py <layout.json>` | `examples/studio-flat/generate.py` | `data/clearances.yml` + matching `domains/architecture-*/README.md` |
 | Garment (clothing, patterns, markers) | `python3 pipeline/pattern_gate.py <marker.json>` | `examples/apron/generate.py` | `data/garment.yml` + `domains/garment-design/README.md` |
-| Game/sim (levels, worlds, scenes) | no gate yet — say so | — | `domains/game-design/README.md` or `domains/simulation/README.md` |
+| Game/sim (levels, worlds, scenes) | `python3 pipeline/scene_gate.py <scene.gltf> --target pc\|mobile` | `examples/arena/generate.py` | `data/scene.yml` + `domains/game-design/README.md` or `domains/simulation/README.md` |
 | Photo/scan input | route through `skills/scene-to-layout/SKILL.md` first | — | — |
 | Tool/landscape question | — | — | `llms.txt`, then the README tables; deep dives per `skills/design-research/SKILL.md` |
 | "Why" questions (principles, method) | — | — | `principles/DESIGN_PRINCIPLES.md`, `principles/DIKW_MODEL.md`, `docs/DESIGN_DISCIPLINES.md` |

@@ -7,6 +7,7 @@ brief-to-blueprint — Compile a text/image design brief into a parametric bluep
 print-ready-check — Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. [https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check]
 construction-ready-check — Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. [https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check]
 garment-ready-check — Run the pattern gate on a garment marker — pieces, grain, fabric fit, seam allowance, zero-waste efficiency, fit tables. [https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check]
+scene-ready-check — Run the scene gate on a glTF — structure, poly budget vs target platform, true scale in meters, collision present. [https://github.com/wjlgatech/design-anything/tree/main/skills/scene-ready-check]
 blueprint-validate — Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). [https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate]
 pattern-library — Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. [https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library]
 scene-to-layout — Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. [https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout]

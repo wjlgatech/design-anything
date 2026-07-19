@@ -14,5 +14,5 @@
 - **Caillois play-type mix as input parameter** — an ilinx space (vertigo) and an agôn arena (competition) have opposite geometry requirements.
 - **Prospect/refuge (P5)** applies to arenas exactly as to living rooms.
 
-## Ready gate (roadmap)
-glTF/USD validity · poly/texture budget · true-to-scale units · collision mesh present · decision-density report for rulesets.
+## Ready gate — scene gate v0.1 (`pipeline/scene_gate.py`)
+S1 glTF structure · S2 poly budget vs target platform · S3 true scale in meters · S4 collision node. Golden example: [`examples/arena/`](../../examples/arena/generate.py). Roadmap: USD, texture budgets, decision-density report for rulesets.

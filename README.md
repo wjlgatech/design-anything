@@ -12,6 +12,7 @@ Significant updates, newest first (curated in [`data/news.yml`](data/news.yml), 
 
 <!-- BEGIN:news -->
 
+- **2026-07-18** — [v0.8.0 — the scene gate: every route in the pipeline is now verifiable](https://github.com/wjlgatech/design-anything/releases/tag/v0.8.0) — The last roadmap gate ships — glTF structure, poly budget vs target platform, true-scale-in-meters (the units-bug catcher), collision presence. Golden courtyard arena passes; 7 known-bad mutations fail by test. The Gate seam from v0.7.0 made it a subclass, not a rebuild.
 - **2026-07-18** — [v0.5.0 — eval scenarios: the skill gets its own gate](https://github.com/wjlgatech/design-anything/releases/tag/v0.5.0) — 10 skill-creator-format scenarios covering every gated route plus should-NOT-trigger cases; CI proves the broken-STL fixture genuinely fails its gate, so the eval can't be fake. Closes Anthropic's pre-share checklist.
 - **2026-07-18** — [v0.4.0 — /design-anything: the engine gets a front door](https://github.com/wjlgatech/design-anything/releases/tag/v0.4.0) — A Claude Code slash-skill built to Anthropic's authoring guidance — a thin router that discovers design intent (≤2 questions), routes to the matching gate, and cannot drift from the engine (every referenced path is CI-asserted). Self-aware/heal/improve defined as protocols, not adjectives.
 - **2026-07-18** — [v0.3.0 — garment design + the DIKW organizing model](https://github.com/wjlgatech/design-anything/releases/tag/v0.3.0) — 7th domain with pattern gate v0.1 (zero-waste marker efficiency as a number); DIKW compression↔expression becomes the stated organizing model; the design-disciplines map lands with the inclusion rule. RTFKT joins the anti-portfolio at −99.8%.
@@ -84,13 +85,14 @@ flowchart LR
     SRC --> G1{🚦 3D-print gate<br/>watertight · normals ·<br/>bed-fit · min-feature}
     SRC --> G2{🚦 construction gate<br/>topology · clearances ·<br/>habitability · egress · grid}
     SRC --> G3{🚦 garment gate<br/>pieces+grain · fabric fit ·<br/>seam · zero-waste · fit}
-    SRC -.-> G4[game/sim gate<br/>roadmap M7]
+    SRC --> G4{🚦 scene gate<br/>structure · poly budget ·<br/>true scale · collision}
     G1 --> STL([🧊 STL/3MF])
     G2 --> IFC([🏠 layout → IFC])
     G3 --> DXF([✂️ marker → DXF-AAMA])
-    class G1,G2,G3 anthroOrange
+    G4 --> GLB([🎮 glTF scene])
+    class G1,G2,G3,G4 anthroOrange
     class SRC,BRIEF anthroBlue
-    class STL,IFC,DXF anthroGreen
+    class STL,IFC,DXF,GLB anthroGreen
 ```
 
 **Try the vertical slices:**
@@ -169,6 +171,7 @@ Design rationale — what's backbone vs progressively disclosed, and how self-aw
 | [print-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check) | dogfooded | Run the ready gate on an STL and report READY/NOT-READY with per-gate evidence. |
 | [construction-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check) | dogfooded | Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. |
 | [garment-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check) | dogfooded | Run the pattern gate on a garment marker — pieces, grain, fabric fit, seam allowance, zero-waste efficiency, fit tables. |
+| [scene-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-ready-check) | dogfooded | Run the scene gate on a glTF — structure, poly budget vs target platform, true scale in meters, collision present. |
 | [blueprint-validate](https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate) | dogfooded | Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). |
 | [pattern-library](https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library) | dogfooded | Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. |
 | [scene-to-layout](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout) | dogfooded | Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. |
@@ -362,7 +365,7 @@ flowchart LR
 
 ## Honest edges
 
-- Gates shipped: 3D-print (`ready_gate.py`), construction v0.1 (`construction_gate.py` — layout graph + clearance tables, not structural spans or IFC yet), and garment v0.1 (`pattern_gate.py` — marker + fit tables, not drape or sewability; overlap check is bbox-level). The game/sim gate is roadmap (GOAL.md M7).
+- Gates shipped: 3D-print (`ready_gate.py`), construction v0.1 (layout graph + clearance tables, not structural spans or IFC yet), garment v0.1 (marker + fit tables, not drape; bbox-level overlaps), and game/sim v0.1 (`scene_gate.py` — structure/budget/scale/collision, not materials or engine perf).
 - A passing gate means *buildable/printable/cuttable*, not *good* — principles cover taste; the gate covers physics and tables.
 - The construction gate is a design-sanity check, **not a permit and not a structural engineer's stamp**; the pattern gate is not a muslin — every report says so, and jurisdiction codes / real fittings override.
 
