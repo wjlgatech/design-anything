@@ -74,6 +74,28 @@ rationale: `docs/SKILL_DESIGN.md`.
 | "Why" questions (principles, method) | — | — | `principles/DESIGN_PRINCIPLES.md`, `principles/DIKW_MODEL.md`, `docs/DESIGN_DISCIPLINES.md` |
 | High-stakes review | — | — | `workflows/README.md` (design-review-panel shape) |
 
+## 2a. Satellite toolsets (progressive disclosure — table is GENERATED)
+
+When a route needs an **external tool** (generate a mesh, drive a DCC, parse a
+scan, interop with a pattern CAD), check the satellites — SHA-pinned digests +
+skills compiled from the repos this hub cites. The backbone rules: **load only
+the matched satellite** (`SKILL.md` first, then its `KNOWLEDGE.md`); external
+code is untrusted regardless of stars; a **STALE** status means upstream moved
+past the digest's pin — re-verify before relying on internals; and satellite
+output is never "ready" until **our** gate says so. Current list compiled from
+`data/satellites.yml`:
+
+<!-- BEGIN:satellite-routes -->
+
+| Satellite | Serves | When to load | Status |
+|---|---|---|---|
+| `skills/use-trellis-2/SKILL.md` | 3D-print / mesh generation (repair before ready_gate) | Open (MIT) 4B image-to-3D flow-matching model; any topology, full PBR, GLB/PLY/OBJ export. | fresh |
+| `skills/use-blender-mcp/SKILL.md` | execution backbone — any route that needs a DCC | Drive Blender from any LLM via MCP — the natural execution backbone from agent to printable geometry. | fresh |
+| `skills/use-spatiallm/SKILL.md` | photo/scan input → construction route | LLM for structured indoor modeling — point cloud/scene to walls, doors, and furniture layout as structured output. | fresh |
+| `skills/use-seamly2d/SKILL.md` | garment route (patterns, markers, interop) | Open-source parametric pattern-making CAD — the most active open pattern tool. | fresh |
+| `skills/use-garmentcode/SKILL.md` | garment route (patterns, markers, interop) | Sewing patterns as programs — the substrate the AI pattern-generation wave targets. | fresh |
+<!-- END:satellite-routes -->
+
 ## 3. Self-heal & self-improve (protocols, not adjectives)
 
 - Unknown room/garment/opening type ⇒ the gate fails it as not-measured —

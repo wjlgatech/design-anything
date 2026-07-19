@@ -2,6 +2,12 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.12.0] — 2026-07-19
+
+### Added
+- **Flagship ⇄ satellites** (GOAL.md M18): `/design-anything` gains §2a — a satellite-routing table **generated into the skill** by `satellites.py build` (markers + drift gate, same as the README), so every current and future satellite is reachable without hand-editing the flagship. The backbone keeps only the four durable rules: load ONLY the matched satellite, STALE ⇒ re-verify against upstream, external code is untrusted regardless of stars, and satellite output is never "ready" until our gate says so.
+- `tests/test_satellites.py::test_flagship_can_reach_every_satellite` — reachability is CI-asserted; a satellite that fails to compile into the flagship fails the build. New eval scenario `satellite-route-mesh-generation` (vase photo → use-trellis-2 → repair-first → ready_gate verdict).
+
 ## [0.11.0] — 2026-07-19
 
 ### Added

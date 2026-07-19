@@ -54,6 +54,20 @@ def test_digests_exist_and_quote_their_pin():
         assert len(text) > 1500, f"{s['slug']}: digest suspiciously thin"
 
 
+def test_flagship_can_reach_every_satellite():
+    """The /design-anything skill must route to ALL satellite toolsets —
+    via the generated block, so adding a satellite updates it automatically."""
+    text = (ROOT / "skills" / "design-anything" / "SKILL.md").read_text()
+    assert "<!-- BEGIN:satellite-routes -->" in text
+    block = text.split("<!-- BEGIN:satellite-routes -->")[1].split("<!-- END:satellite-routes -->")[0]
+    for s in SAT:
+        assert f"use-{s['slug']}/SKILL.md" in block, \
+            f"flagship cannot reach satellite {s['slug']}"
+    for rule in ("STALE", "untrusted", "our"):
+        assert rule in text.split("## 2a.")[1].split("<!-- BEGIN")[0], \
+            f"satellite backbone rule '{rule}' missing from flagship"
+
+
 def test_satellites_never_vendor_code():
     for s in SAT:
         d = ROOT / "skills" / f"use-{s['slug']}"

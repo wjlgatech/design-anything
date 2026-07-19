@@ -146,8 +146,48 @@ promising otherwise.
 """
 
 
+# which design-anything route each satellite category serves (flagship routing)
+CATEGORY_ROUTE = {
+    "text/image-to-3D": "3D-print / mesh generation (repair before ready_gate)",
+    "agent-infrastructure": "execution backbone — any route that needs a DCC",
+    "interior-design": "photo/scan input → construction route",
+    "garment-design": "garment route (patterns, markers, interop)",
+    "game-and-simulation": "game/sim route",
+}
+
+FLAGSHIP = SKILLS / "design-anything" / "SKILL.md"
+MARK_BEGIN = "<!-- BEGIN:satellite-routes -->"
+MARK_END = "<!-- END:satellite-routes -->"
+
+
+def render_flagship_routes(sats: list[dict]) -> str:
+    """The satellite-routing block injected into the flagship skill."""
+    rows = ["", "| Satellite | Serves | When to load | Status |", "|---|---|---|---|"]
+    for s in sats:
+        route = CATEGORY_ROUTE.get(s["category"], s["category"])
+        rows.append(f"| `skills/use-{s['slug']}/SKILL.md` | {route} "
+                    f"| {s['blurb']} | {s['status']} |")
+    rows.append("")
+    return "\n".join(rows)
+
+
+def inject_flagship(sats: list[dict], check: bool) -> bool:
+    """Keep the flagship's satellite table compiled from data. True if drifted."""
+    text = FLAGSHIP.read_text()
+    if MARK_BEGIN not in text or MARK_END not in text:
+        print("satellites: flagship SKILL.md missing satellite-routes markers")
+        sys.exit(1)
+    head, rest = text.split(MARK_BEGIN, 1)
+    _, tail = rest.split(MARK_END, 1)
+    generated = head + MARK_BEGIN + "\n" + render_flagship_routes(sats) + MARK_END + tail
+    if check:
+        return generated != text
+    FLAGSHIP.write_text(generated)
+    return False
+
+
 def build(check: bool = False) -> None:
-    """Compile generated skills from satellites.yml (offline, deterministic)."""
+    """Compile generated skills + flagship routes (offline, deterministic)."""
     if not SAT.exists():
         print("satellites: no data/satellites.yml — run `sync` first")
         sys.exit(1)
@@ -162,13 +202,15 @@ def build(check: bool = False) -> None:
         else:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(generated)
+    if inject_flagship(sats, check):
+        drift.append(str(FLAGSHIP.relative_to(ROOT)))
     if check:
         if drift:
             print(f"satellites: DRIFT in {drift} — run `make satellites`")
             sys.exit(1)
-        print(f"satellites: OK ({len(sats)} generated skills match)")
+        print(f"satellites: OK ({len(sats)} generated skills + flagship routes match)")
     else:
-        print(f"satellites: built {len(sats)} skills")
+        print(f"satellites: built {len(sats)} skills + flagship routes")
 
 
 def main() -> None:

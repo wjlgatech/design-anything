@@ -3,6 +3,11 @@
 # what + why it matters), optional link.
 
 - date: 2026-07-19
+  title: "v0.12.0 — the flagship learns every satellite, automatically"
+  note: /design-anything now carries a satellite-routing table GENERATED from data/satellites.yml under the same drift gate — backbone keeps only the durable rules (load the matched one, STALE means re-verify, external code stays untrusted, our gates judge). Adding a satellite updates the flagship without editing it; CI asserts reachability.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.12.0
+
+- date: 2026-07-19
   title: "v0.11.0 — satellites: knowledge + tooling compiled from every top-cited repo"
   note: Five gold-tier cited repos (TRELLIS.2, blender-mcp, SpatialLM, Seamly2D, GarmentCode) each get a SHA-pinned deep digest and a generated skill — compiled by satellites.py, drift-gated, never vendored. Staleness is measured weekly by a freshness workflow, not promised. Digest finds include SpatialLM's non-commercial encoder weights and Seamly2D's unimplemented ASTM export.
   link: https://github.com/wjlgatech/design-anything/releases/tag/v0.11.0

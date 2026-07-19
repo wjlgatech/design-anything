@@ -97,6 +97,19 @@
       ]
     },
     {
+      "id": "satellite-route-mesh-generation",
+      "should_trigger": true,
+      "skills": ["design-anything"],
+      "query": "generate a 3D model of this ceramic vase photo and get it print-ready",
+      "files": ["a vase photo"],
+      "expected_behavior": [
+        "consults the satellite table (section 2a) and loads skills/use-trellis-2/SKILL.md then its KNOWLEDGE.md — only the matched satellite, not all five",
+        "checks the satellite's status field and treats STALE as re-verify-first",
+        "states the digest's honest edge up front: TRELLIS.2 outputs are non-watertight by design and need repair before the print gate",
+        "the verdict comes from pipeline/ready_gate.py exit 0 — never from the satellite's own claims"
+      ]
+    },
+    {
       "id": "not-for-logo",
       "should_trigger": false,
       "skills": ["design-anything"],

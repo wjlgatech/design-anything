@@ -56,5 +56,6 @@ runs — CI's finish line never depends on the internet.
 3. **Graduation path**: a satellite that earns a hand-tuned workflow (e.g.
    blender-mcp as execution backbone) gets a *curated* skill alongside the
    generated one — curation adds, never replaces, the compiled layer.
-4. **Scope control**: satellites are for gold-tier cited repos with a `repo:`
+4. **Flagship reachability**: `/design-anything` carries a GENERATED satellite-routing table (§2a, between markers) compiled by the same `build` step and covered by the same drift gate — adding a satellite updates the flagship automatically, and `tests/test_satellites.py` asserts every satellite is reachable from it.
+5. **Scope control**: satellites are for gold-tier cited repos with a `repo:`
    field — adding one is a one-line data change; the compiler does the rest.
