@@ -1,0 +1,1284 @@
+{
+ "counts": {
+  "edges": 127,
+  "nodes": 118
+ },
+ "edges": [
+  {
+   "rel": "verifies-for",
+   "source": "ready_gate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "verifies-for",
+   "source": "construction_gate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "verifies-for",
+   "source": "pattern_gate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "verifies-for",
+   "source": "scene_gate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "verifies-for",
+   "source": "bodyfit_gate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:text/image-to-3D",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Microsoft TRELLIS.2",
+   "target": "category:text/image-to-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "Zoo.dev Text-to-CAD (Zookeeper)",
+   "target": "category:text/image-to-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "Meshy-6",
+   "target": "category:text/image-to-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "Hunyuan3D-2",
+   "target": "category:text/image-to-3D"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:agent-infrastructure",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "blender-mcp",
+   "target": "category:agent-infrastructure"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:interior-design",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "SpatialLM",
+   "target": "category:interior-design"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:architecture",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Autodesk Forma (Building Layout Explorer)",
+   "target": "category:architecture"
+  },
+  {
+   "rel": "in-category",
+   "source": "Finch3D",
+   "target": "category:architecture"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:construction-3D-printing",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "ICON (Titan + Vitruvius)",
+   "target": "category:construction-3D-printing"
+  },
+  {
+   "rel": "in-category",
+   "source": "COBOD",
+   "target": "category:construction-3D-printing"
+  },
+  {
+   "rel": "in-category",
+   "source": "WASP",
+   "target": "category:construction-3D-printing"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:game-and-simulation",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Marble (World Labs)",
+   "target": "category:game-and-simulation"
+  },
+  {
+   "rel": "in-category",
+   "source": "NVIDIA Cosmos 3 + Isaac Lab 3.0",
+   "target": "category:game-and-simulation"
+  },
+  {
+   "rel": "in-category",
+   "source": "Project Genie (Genie 3)",
+   "target": "category:game-and-simulation"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:survivor-foundations",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Blender",
+   "target": "category:survivor-foundations"
+  },
+  {
+   "rel": "in-category",
+   "source": "Rhino + Grasshopper",
+   "target": "category:survivor-foundations"
+  },
+  {
+   "rel": "in-category",
+   "source": "OpenSCAD",
+   "target": "category:survivor-foundations"
+  },
+  {
+   "rel": "in-category",
+   "source": "FreeCAD",
+   "target": "category:survivor-foundations"
+  },
+  {
+   "rel": "in-category",
+   "source": "COLMAP",
+   "target": "category:survivor-foundations"
+  },
+  {
+   "rel": "in-category",
+   "source": "Spacely AI",
+   "target": "category:interior-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "Planner 5D AI",
+   "target": "category:interior-design"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:garment-design",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Seamly2D",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "GarmentCode (ETH)",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "Marvelous Designer / CLO",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "Style3D + GarmageNet",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "unspun Vega",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "in-category",
+   "source": "DressX",
+   "target": "category:garment-design"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:standards",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "IFC / ISO 16739",
+   "target": "category:standards"
+  },
+  {
+   "rel": "in-category",
+   "source": "OpenUSD Core Specification",
+   "target": "category:standards"
+  },
+  {
+   "rel": "in-category",
+   "source": "glTF (ISO/IEC 12113)",
+   "target": "category:standards"
+  },
+  {
+   "rel": "in-category",
+   "source": "3MF",
+   "target": "category:standards"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:geometry-and-structure",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Topology optimization (SIMP; Bendsoe 1988, Sigmund 2001)",
+   "target": "category:geometry-and-structure"
+  },
+  {
+   "rel": "in-category",
+   "source": "Screened Poisson Surface Reconstruction (Kazhdan 2013)",
+   "target": "category:geometry-and-structure"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:procedural-generation",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "WaveFunctionCollapse (Gumin 2016)",
+   "target": "category:procedural-generation"
+  },
+  {
+   "rel": "in-category",
+   "source": "libigl / discrete differential geometry",
+   "target": "category:geometry-and-structure"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:design-theory",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "A Pattern Language (Alexander 1977)",
+   "target": "category:design-theory"
+  },
+  {
+   "rel": "in-category",
+   "source": "Architects' Data (Neufert, 1936-)",
+   "target": "category:design-theory"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:neural-3D",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "NeRF (Mildenhall et al. 2020)",
+   "target": "category:neural-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "3D Gaussian Splatting (Kerbl et al. 2023)",
+   "target": "category:neural-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "DreamFusion / Score Distillation Sampling (Poole et al. 2022)",
+   "target": "category:neural-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "Instant-NGP (Mueller et al. 2022)",
+   "target": "category:neural-3D"
+  },
+  {
+   "rel": "in-category",
+   "source": "Denoising Diffusion Probabilistic Models (Ho et al. 2020)",
+   "target": "category:neural-3D"
+  },
+  {
+   "rel": "part-of",
+   "source": "category:cloth-and-body",
+   "target": "design-anything"
+  },
+  {
+   "rel": "in-category",
+   "source": "Large Steps in Cloth Simulation (Baraff & Witkin 1998)",
+   "target": "category:cloth-and-body"
+  },
+  {
+   "rel": "in-category",
+   "source": "PBD \u2192 XPBD (Mueller 2007, Macklin 2016)",
+   "target": "category:cloth-and-body"
+  },
+  {
+   "rel": "in-category",
+   "source": "SMPL body model (Loper et al. 2015)",
+   "target": "category:cloth-and-body"
+  },
+  {
+   "rel": "in-category",
+   "source": "DXF-AAMA / ASTM D6673 pattern exchange",
+   "target": "category:standards"
+  },
+  {
+   "rel": "in-category",
+   "source": "Text-to-sewing-pattern wave (GarmentDiffusion, ChatGarment, 2025-26)",
+   "target": "category:cloth-and-body"
+  },
+  {
+   "rel": "in-category",
+   "source": "The Sciences of the Artificial (Simon 1969)",
+   "target": "category:design-theory"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:architecture",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Gramazio Kohler Research (ETH Zurich)",
+   "target": "domain:architecture"
+  },
+  {
+   "rel": "shapes",
+   "source": "Block Research Group (ETH Zurich)",
+   "target": "domain:architecture"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:structural-optimization",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Ole Sigmund (DTU TopOpt)",
+   "target": "domain:structural-optimization"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:simulation",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "NVIDIA Research",
+   "target": "domain:simulation"
+  },
+  {
+   "rel": "shapes",
+   "source": "IAAC Barcelona",
+   "target": "domain:architecture"
+  },
+  {
+   "rel": "shapes",
+   "source": "Bartlett UCL (B-Pro)",
+   "target": "domain:architecture"
+  },
+  {
+   "rel": "shapes",
+   "source": "TU Delft",
+   "target": "domain:architecture"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:construction-3D-printing",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Behrokh Khoshnevis",
+   "target": "domain:construction-3D-printing"
+  },
+  {
+   "rel": "shapes",
+   "source": "Fei-Fei Li (World Labs)",
+   "target": "domain:simulation"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:game-design",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Maxim Gumin",
+   "target": "domain:game-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Shigeru Miyamoto",
+   "target": "domain:game-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Will Wright",
+   "target": "domain:game-design"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:graphics",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Pat Hanrahan & Ed Catmull",
+   "target": "domain:graphics"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:design-theory",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Christopher Alexander (1936-2022)",
+   "target": "domain:design-theory"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:urbanism",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Jan Gehl",
+   "target": "domain:urbanism"
+  },
+  {
+   "rel": "shapes",
+   "source": "Jane Jacobs (1916-2006)",
+   "target": "domain:urbanism"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:fabrication",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Neri Oxman (MIT Media Lab lineage / OXMAN)",
+   "target": "domain:fabrication"
+  },
+  {
+   "rel": "shapes",
+   "source": "COBOD",
+   "target": "domain:construction-3D-printing"
+  },
+  {
+   "rel": "shapes",
+   "source": "ICON",
+   "target": "domain:construction-3D-printing"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:standards",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "buildingSMART International",
+   "target": "domain:standards"
+  },
+  {
+   "rel": "shapes",
+   "source": "Alliance for OpenUSD (AOUSD)",
+   "target": "domain:standards"
+  },
+  {
+   "rel": "shapes",
+   "source": "Keenan Crane (CMU)",
+   "target": "domain:graphics"
+  },
+  {
+   "rel": "part-of",
+   "source": "domain:garment-design",
+   "target": "design-anything"
+  },
+  {
+   "rel": "shapes",
+   "source": "Maria Korosteleva (ETH Zurich)",
+   "target": "domain:garment-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Holly McQuillan",
+   "target": "domain:garment-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Issey Miyake / A-POC ABLE",
+   "target": "domain:garment-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Madeleine Vionnet (1876-1975)",
+   "target": "domain:garment-design"
+  },
+  {
+   "rel": "shapes",
+   "source": "Herbert Simon (1916-2001)",
+   "target": "domain:design-theory"
+  },
+  {
+   "rel": "shapes",
+   "source": "Stanford d.school / IDEO lineage",
+   "target": "domain:design-theory"
+  },
+  {
+   "rel": "skill-of",
+   "source": "design-anything",
+   "target": "design-anything"
+  },
+  {
+   "rel": "skill-of",
+   "source": "brief-to-blueprint",
+   "target": "design-anything"
+  },
+  {
+   "rel": "skill-of",
+   "source": "print-ready-check",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "print-ready-check",
+   "target": "ready_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "construction-ready-check",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "construction-ready-check",
+   "target": "ready_gate"
+  },
+  {
+   "rel": "runs",
+   "source": "construction-ready-check",
+   "target": "construction_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "garment-ready-check",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "garment-ready-check",
+   "target": "ready_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "scene-ready-check",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "scene-ready-check",
+   "target": "ready_gate"
+  },
+  {
+   "rel": "runs",
+   "source": "scene-ready-check",
+   "target": "scene_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "bodyfit-ready-check",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "bodyfit-ready-check",
+   "target": "ready_gate"
+  },
+  {
+   "rel": "runs",
+   "source": "bodyfit-ready-check",
+   "target": "bodyfit_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "blueprint-validate",
+   "target": "design-anything"
+  },
+  {
+   "rel": "skill-of",
+   "source": "pattern-library",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "pattern-library",
+   "target": "pattern_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "scene-to-layout",
+   "target": "design-anything"
+  },
+  {
+   "rel": "runs",
+   "source": "scene-to-layout",
+   "target": "scene_gate"
+  },
+  {
+   "rel": "skill-of",
+   "source": "design-research",
+   "target": "design-anything"
+  }
+ ],
+ "generated_from": "data/*.yml by scripts/build_graph.py",
+ "nodes": [
+  {
+   "id": "design-anything",
+   "kind": "root",
+   "url": "https://github.com/wjlgatech/design-anything"
+  },
+  {
+   "id": "ready_gate",
+   "kind": "gate",
+   "url": "https://github.com/wjlgatech/design-anything/blob/main/pipeline/ready_gate.py"
+  },
+  {
+   "id": "construction_gate",
+   "kind": "gate",
+   "url": "https://github.com/wjlgatech/design-anything/blob/main/pipeline/construction_gate.py"
+  },
+  {
+   "id": "pattern_gate",
+   "kind": "gate",
+   "url": "https://github.com/wjlgatech/design-anything/blob/main/pipeline/pattern_gate.py"
+  },
+  {
+   "id": "scene_gate",
+   "kind": "gate",
+   "url": "https://github.com/wjlgatech/design-anything/blob/main/pipeline/scene_gate.py"
+  },
+  {
+   "id": "bodyfit_gate",
+   "kind": "gate",
+   "url": "https://github.com/wjlgatech/design-anything/blob/main/pipeline/bodyfit_gate.py"
+  },
+  {
+   "id": "Microsoft TRELLIS.2",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://github.com/microsoft/TRELLIS.2"
+  },
+  {
+   "id": "category:text/image-to-3D",
+   "kind": "category",
+   "label": "text/image-to-3D"
+  },
+  {
+   "id": "Zoo.dev Text-to-CAD (Zookeeper)",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://zoo.dev/research/zookeeper"
+  },
+  {
+   "id": "Meshy-6",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://www.meshy.ai/blog/meshy-6-launch"
+  },
+  {
+   "id": "Hunyuan3D-2",
+   "kind": "tool",
+   "tier": "bronze",
+   "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2"
+  },
+  {
+   "id": "blender-mcp",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://github.com/ahujasid/blender-mcp"
+  },
+  {
+   "id": "category:agent-infrastructure",
+   "kind": "category",
+   "label": "agent-infrastructure"
+  },
+  {
+   "id": "SpatialLM",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://github.com/manycore-research/SpatialLM"
+  },
+  {
+   "id": "category:interior-design",
+   "kind": "category",
+   "label": "interior-design"
+  },
+  {
+   "id": "Autodesk Forma (Building Layout Explorer)",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://adsknews.autodesk.com/en/news/building-layout-explorer-in-autodesk-forma/"
+  },
+  {
+   "id": "category:architecture",
+   "kind": "category",
+   "label": "architecture"
+  },
+  {
+   "id": "Finch3D",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://parametric-architecture.com/finch-launches-forma-extension/"
+  },
+  {
+   "id": "ICON (Titan + Vitruvius)",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://www.iconbuild.com/newsroom/icon-unveils-new-construction-technologies-for-lowest-cost-fastest-and-most-sustainable-way-to-build-at-scale"
+  },
+  {
+   "id": "category:construction-3D-printing",
+   "kind": "category",
+   "label": "construction-3D-printing"
+  },
+  {
+   "id": "COBOD",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://cobod.com/"
+  },
+  {
+   "id": "WASP",
+   "kind": "tool",
+   "tier": "bronze",
+   "url": "https://www.3dwasp.com/"
+  },
+  {
+   "id": "Marble (World Labs)",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://www.worldlabs.ai/blog/marble-world-model"
+  },
+  {
+   "id": "category:game-and-simulation",
+   "kind": "category",
+   "label": "game-and-simulation"
+  },
+  {
+   "id": "NVIDIA Cosmos 3 + Isaac Lab 3.0",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"
+  },
+  {
+   "id": "Project Genie (Genie 3)",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/"
+  },
+  {
+   "id": "Blender",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://www.blender.org/"
+  },
+  {
+   "id": "category:survivor-foundations",
+   "kind": "category",
+   "label": "survivor-foundations"
+  },
+  {
+   "id": "Rhino + Grasshopper",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://www.rhino3d.com/"
+  },
+  {
+   "id": "OpenSCAD",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://openscad.org/"
+  },
+  {
+   "id": "FreeCAD",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://www.freecad.org/"
+  },
+  {
+   "id": "COLMAP",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://colmap.github.io/"
+  },
+  {
+   "id": "Spacely AI",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://www.spacely.ai/"
+  },
+  {
+   "id": "Planner 5D AI",
+   "kind": "tool",
+   "tier": "bronze",
+   "url": "https://planner5d.com/use/ai-interior-design"
+  },
+  {
+   "id": "Seamly2D",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://github.com/FashionFreedom/Seamly2D"
+  },
+  {
+   "id": "category:garment-design",
+   "kind": "category",
+   "label": "garment-design"
+  },
+  {
+   "id": "GarmentCode (ETH)",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://github.com/maria-korosteleva/GarmentCode"
+  },
+  {
+   "id": "Marvelous Designer / CLO",
+   "kind": "tool",
+   "tier": "gold",
+   "url": "https://www.cgchannel.com/2026/04/clo-virtual-fashion-releases-marvelous-designer-2026-0/"
+  },
+  {
+   "id": "Style3D + GarmageNet",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://github.com/Style3D/garmagenet-impl"
+  },
+  {
+   "id": "unspun Vega",
+   "kind": "tool",
+   "tier": "silver",
+   "url": "https://www.textileworld.com/textile-world/knitting-apparel/2026/05/unspun-focused-on-creating-a-new-category-of-apparel-production/"
+  },
+  {
+   "id": "DressX",
+   "kind": "tool",
+   "tier": "bronze",
+   "url": "https://www.forbes.com/sites/moinroberts-islam/2026/04/14/google-dressx-and-the-new-fashion-ai-virtual-try-on-stack/"
+  },
+  {
+   "id": "IFC / ISO 16739",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://www.buildingsmart.org/standards/ifc/"
+  },
+  {
+   "id": "category:standards",
+   "kind": "category",
+   "label": "standards"
+  },
+  {
+   "id": "OpenUSD Core Specification",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://aousd.org/news/core-spec-announcement/"
+  },
+  {
+   "id": "glTF (ISO/IEC 12113)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://www.khronos.org/gltf/"
+  },
+  {
+   "id": "3MF",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://3mf.io/"
+  },
+  {
+   "id": "Topology optimization (SIMP; Bendsoe 1988, Sigmund 2001)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://www.topopt.mek.dtu.dk/"
+  },
+  {
+   "id": "category:geometry-and-structure",
+   "kind": "category",
+   "label": "geometry-and-structure"
+  },
+  {
+   "id": "Screened Poisson Surface Reconstruction (Kazhdan 2013)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://www.cs.jhu.edu/~misha/MyPapers/ToG13.pdf"
+  },
+  {
+   "id": "WaveFunctionCollapse (Gumin 2016)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://github.com/mxgmn/WaveFunctionCollapse"
+  },
+  {
+   "id": "category:procedural-generation",
+   "kind": "category",
+   "label": "procedural-generation"
+  },
+  {
+   "id": "libigl / discrete differential geometry",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://libigl.github.io/"
+  },
+  {
+   "id": "A Pattern Language (Alexander 1977)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://en.wikipedia.org/wiki/A_Pattern_Language"
+  },
+  {
+   "id": "category:design-theory",
+   "kind": "category",
+   "label": "design-theory"
+  },
+  {
+   "id": "Architects' Data (Neufert, 1936-)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://en.wikipedia.org/wiki/Ernst_Neufert"
+  },
+  {
+   "id": "NeRF (Mildenhall et al. 2020)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://www.matthewtancik.com/nerf"
+  },
+  {
+   "id": "category:neural-3D",
+   "kind": "category",
+   "label": "neural-3D"
+  },
+  {
+   "id": "3D Gaussian Splatting (Kerbl et al. 2023)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/"
+  },
+  {
+   "id": "DreamFusion / Score Distillation Sampling (Poole et al. 2022)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://dreamfusion3d.github.io/"
+  },
+  {
+   "id": "Instant-NGP (Mueller et al. 2022)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://nvlabs.github.io/instant-ngp/"
+  },
+  {
+   "id": "Denoising Diffusion Probabilistic Models (Ho et al. 2020)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://arxiv.org/abs/2006.11239"
+  },
+  {
+   "id": "Large Steps in Cloth Simulation (Baraff & Witkin 1998)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://dl.acm.org/doi/10.1145/280814.280821"
+  },
+  {
+   "id": "category:cloth-and-body",
+   "kind": "category",
+   "label": "cloth-and-body"
+  },
+  {
+   "id": "PBD \u2192 XPBD (Mueller 2007, Macklin 2016)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://www.emergentmind.com/topics/extended-position-based-dynamics-xpbd"
+  },
+  {
+   "id": "SMPL body model (Loper et al. 2015)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://meshcapade.com/smpl/"
+  },
+  {
+   "id": "DXF-AAMA / ASTM D6673 pattern exchange",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://store.astm.org/d6673-10.html"
+  },
+  {
+   "id": "Text-to-sewing-pattern wave (GarmentDiffusion, ChatGarment, 2025-26)",
+   "kind": "paper",
+   "tier": "young",
+   "url": "https://www.ijcai.org/proceedings/2025/163"
+  },
+  {
+   "id": "The Sciences of the Artificial (Simon 1969)",
+   "kind": "paper",
+   "tier": "survivor",
+   "url": "https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/"
+  },
+  {
+   "id": "Gramazio Kohler Research (ETH Zurich)",
+   "kind": "lab",
+   "url": "https://gramaziokohler.arch.ethz.ch/"
+  },
+  {
+   "id": "domain:architecture",
+   "kind": "domain",
+   "label": "architecture"
+  },
+  {
+   "id": "Block Research Group (ETH Zurich)",
+   "kind": "lab",
+   "url": "https://block.arch.ethz.ch/"
+  },
+  {
+   "id": "Ole Sigmund (DTU TopOpt)",
+   "kind": "person",
+   "url": "https://www.topopt.mek.dtu.dk/"
+  },
+  {
+   "id": "domain:structural-optimization",
+   "kind": "domain",
+   "label": "structural-optimization"
+  },
+  {
+   "id": "NVIDIA Research",
+   "kind": "lab",
+   "url": "https://research.nvidia.com/"
+  },
+  {
+   "id": "domain:simulation",
+   "kind": "domain",
+   "label": "simulation"
+  },
+  {
+   "id": "IAAC Barcelona",
+   "kind": "lab",
+   "url": "https://iaac.net/"
+  },
+  {
+   "id": "Bartlett UCL (B-Pro)",
+   "kind": "lab",
+   "url": "https://www.ucl.ac.uk/bartlett/"
+  },
+  {
+   "id": "TU Delft",
+   "kind": "lab",
+   "url": "https://www.tudelft.nl/en/architecture-and-the-built-environment"
+  },
+  {
+   "id": "Behrokh Khoshnevis",
+   "kind": "person",
+   "url": "https://contourcrafting.com/"
+  },
+  {
+   "id": "domain:construction-3D-printing",
+   "kind": "domain",
+   "label": "construction-3D-printing"
+  },
+  {
+   "id": "Fei-Fei Li (World Labs)",
+   "kind": "person",
+   "url": "https://www.worldlabs.ai/"
+  },
+  {
+   "id": "Maxim Gumin",
+   "kind": "person",
+   "url": "https://github.com/mxgmn"
+  },
+  {
+   "id": "domain:game-design",
+   "kind": "domain",
+   "label": "game-design"
+  },
+  {
+   "id": "Shigeru Miyamoto",
+   "kind": "person",
+   "url": "https://en.wikipedia.org/wiki/Shigeru_Miyamoto"
+  },
+  {
+   "id": "Will Wright",
+   "kind": "person",
+   "url": "https://en.wikipedia.org/wiki/Will_Wright_(game_designer)"
+  },
+  {
+   "id": "Pat Hanrahan & Ed Catmull",
+   "kind": "person",
+   "url": "https://amturing.acm.org/"
+  },
+  {
+   "id": "domain:graphics",
+   "kind": "domain",
+   "label": "graphics"
+  },
+  {
+   "id": "Christopher Alexander (1936-2022)",
+   "kind": "person",
+   "url": "https://www.patternlanguage.com/"
+  },
+  {
+   "id": "domain:design-theory",
+   "kind": "domain",
+   "label": "design-theory"
+  },
+  {
+   "id": "Jan Gehl",
+   "kind": "person",
+   "url": "https://gehlpeople.com/"
+  },
+  {
+   "id": "domain:urbanism",
+   "kind": "domain",
+   "label": "urbanism"
+  },
+  {
+   "id": "Jane Jacobs (1916-2006)",
+   "kind": "person",
+   "url": "https://en.wikipedia.org/wiki/Jane_Jacobs"
+  },
+  {
+   "id": "Neri Oxman (MIT Media Lab lineage / OXMAN)",
+   "kind": "person",
+   "url": "https://oxman.com/"
+  },
+  {
+   "id": "domain:fabrication",
+   "kind": "domain",
+   "label": "fabrication"
+  },
+  {
+   "id": "COBOD",
+   "kind": "company",
+   "url": "https://cobod.com/"
+  },
+  {
+   "id": "ICON",
+   "kind": "company",
+   "url": "https://www.iconbuild.com/"
+  },
+  {
+   "id": "buildingSMART International",
+   "kind": "lab",
+   "url": "https://www.buildingsmart.org/"
+  },
+  {
+   "id": "domain:standards",
+   "kind": "domain",
+   "label": "standards"
+  },
+  {
+   "id": "Alliance for OpenUSD (AOUSD)",
+   "kind": "lab",
+   "url": "https://aousd.org/"
+  },
+  {
+   "id": "Keenan Crane (CMU)",
+   "kind": "person",
+   "url": "https://www.cs.cmu.edu/~kmcrane/"
+  },
+  {
+   "id": "Maria Korosteleva (ETH Zurich)",
+   "kind": "person",
+   "url": "https://github.com/maria-korosteleva/GarmentCode"
+  },
+  {
+   "id": "domain:garment-design",
+   "kind": "domain",
+   "label": "garment-design"
+  },
+  {
+   "id": "Holly McQuillan",
+   "kind": "person",
+   "url": "https://www.hollymcquillan.com/publications"
+  },
+  {
+   "id": "Issey Miyake / A-POC ABLE",
+   "kind": "lab",
+   "url": "https://us.isseymiyake.com/pages/apocable"
+  },
+  {
+   "id": "Madeleine Vionnet (1876-1975)",
+   "kind": "person",
+   "url": "https://en.wikipedia.org/wiki/Madeleine_Vionnet"
+  },
+  {
+   "id": "Herbert Simon (1916-2001)",
+   "kind": "person",
+   "url": "https://mitpress.mit.edu/9780262537537/the-sciences-of-the-artificial/"
+  },
+  {
+   "id": "Stanford d.school / IDEO lineage",
+   "kind": "lab",
+   "url": "https://dschool.stanford.edu/"
+  },
+  {
+   "id": "design-anything",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/design-anything"
+  },
+  {
+   "id": "brief-to-blueprint",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/brief-to-blueprint"
+  },
+  {
+   "id": "print-ready-check",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/print-ready-check"
+  },
+  {
+   "id": "construction-ready-check",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check"
+  },
+  {
+   "id": "garment-ready-check",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check"
+  },
+  {
+   "id": "scene-ready-check",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/scene-ready-check"
+  },
+  {
+   "id": "bodyfit-ready-check",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/bodyfit-ready-check"
+  },
+  {
+   "id": "blueprint-validate",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate"
+  },
+  {
+   "id": "pattern-library",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library"
+  },
+  {
+   "id": "scene-to-layout",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout"
+  },
+  {
+   "id": "design-research",
+   "kind": "skill",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/design-research"
+  }
+ ]
+}

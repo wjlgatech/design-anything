@@ -29,7 +29,7 @@ DIGESTS = [
 ]
 
 DOMAINS = ["game-design", "simulation", "architecture-residential",
-           "architecture-commercial", "interior-design", "landscape", "garment-design"]
+           "architecture-commercial", "interior-design", "landscape", "garment-design", "eyewear"]
 
 
 def _frontmatter(text):

@@ -3,6 +3,11 @@
 # what + why it matters), optional link.
 
 - date: 2026-07-19
+  title: "v0.10.0 — IFC export, the eyewear body-fit domain, and the knowledge map"
+  note: Three milestones in one train — construction layouts export as IFC4 (round-trip verified, ifcopenshell optional and honest about absence); eyewear lands as the first body-fit domain (tables + gate + a golden fit-spec AND printable temple); and the whole data spine compiles into an interactive knowledge map on GitHub Pages, drift-gated like everything else.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.10.0
+
+- date: 2026-07-19
   title: "v0.9.0 — production-real garments: DXF-AAMA, size grading, seam pairs"
   note: The apron grades S/M/L with every size gated independently; symmetric pieces must match through grading (F6); and markers export as the AAMA subset every pattern CAD imports — verified by round-trip, never by claim. GarmentCode emission honestly deferred pending an upstream verification path.
   link: https://github.com/wjlgatech/design-anything/releases/tag/v0.9.0

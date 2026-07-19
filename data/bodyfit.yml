@@ -1,0 +1,19 @@
+# Body-fit constraint tables — the bodyfit gate's database (principle P2).
+# First product: eyewear (docs/DESIGN_DISCIPLINES.md Tier 2 — parametric
+# face-fit + print-native frames). Sources: ISO 12870 frame requirements
+# lineage, optometric dispensing practice (boxed-lens system), adult
+# anthropometric PD ranges. Values in mm.
+
+eyewear:
+  dimensions:
+    pd:           {min: 54, max: 74, source: "adult interpupillary distance range, optometric practice"}
+    bridge:       {min: 14, max: 24, source: "boxed-system DBL range, ISO 8624 lineage"}
+    lens_w:       {min: 40, max: 62, source: "boxed lens width range (A dimension)"}
+    lens_h:       {min: 24, max: 48, source: "boxed lens height range (B dimension)"}
+    temple_l:     {min: 120, max: 155, source: "temple length range incl. drop, ISO 8624 lineage"}
+  alignment:
+    # frame PD (lens_w + bridge, boxed centers) vs wearer PD; decentration
+    # beyond this needs thicker lens blanks and induces prism risk
+    max_frame_pd_offset: {value: 8, source: "dispensing practice: keep decentration small"}
+  print:
+    min_feature: {value: 2.4, source: "temple/hinge cross-section >= 2x common 1.2mm-capable resin/FDM walls; below this frames snap"}

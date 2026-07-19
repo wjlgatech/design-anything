@@ -9,12 +9,13 @@ repo? The inclusion rule comes from the [DIKW model](../principles/DIKW_MODEL.md
 
 | Discipline | Gate status |
 |---|---|
-| Game design | roadmap M7 (glTF/USD) |
-| 3D simulation | roadmap M7 |
+| Game design | ✅ scene gate v0.1 |
+| 3D simulation | ✅ scene gate v0.1 |
 | Residential & commercial architecture (3DCP + AI) | ✅ construction gate v0.1 |
 | Interior design | ✅ via construction gate tables |
 | Garden & landscape | seeds in guide |
-| **Garment & cloth design** (new) | ✅ pattern gate v0.1 |
+| **Garment & cloth design** | ✅ pattern gate + DXF-AAMA |
+| **Eyewear** (first body-fit domain) | ✅ bodyfit gate v0.1 |
 
 ## Tier 2 — Gateable next (spatial endpoint, tables exist, strong 3D-print fit)
 
@@ -28,7 +29,6 @@ Ranked by evidence that the domain is *already* gate-driven at scale:
 | **Industrial / product design** | The home discipline of DFM/DFA — Boothroyd-Dewhurst is literally a gate | GD&T (ASME Y14.5) |
 | **Jewelry** | Print-to-cast is the dominant workflow already | ring sizing tables, castability rules |
 | **Packaging** | Dielines are 2D blueprints exactly like garment patterns | ECMA/FEFCO standard designs |
-| **Eyewear** | Parametric face-fit + print-native frames | ISO 12870 |
 | **Stage/set & exhibit design** | Architecture's fast-cycle sibling; same clearance/egress tables | venue codes |
 
 ## Tier 3 — Design-dominated, non-spatial endpoint (the OS transfers, the pipeline doesn't)

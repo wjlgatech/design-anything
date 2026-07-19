@@ -2,6 +2,14 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.10.0] — 2026-07-19
+
+### Added
+- **M8 — IFC export**: `pipeline/ifc_export.py` emits construction layouts as IFC4 SPF — semantic spatial structure (project→site→building→storey→spaces), space areas as quantities, doors with widths; **deterministic GlobalIds** (content-hashed, never random). Round-trip parse verifies on every `make check`; ifcopenshell deep-checks when installed (skip-not-fail, absence reported honestly). Geometry solids are roadmap.
+- **M11 — eyewear, the first body-fit domain**: `data/bodyfit.yml` (PD/bridge/lens/temple ranges with sources, decentration budget, print floor) + `pipeline/bodyfit_gate.py` (B1 completeness, B2 ranges, B3 optical alignment, B4 print floor) + golden example #5 (`examples/eyewear/` — a fit spec AND a printable temple blank, each passing its own gate). The Tier-2 pattern dental/prosthetics/footwear will reuse.
+- **M9 — knowledge map**: `scripts/build_graph.py` compiles the data spine into `docs/graph.json` (117 nodes, drift-gated in `make check`); `docs/map.html` renders it as an interactive force map; GitHub Pages deploys `docs/` on every merge.
+- New skill: `bodyfit-ready-check` (11 total); 15 new tests (`tests/test_m8_m11_m9.py`).
+
 ## [0.9.0] — 2026-07-19
 
 ### Added

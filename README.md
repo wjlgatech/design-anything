@@ -12,6 +12,7 @@ Significant updates, newest first (curated in [`data/news.yml`](data/news.yml), 
 
 <!-- BEGIN:news -->
 
+- **2026-07-19** — [v0.10.0 — IFC export, the eyewear body-fit domain, and the knowledge map](https://github.com/wjlgatech/design-anything/releases/tag/v0.10.0) — Three milestones in one train — construction layouts export as IFC4 (round-trip verified, ifcopenshell optional and honest about absence); eyewear lands as the first body-fit domain (tables + gate + a golden fit-spec AND printable temple); and the whole data spine compiles into an interactive knowledge map on GitHub Pages, drift-gated like everything else.
 - **2026-07-19** — [v0.9.0 — production-real garments: DXF-AAMA, size grading, seam pairs](https://github.com/wjlgatech/design-anything/releases/tag/v0.9.0) — The apron grades S/M/L with every size gated independently; symmetric pieces must match through grading (F6); and markers export as the AAMA subset every pattern CAD imports — verified by round-trip, never by claim. GarmentCode emission honestly deferred pending an upstream verification path.
 - **2026-07-18** — [v0.8.0 — the scene gate: every route in the pipeline is now verifiable](https://github.com/wjlgatech/design-anything/releases/tag/v0.8.0) — The last roadmap gate ships — glTF structure, poly budget vs target platform, true-scale-in-meters (the units-bug catcher), collision presence. Golden courtyard arena passes; 7 known-bad mutations fail by test. The Gate seam from v0.7.0 made it a subclass, not a rebuild.
 - **2026-07-18** — [v0.5.0 — eval scenarios: the skill gets its own gate](https://github.com/wjlgatech/design-anything/releases/tag/v0.5.0) — 10 skill-creator-format scenarios covering every gated route plus should-NOT-trigger cases; CI proves the broken-STL fixture genuinely fails its gate, so the eval can't be fake. Closes Anthropic's pre-share checklist.
@@ -114,7 +115,7 @@ python3 pipeline/pattern_gate.py marker.json
 make check   # the whole finish line CI runs
 ```
 
-Agents: a flat, token-cheap index of everything curated here is compiled to [`llms.txt`](llms.txt).
+Agents: a flat, token-cheap index of everything curated here is compiled to [`llms.txt`](llms.txt). Humans: the same spine renders as an [interactive knowledge map](https://wjlgatech.github.io/design-anything/map.html) (compiled + drift-gated, like everything else).
 
 ## Design principles
 
@@ -173,6 +174,7 @@ Design rationale — what's backbone vs progressively disclosed, and how self-aw
 | [construction-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/construction-ready-check) | dogfooded | Run the construction ready gate on a rooms+openings layout — clearances, habitability, daylight, egress, module grid. |
 | [garment-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/garment-ready-check) | dogfooded | Run the pattern gate on a garment marker — pieces, grain, fabric fit, seam allowance, zero-waste efficiency, fit tables. |
 | [scene-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-ready-check) | dogfooded | Run the scene gate on a glTF — structure, poly budget vs target platform, true scale in meters, collision present. |
+| [bodyfit-ready-check](https://github.com/wjlgatech/design-anything/tree/main/skills/bodyfit-ready-check) | dogfooded | Run the body-fit gate on a fit spec — completeness, anthropometric/ISO ranges, frame-PD alignment, print floor; eyewear first. |
 | [blueprint-validate](https://github.com/wjlgatech/design-anything/tree/main/skills/blueprint-validate) | dogfooded | Validate a blueprint against the enduring-principles checklist (anthropometrics, modular grid, daylight, layers). |
 | [pattern-library](https://github.com/wjlgatech/design-anything/tree/main/skills/pattern-library) | dogfooded | Retrieve applicable Alexander-style patterns (context/problem/solution) for a brief before generating form. |
 | [scene-to-layout](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout) | dogfooded | Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. |
@@ -345,6 +347,7 @@ Inclusion requires survival evidence, not fame. See the [anti-portfolio](researc
 | Interior design | [domains/interior-design](domains/interior-design/README.md) |
 | Garden & landscape | [domains/landscape](domains/landscape/README.md) |
 | Garment & cloth design | [domains/garment-design](domains/garment-design/README.md) |
+| Eyewear (body-fit) | [domains/eyewear](domains/eyewear/README.md) |
 
 ## Contributing
 
@@ -366,7 +369,7 @@ flowchart LR
 
 ## Honest edges
 
-- Gates shipped: 3D-print (`ready_gate.py`), construction v0.1 (layout graph + clearance tables, not structural spans or IFC yet), garment v0.1 (marker + fit tables, not drape; bbox-level overlaps), and game/sim v0.1 (`scene_gate.py` — structure/budget/scale/collision, not materials or engine perf).
+- Gates shipped: 3D-print, construction (+ semantic IFC4 export, geometry solids roadmap), garment (+ DXF-AAMA, graded S/M/L), game/sim, and body-fit (eyewear). Every gate states its own honest edge in its report.
 - A passing gate means *buildable/printable/cuttable*, not *good* — principles cover taste; the gate covers physics and tables.
 - The construction gate is a design-sanity check, **not a permit and not a structural engineer's stamp**; the pattern gate is not a muslin — every report says so, and jurisdiction codes / real fittings override.
 
