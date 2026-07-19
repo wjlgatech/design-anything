@@ -2,6 +2,13 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.13.0] — 2026-07-19
+
+### Added
+- **First live dogfood of `/design-anything`** — a novel brief ("hexagonal desk pen holder, 220×220 bed") composed and passed all four print gates on the first run; banked as **golden example #6** (`examples/pen-holder/`) per the reflect protocol, adding fan-triangulated non-rectangular coverage no other golden exercises (volume verified against the analytic hex-shell value).
+- **M12b — GarmentCode emitter** (`pipeline/garmentcode_export.py`): markers export as GarmentCode `*_specification.json` (panels/edges/panel_order, centimeters, provenance pinned to the satellite digest sha). Round-trip verified in `make check`; pygarment deep-check is skip-not-fail with the measured finding reported: **the PyPI wheel ships only the DSL — `pygarment.pattern` needs the repo checkout**. Stitch topology is emitted empty and says so (roadmap).
+- **Freshness workflow live-verified** via workflow_dispatch — the weekly satellite sync runs green in CI, not just in theory.
+
 ## [0.12.0] — 2026-07-19
 
 ### Added

@@ -43,9 +43,11 @@ gate: demo  ## the vertical slices must stay READY
 	$(PY) pipeline/construction_gate.py /tmp/design-anything-studio.json
 	$(PY) pipeline/pattern_gate.py /tmp/design-anything-apron.json
 	$(PY) pipeline/scene_gate.py /tmp/design-anything-arena.gltf
-	$(PY) pipeline/dxf_aama.py /tmp/design-anything-apron.json /tmp/design-anything-apron.dxf /tmp/design-anything-studio.ifc /tmp/design-anything-fitspec.json /tmp/design-anything-temple.stl
+	$(PY) pipeline/dxf_aama.py /tmp/design-anything-apron.json /tmp/design-anything-apron.dxf /tmp/design-anything-studio.ifc /tmp/design-anything-fitspec.json /tmp/design-anything-temple.stl /tmp/design-anything-pen.stl /tmp/design-anything-apron-spec.json
 	$(PY) pipeline/ifc_export.py /tmp/design-anything-studio.json /tmp/design-anything-studio.ifc
 	$(PY) pipeline/bodyfit_gate.py /tmp/design-anything-fitspec.json
+	$(PY) pipeline/ready_gate.py /tmp/design-anything-pen.stl --min-feature 3.0
+	$(PY) pipeline/garmentcode_export.py /tmp/design-anything-apron.json /tmp/design-anything-apron-spec.json
 
 demo:
 	$(PY) examples/planter/generate.py /tmp/design-anything-planter.stl
@@ -53,6 +55,7 @@ demo:
 	$(PY) examples/apron/generate.py /tmp/design-anything-apron.json
 	$(PY) examples/arena/generate.py /tmp/design-anything-arena.gltf
 	$(PY) examples/eyewear/generate.py /tmp/design-anything-fitspec.json /tmp/design-anything-temple.stl
+	$(PY) examples/pen-holder/generate.py /tmp/design-anything-pen.stl
 
 clean:
 	rm -f /tmp/design-anything-planter.stl /tmp/design-anything-studio.json /tmp/design-anything-apron.json /tmp/design-anything-arena.gltf /tmp/design-anything-apron.dxf /tmp/design-anything-studio.ifc /tmp/design-anything-fitspec.json /tmp/design-anything-temple.stl
