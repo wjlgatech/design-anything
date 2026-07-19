@@ -1,0 +1,41 @@
+name: freshness
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # weekly, Monday 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml pytest
+      - name: Sync satellite metadata (stars, HEAD, releases; flags STALE digests)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/satellites.py sync
+      - name: Recompile generated surfaces
+        run: |
+          python3 scripts/satellites.py build
+          python3 scripts/build_readme.py
+          python3 scripts/build_graph.py
+      - run: make check
+      - name: Open a human-gated PR if anything moved
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/freshness
+          title: "freshness: weekly satellite sync"
+          commit-message: "freshness: weekly satellite sync (stars, HEAD, releases)"
+          body: >
+            Automated weekly sync of `data/satellites.yml` + recompiled
+            generated surfaces. Check the diff for STALE flags — a STALE
+            satellite means upstream moved past its digest's pinned SHA and
+            the digest needs a refresh run. Human merges; the bot never does.

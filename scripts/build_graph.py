@@ -56,6 +56,16 @@ def build() -> dict:
         nodes.append({"id": e["name"], "kind": e.get("kind", "person"), "url": e["url"]})
         edges.append({"source": e["name"], "target": hub(e.get("domain", "misc"), "domain"),
                       "rel": "shapes"})
+    import yaml as _y
+    sat_path = DATA / "satellites.yml"
+    for s in (_y.safe_load(sat_path.read_text()) or []) if sat_path.exists() else []:
+        sid = f"satellite:{s['slug']}"
+        nodes.append({"id": sid, "label": f"use-{s['slug']}", "kind": "satellite",
+                      "status": s.get("status"),
+                      "url": f"https://github.com/wjlgatech/design-anything/tree/main/skills/use-{s['slug']}"})
+        edges.append({"source": sid, "target": s["name"], "rel": "digests"})
+        edges.append({"source": sid, "target": "design-anything", "rel": "satellite-of"})
+
     for e in load("registry.yml"):
         nodes.append({"id": e["name"], "kind": "skill", "url": e["url"]})
         edges.append({"source": e["name"], "target": "design-anything", "rel": "skill-of"})

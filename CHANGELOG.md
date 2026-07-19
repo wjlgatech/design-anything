@@ -2,6 +2,14 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.11.0] — 2026-07-19
+
+### Added
+- **Satellites** (GOAL.md M17) — the hub extends to every top-cited repo: `scripts/satellites.py` compiles each `repo:`-marked gold tool into a satellite = live facts (`data/satellites.yml`: stars/license/release/HEAD, via `gh api`) + a **SHA-pinned deep digest** (`KNOWLEDGE.md`, written by an agent reading the actual repo at that commit) + a **generated skill** (`skills/use-<slug>/`). Never vendored, never hand-written; `build --check` joins `make check` (offline), `sync` lives only in the weekly `freshness.yml` workflow which opens human-gated PRs and flags STALE digests when upstream moves past the pin.
+- **First five satellites**: TRELLIS.2, blender-mcp, SpatialLM, Seamly2D, GarmentCode. Digest finds worth the price of admission: TRELLIS.2 outputs are non-watertight by design (repair before ready_gate); SpatialLM's encoder weights are CC-BY-NC (commercial restriction) and it emits wall segments, not room polygons; blender-mcp has telemetry on by default and an unauthenticated localhost socket; Seamly2D's ASTM export is `Q_UNREACHABLE` (AAMA only — validating our exporter choice); GarmentCode's exact validation entry points give M12b its honest verification path.
+- `tests/test_satellites.py`: status is computed-not-claimed, digests quote their pin, satellites never vendor code; satellites render in the README (drift-gated) and the knowledge map. Design deep-dive (quality/fast/cheap/fresh/future-proof by mechanism): `docs/SATELLITES.md`.
+- News backfill: v0.6.0 and v0.7.0 entries that were missed at release time.
+
 ## [0.10.0] — 2026-07-19
 
 ### Added

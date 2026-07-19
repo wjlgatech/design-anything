@@ -62,6 +62,21 @@ def skills_section() -> str:
     return "\n".join(out) + "\n"
 
 
+def satellites_section() -> str:
+    sats = yaml.safe_load((DATA / "satellites.yml").read_text())
+    out = ["", "| Satellite | Upstream | Stars | Digest | Status |", "|---|---|---|---|---|"]
+    for s in sats:
+        out.append(
+            f"| [use-{s['slug']}](skills/use-{s['slug']}/SKILL.md) "
+            f"| [{s['repo']}](https://github.com/{s['repo']}) "
+            f"| {s['stars']:,} | [`{s['digest_sha'] or '—'}`](skills/use-{s['slug']}/KNOWLEDGE.md) "
+            f"| {s['status']} |")
+    out.append("")
+    out.append(f"*Facts fetched {sats[0]['fetched_at']} by the weekly freshness sync; "
+               "STALE means upstream moved past the digest's pinned sha.*")
+    return "\n".join(out) + "\n"
+
+
 def news_section() -> str:
     out = [""]
     for e in load("news.yml"):
@@ -75,6 +90,7 @@ SECTIONS = {
     "papers": papers_section,
     "community": community_section,
     "skills": skills_section,
+    "satellites": satellites_section,
     "news": news_section,
 }
 

@@ -12,9 +12,12 @@ Significant updates, newest first (curated in [`data/news.yml`](data/news.yml), 
 
 <!-- BEGIN:news -->
 
+- **2026-07-19** — [v0.11.0 — satellites: knowledge + tooling compiled from every top-cited repo](https://github.com/wjlgatech/design-anything/releases/tag/v0.11.0) — Five gold-tier cited repos (TRELLIS.2, blender-mcp, SpatialLM, Seamly2D, GarmentCode) each get a SHA-pinned deep digest and a generated skill — compiled by satellites.py, drift-gated, never vendored. Staleness is measured weekly by a freshness workflow, not promised. Digest finds include SpatialLM's non-commercial encoder weights and Seamly2D's unimplemented ASTM export.
 - **2026-07-19** — [v0.10.0 — IFC export, the eyewear body-fit domain, and the knowledge map](https://github.com/wjlgatech/design-anything/releases/tag/v0.10.0) — Three milestones in one train — construction layouts export as IFC4 (round-trip verified, ifcopenshell optional and honest about absence); eyewear lands as the first body-fit domain (tables + gate + a golden fit-spec AND printable temple); and the whole data spine compiles into an interactive knowledge map on GitHub Pages, drift-gated like everything else.
 - **2026-07-19** — [v0.9.0 — production-real garments: DXF-AAMA, size grading, seam pairs](https://github.com/wjlgatech/design-anything/releases/tag/v0.9.0) — The apron grades S/M/L with every size gated independently; symmetric pieces must match through grading (F6); and markers export as the AAMA subset every pattern CAD imports — verified by round-trip, never by claim. GarmentCode emission honestly deferred pending an upstream verification path.
 - **2026-07-18** — [v0.8.0 — the scene gate: every route in the pipeline is now verifiable](https://github.com/wjlgatech/design-anything/releases/tag/v0.8.0) — The last roadmap gate ships — glTF structure, poly budget vs target platform, true-scale-in-meters (the units-bug catcher), collision presence. Golden courtyard arena passes; 7 known-bad mutations fail by test. The Gate seam from v0.7.0 made it a subclass, not a rebuild.
+- **2026-07-18** — [v0.7.0 — the Gate seam + the repo audits itself](https://github.com/wjlgatech/design-anything/releases/tag/v0.7.0) — OOP refactor 50→83 around a shared Gate base class (a new domain gate becomes a subclass, not a rebuild); the AI-native self-audit lands in CI — 12 operating principles with in-repo evidence, so a regression in HOW the repo operates fails the build.
+- **2026-07-18** — [v0.6.0 — the README learns to draw (and to report the news)](https://github.com/wjlgatech/design-anything/releases/tag/v0.6.0) — Architecture system-design diagram plus a brand-themed Mermaid on every major section, all CI-checked; this news section itself ships as spec-as-data under the drift gate.
 - **2026-07-18** — [v0.5.0 — eval scenarios: the skill gets its own gate](https://github.com/wjlgatech/design-anything/releases/tag/v0.5.0) — 10 skill-creator-format scenarios covering every gated route plus should-NOT-trigger cases; CI proves the broken-STL fixture genuinely fails its gate, so the eval can't be fake. Closes Anthropic's pre-share checklist.
 - **2026-07-18** — [v0.4.0 — /design-anything: the engine gets a front door](https://github.com/wjlgatech/design-anything/releases/tag/v0.4.0) — A Claude Code slash-skill built to Anthropic's authoring guidance — a thin router that discovers design intent (≤2 questions), routes to the matching gate, and cannot drift from the engine (every referenced path is CI-asserted). Self-aware/heal/improve defined as protocols, not adjectives.
 - **2026-07-18** — [v0.3.0 — garment design + the DIKW organizing model](https://github.com/wjlgatech/design-anything/releases/tag/v0.3.0) — 7th domain with pattern gate v0.1 (zero-waste marker efficiency as a number); DIKW compression↔expression becomes the stated organizing model; the design-disciplines map lands with the inclusion rule. RTFKT joins the anti-portfolio at −99.8%.
@@ -180,6 +183,23 @@ Design rationale — what's backbone vs progressively disclosed, and how self-aw
 | [scene-to-layout](https://github.com/wjlgatech/design-anything/tree/main/skills/scene-to-layout) | dogfooded | Turn a room photo/scan into a structured layout (walls, openings, furniture) using SpatialLM-class tools. |
 | [design-research](https://github.com/wjlgatech/design-anything/tree/main/skills/design-research) | dogfooded | Run the three-window research method (30 days/30 years/300 years) on any design question, with grounding rules. |
 <!-- END:skills -->
+
+## 🛰️ Satellites — knowledge + tooling from every top-cited repo
+
+Each gold-tier cited repo gets a **satellite**: a SHA-pinned deep digest (`KNOWLEDGE.md`) + a generated skill — compiled by [`scripts/satellites.py`](scripts/satellites.py), never hand-written, never vendored. Staleness is measured weekly, not promised. Design rationale: [docs/SATELLITES.md](docs/SATELLITES.md).
+
+<!-- BEGIN:satellites -->
+
+| Satellite | Upstream | Stars | Digest | Status |
+|---|---|---|---|---|
+| [use-trellis-2](skills/use-trellis-2/SKILL.md) | [microsoft/TRELLIS.2](https://github.com/microsoft/TRELLIS.2) | 8,799 | [`75fbf0183001`](skills/use-trellis-2/KNOWLEDGE.md) | fresh |
+| [use-blender-mcp](skills/use-blender-mcp/SKILL.md) | [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp) | 24,462 | [`6641189231ca`](skills/use-blender-mcp/KNOWLEDGE.md) | fresh |
+| [use-spatiallm](skills/use-spatiallm/SKILL.md) | [manycore-research/SpatialLM](https://github.com/manycore-research/SpatialLM) | 4,615 | [`8913c44d84a4`](skills/use-spatiallm/KNOWLEDGE.md) | fresh |
+| [use-seamly2d](skills/use-seamly2d/SKILL.md) | [FashionFreedom/Seamly2D](https://github.com/FashionFreedom/Seamly2D) | 913 | [`dacc5600e29f`](skills/use-seamly2d/KNOWLEDGE.md) | fresh |
+| [use-garmentcode](skills/use-garmentcode/SKILL.md) | [maria-korosteleva/GarmentCode](https://github.com/maria-korosteleva/GarmentCode) | 387 | [`d44962997902`](skills/use-garmentcode/KNOWLEDGE.md) | fresh |
+
+*Facts fetched 2026-07-19 by the weekly freshness sync; STALE means upstream moved past the digest's pinned sha.*
+<!-- END:satellites -->
 
 ## The landscape — curated tools
 

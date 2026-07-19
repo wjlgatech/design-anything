@@ -27,7 +27,7 @@
 <div id="tip"></div>
 <script>
 const COLORS = { root:"#141413", gate:"#d97757", skill:"#6a9bcc", tool:"#788c5d",
-                 paper:"#8a7ba8", person:"#c2846b", lab:"#c2846b", company:"#c2846b",
+                 paper:"#8a7ba8", satellite:"#d9a557", person:"#c2846b", lab:"#c2846b", company:"#c2846b",
                  category:"#b0aea5", domain:"#b0aea5" };
 const R = { root:14, gate:9, skill:7, category:6, domain:6 };
 fetch("graph.json").then(r => r.json()).then(init).catch(() =>
@@ -36,7 +36,7 @@ fetch("graph.json").then(r => r.json()).then(init).catch(() =>
 
 function init(g) {
   const legend = document.getElementById("legend");
-  ["root","gate","skill","tool","paper","person","category/domain"].forEach(k => {
+  ["root","gate","skill","satellite","tool","paper","person","category/domain"].forEach(k => {
     legend.innerHTML += `<span><i class="dot" style="background:${COLORS[k.split("/")[0]]}"></i>${k}</span>`;
   });
   const canvas = document.getElementById("c"), tip = document.getElementById("tip");

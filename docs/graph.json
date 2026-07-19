@@ -1,7 +1,7 @@
 {
  "counts": {
-  "edges": 127,
-  "nodes": 118
+  "edges": 137,
+  "nodes": 123
  },
  "edges": [
   {
@@ -533,6 +533,56 @@
    "rel": "shapes",
    "source": "Stanford d.school / IDEO lineage",
    "target": "domain:design-theory"
+  },
+  {
+   "rel": "digests",
+   "source": "satellite:trellis-2",
+   "target": "Microsoft TRELLIS.2"
+  },
+  {
+   "rel": "satellite-of",
+   "source": "satellite:trellis-2",
+   "target": "design-anything"
+  },
+  {
+   "rel": "digests",
+   "source": "satellite:blender-mcp",
+   "target": "blender-mcp"
+  },
+  {
+   "rel": "satellite-of",
+   "source": "satellite:blender-mcp",
+   "target": "design-anything"
+  },
+  {
+   "rel": "digests",
+   "source": "satellite:spatiallm",
+   "target": "SpatialLM"
+  },
+  {
+   "rel": "satellite-of",
+   "source": "satellite:spatiallm",
+   "target": "design-anything"
+  },
+  {
+   "rel": "digests",
+   "source": "satellite:seamly2d",
+   "target": "Seamly2D"
+  },
+  {
+   "rel": "satellite-of",
+   "source": "satellite:seamly2d",
+   "target": "design-anything"
+  },
+  {
+   "rel": "digests",
+   "source": "satellite:garmentcode",
+   "target": "GarmentCode (ETH)"
+  },
+  {
+   "rel": "satellite-of",
+   "source": "satellite:garmentcode",
+   "target": "design-anything"
   },
   {
    "rel": "skill-of",
@@ -1224,6 +1274,41 @@
    "id": "Stanford d.school / IDEO lineage",
    "kind": "lab",
    "url": "https://dschool.stanford.edu/"
+  },
+  {
+   "id": "satellite:trellis-2",
+   "kind": "satellite",
+   "label": "use-trellis-2",
+   "status": "fresh",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-trellis-2"
+  },
+  {
+   "id": "satellite:blender-mcp",
+   "kind": "satellite",
+   "label": "use-blender-mcp",
+   "status": "fresh",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-blender-mcp"
+  },
+  {
+   "id": "satellite:spatiallm",
+   "kind": "satellite",
+   "label": "use-spatiallm",
+   "status": "fresh",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-spatiallm"
+  },
+  {
+   "id": "satellite:seamly2d",
+   "kind": "satellite",
+   "label": "use-seamly2d",
+   "status": "fresh",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-seamly2d"
+  },
+  {
+   "id": "satellite:garmentcode",
+   "kind": "satellite",
+   "label": "use-garmentcode",
+   "status": "fresh",
+   "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-garmentcode"
   },
   {
    "id": "design-anything",

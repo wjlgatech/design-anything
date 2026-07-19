@@ -4,7 +4,7 @@ PY := python3
 
 .PHONY: check test validate gate demo readme readme-check clean
 
-check: validate test readme-check graph-check gate ainative  ## everything CI runs; exit 0 = green
+check: validate test readme-check graph-check satellites-check gate ainative  ## everything CI runs; exit 0 = green
 
 ainative:  ## self-audit: a regression in HOW the repo operates fails CI
 	$(PY) scripts/ainative.py
@@ -27,6 +27,16 @@ graph-check:
 
 graph:
 	$(PY) scripts/build_graph.py
+
+satellites-check:
+	$(PY) scripts/satellites.py build --check
+
+satellites:
+	$(PY) scripts/satellites.py build
+
+satellites-sync:  ## network; weekly workflow or on demand — never in check
+	$(PY) scripts/satellites.py sync
+	$(PY) scripts/satellites.py build
 
 gate: demo  ## the vertical slices must stay READY
 	$(PY) pipeline/ready_gate.py /tmp/design-anything-planter.stl --min-feature 3.0

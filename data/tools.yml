@@ -3,6 +3,7 @@
 # tier: gold | silver | bronze | watch   category groups the README table.
 
 - name: Microsoft TRELLIS.2
+  repo: microsoft/TRELLIS.2
   url: https://github.com/microsoft/TRELLIS.2
   blurb: Open (MIT) 4B image-to-3D flow-matching model; any topology, full PBR, GLB/PLY/OBJ export.
   tier: gold
@@ -31,6 +32,7 @@
   evidence: "14,299 stars; last push 2025-10-28"
 
 - name: blender-mcp
+  repo: ahujasid/blender-mcp
   url: https://github.com/ahujasid/blender-mcp
   blurb: Drive Blender from any LLM via MCP — the natural execution backbone from agent to printable geometry.
   tier: gold
@@ -38,6 +40,7 @@
   evidence: "24,410 stars, pushed 2026-07-14"
 
 - name: SpatialLM
+  repo: manycore-research/SpatialLM
   url: https://github.com/manycore-research/SpatialLM
   blurb: LLM for structured indoor modeling — point cloud/scene to walls, doors, and furniture layout as structured output.
   tier: gold
@@ -140,6 +143,7 @@
   category: interior-design
 
 - name: Seamly2D
+  repo: FashionFreedom/Seamly2D
   url: https://github.com/FashionFreedom/Seamly2D
   blurb: Open-source parametric pattern-making CAD — the most active open pattern tool.
   tier: gold
@@ -147,6 +151,7 @@
   evidence: "913 stars, pushed 2026-07-18"
 
 - name: GarmentCode (ETH)
+  repo: maria-korosteleva/GarmentCode
   url: https://github.com/maria-korosteleva/GarmentCode
   blurb: Sewing patterns as programs — the substrate the AI pattern-generation wave targets.
   tier: gold

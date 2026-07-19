@@ -3,6 +3,11 @@
 # what + why it matters), optional link.
 
 - date: 2026-07-19
+  title: "v0.11.0 — satellites: knowledge + tooling compiled from every top-cited repo"
+  note: Five gold-tier cited repos (TRELLIS.2, blender-mcp, SpatialLM, Seamly2D, GarmentCode) each get a SHA-pinned deep digest and a generated skill — compiled by satellites.py, drift-gated, never vendored. Staleness is measured weekly by a freshness workflow, not promised. Digest finds include SpatialLM's non-commercial encoder weights and Seamly2D's unimplemented ASTM export.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.11.0
+
+- date: 2026-07-19
   title: "v0.10.0 — IFC export, the eyewear body-fit domain, and the knowledge map"
   note: Three milestones in one train — construction layouts export as IFC4 (round-trip verified, ifcopenshell optional and honest about absence); eyewear lands as the first body-fit domain (tables + gate + a golden fit-spec AND printable temple); and the whole data spine compiles into an interactive knowledge map on GitHub Pages, drift-gated like everything else.
   link: https://github.com/wjlgatech/design-anything/releases/tag/v0.10.0
@@ -16,6 +21,16 @@
   title: "v0.8.0 — the scene gate: every route in the pipeline is now verifiable"
   note: The last roadmap gate ships — glTF structure, poly budget vs target platform, true-scale-in-meters (the units-bug catcher), collision presence. Golden courtyard arena passes; 7 known-bad mutations fail by test. The Gate seam from v0.7.0 made it a subclass, not a rebuild.
   link: https://github.com/wjlgatech/design-anything/releases/tag/v0.8.0
+
+- date: 2026-07-18
+  title: "v0.7.0 — the Gate seam + the repo audits itself"
+  note: OOP refactor 50→83 around a shared Gate base class (a new domain gate becomes a subclass, not a rebuild); the AI-native self-audit lands in CI — 12 operating principles with in-repo evidence, so a regression in HOW the repo operates fails the build.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.7.0
+
+- date: 2026-07-18
+  title: "v0.6.0 — the README learns to draw (and to report the news)"
+  note: Architecture system-design diagram plus a brand-themed Mermaid on every major section, all CI-checked; this news section itself ships as spec-as-data under the drift gate.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.6.0
 
 - date: 2026-07-18
   title: "v0.5.0 — eval scenarios: the skill gets its own gate"
