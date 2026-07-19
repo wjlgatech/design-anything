@@ -24,6 +24,10 @@ brief-to-blueprint or transcribed from an existing pattern.
 4. F4 marker efficiency ≥ the zero-waste floor.
 5. F5 human-fit: declared dimensions inside the garment's fit table; unknown
    garment types are **not measured ⇒ fail**.
+6. F6 seam/symmetry pairs: declared pairs match in length within tolerance
+   (grading breaks symmetric pieces first).
+7. Factory export on request: `python3 pipeline/dxf_aama.py marker.json out.dxf`
+   — the AAMA subset every pattern CAD imports, round-trip verified.
 
 ## Example
 ```bash

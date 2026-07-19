@@ -2,6 +2,16 @@
 
 All notable changes to design-anything. Format: [Keep a Changelog](https://keepachangelog.com/), newest first.
 
+## [0.9.0] — 2026-07-19
+
+### Added
+- **Pattern-gate deepening v0.2** (GOAL.md M12 — production-real garments):
+  - **Size grading**: `examples/apron/generate.py` grades S/M/L (ASTM D5585 lineage, `--size` flag); every size passes the gate independently and grading is monotonic, by test — "a pattern that can't grade is a demo."
+  - **F6 seam/symmetry pairs**: declared pairs must match in length within tolerance — the check that catches grading breaking symmetric pieces; missing pieces are not-measured ⇒ fail, zero declared pairs is a vacuous pass with honest detail.
+  - **DXF-AAMA export** (`pipeline/dxf_aama.py`): the load-bearing AAMA subset every pattern CAD imports (closed-POLYLINE boundary on layer 1, grain line on layer 7, annotation on layer 15, mm units) — **verified by round-trip parse, never by claim**, and wired into `make check`.
+  - 9 new tests (`tests/test_dxf_and_grading.py`); the full size run + export exercised end-to-end.
+- **Honest deferral**: GarmentCode emission moved to M12b — without the upstream library, an emitter would be an unverifiable claim. Roadmap re-ranked: M8 (IFC) is now priority 1.
+
 ## [0.8.0] — 2026-07-18
 
 ### Added

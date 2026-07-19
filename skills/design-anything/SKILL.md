@@ -66,7 +66,7 @@ rationale: `docs/SKILL_DESIGN.md`.
 |---|---|---|---|
 | 3D-print (objects, furniture, planters, hardscape) | `python3 pipeline/ready_gate.py <stl> --min-feature <wall>` | `examples/planter/generate.py` | `domains/interior-design/README.md` or `domains/landscape/README.md` |
 | Construction (rooms, floor plans, houses) | `python3 pipeline/construction_gate.py <layout.json>` | `examples/studio-flat/generate.py` | `data/clearances.yml` + matching `domains/architecture-*/README.md` |
-| Garment (clothing, patterns, markers) | `python3 pipeline/pattern_gate.py <marker.json>` | `examples/apron/generate.py` | `data/garment.yml` + `domains/garment-design/README.md` |
+| Garment (clothing, patterns, markers) | `python3 pipeline/pattern_gate.py <marker.json>`; export `python3 pipeline/dxf_aama.py <marker.json> <out.dxf>` | `examples/apron/generate.py` (graded S/M/L via `--size`) | `data/garment.yml` + `domains/garment-design/README.md` |
 | Game/sim (levels, worlds, scenes) | `python3 pipeline/scene_gate.py <scene.gltf> --target pc\|mobile` | `examples/arena/generate.py` | `data/scene.yml` + `domains/game-design/README.md` or `domains/simulation/README.md` |
 | Photo/scan input | route through `skills/scene-to-layout/SKILL.md` first | — | — |
 | Tool/landscape question | — | — | `llms.txt`, then the README tables; deep dives per `skills/design-research/SKILL.md` |

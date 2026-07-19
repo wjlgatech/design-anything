@@ -26,6 +26,7 @@ gate: demo  ## the vertical slices must stay READY
 	$(PY) pipeline/construction_gate.py /tmp/design-anything-studio.json
 	$(PY) pipeline/pattern_gate.py /tmp/design-anything-apron.json
 	$(PY) pipeline/scene_gate.py /tmp/design-anything-arena.gltf
+	$(PY) pipeline/dxf_aama.py /tmp/design-anything-apron.json /tmp/design-anything-apron.dxf
 
 demo:
 	$(PY) examples/planter/generate.py /tmp/design-anything-planter.stl
@@ -34,4 +35,4 @@ demo:
 	$(PY) examples/arena/generate.py /tmp/design-anything-arena.gltf
 
 clean:
-	rm -f /tmp/design-anything-planter.stl /tmp/design-anything-studio.json /tmp/design-anything-apron.json /tmp/design-anything-arena.gltf
+	rm -f /tmp/design-anything-planter.stl /tmp/design-anything-studio.json /tmp/design-anything-apron.json /tmp/design-anything-arena.gltf /tmp/design-anything-apron.dxf

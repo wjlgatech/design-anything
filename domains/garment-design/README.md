@@ -24,6 +24,11 @@
 
 F1 valid pieces + declared grain · F2 fabric-width fit + no overlaps (bbox-level) ·
 F3 seam allowance ≥ table min · F4 marker efficiency ≥ floor (zero-waste as a number) ·
-F5 human-fit vs `data/garment.yml` tables. Golden example: [`examples/apron/`](../../examples/apron/generate.py).
+F5 human-fit vs `data/garment.yml` tables · F6 seam/symmetry pairs within tolerance.
+Golden example: [`examples/apron/`](../../examples/apron/generate.py) — **graded S/M/L**,
+every size gated independently (a pattern that can't grade is a demo).
 
-Roadmap: DXF-AAMA export, grading check across a size run, seam-line length matching, GarmentCode emission.
+**Factory export**: [`pipeline/dxf_aama.py`](../../pipeline/dxf_aama.py) emits the AAMA subset
+every pattern CAD imports (boundary layer 1, grain layer 7, annotation layer 15, mm units) and
+verifies by round-trip, never by claim. Roadmap: GarmentCode emission (deferred until the
+upstream lib provides an honest verification path).

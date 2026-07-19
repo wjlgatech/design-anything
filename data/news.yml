@@ -2,6 +2,11 @@
 # scripts/build_readme.py (drift-gated). Entry: date, title, note (2-3 sentences,
 # what + why it matters), optional link.
 
+- date: 2026-07-19
+  title: "v0.9.0 — production-real garments: DXF-AAMA, size grading, seam pairs"
+  note: The apron grades S/M/L with every size gated independently; symmetric pieces must match through grading (F6); and markers export as the AAMA subset every pattern CAD imports — verified by round-trip, never by claim. GarmentCode emission honestly deferred pending an upstream verification path.
+  link: https://github.com/wjlgatech/design-anything/releases/tag/v0.9.0
+
 - date: 2026-07-18
   title: "v0.8.0 — the scene gate: every route in the pipeline is now verifiable"
   note: The last roadmap gate ships — glTF structure, poly budget vs target platform, true-scale-in-meters (the units-bug catcher), collision presence. Golden courtyard arena passes; 7 known-bad mutations fail by test. The Gate seam from v0.7.0 made it a subclass, not a rebuild.

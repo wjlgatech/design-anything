@@ -72,6 +72,16 @@ def bboxes_overlap(a: Box, b: Box) -> bool:
     return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
 
 
+def perimeter_mm(poly: Polygon) -> float:
+    """Closed-polygon perimeter length, in mm."""
+    total = 0.0
+    for i in range(len(poly)):
+        x0, y0 = poly[i]
+        x1, y1 = poly[(i + 1) % len(poly)]
+        total += ((x1 - x0) ** 2 + (y1 - y0) ** 2) ** 0.5
+    return total
+
+
 class PatternGate(Gate):
     """Marker gate: pieces, grain, fabric fit, seam, zero-waste, fit tables."""
 
@@ -87,6 +97,7 @@ class PatternGate(Gate):
             ("F3_seam_allowance", self.check_seam_allowance),
             ("F4_marker_efficiency", self.check_marker_efficiency),
             ("F5_human_fit", self.check_human_fit),
+            ("F6_seam_pairs", self.check_seam_pairs),
         ]
 
     def check_pieces(self, marker: Marker) -> CheckResult:
@@ -165,6 +176,27 @@ class PatternGate(Gate):
             if "max" in spec and val > spec["max"]:
                 problems.append(f"fit.{dim}: {val} > {spec['max']} ({spec['source']})")
         return CheckResult.from_problems(problems, f"fit table '{gtype}' satisfied")
+
+    def check_seam_pairs(self, marker: Marker) -> CheckResult:
+        """F6: declared seam/symmetry pairs match in length within tolerance
+        (grading breaks symmetric pieces first — this catches it)."""
+        pairs = marker.get("seam_pairs", [])
+        if not pairs:
+            return CheckResult(True, "0 seam pairs declared (nothing to match)")
+        by_name = {p["name"]: p["polygon"] for p in marker.get("pieces", [])}
+        problems = []
+        for pair in pairs:
+            a, b = pair.get("a"), pair.get("b")
+            tol = pair.get("tolerance_mm", 1.0)
+            if a not in by_name or b not in by_name:
+                problems.append(f"pair {a}~{b}: piece missing (not measured => fail)")
+                continue
+            la, lb = perimeter_mm(by_name[a]), perimeter_mm(by_name[b])
+            if abs(la - lb) > tol:
+                problems.append(f"{a} ({la:.1f}mm) vs {b} ({lb:.1f}mm): "
+                                f"differ by {abs(la - lb):.1f}mm > {tol}mm")
+        return CheckResult.from_problems(
+            problems, f"{len(pairs)} pair(s) matched within tolerance")
 
 
 def run_gate(marker: Marker, tables: dict[str, Any]) -> dict[str, Any]:
