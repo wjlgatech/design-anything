@@ -4,3 +4,5 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 !skills/design-anything/evals/fixtures/*.stl
+.openspace/
+.env
