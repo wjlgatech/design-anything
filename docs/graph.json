@@ -1286,7 +1286,7 @@
    "id": "satellite:blender-mcp",
    "kind": "satellite",
    "label": "use-blender-mcp",
-   "status": "fresh",
+   "status": "STALE",
    "url": "https://github.com/wjlgatech/design-anything/tree/main/skills/use-blender-mcp"
   },
   {

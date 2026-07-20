@@ -194,13 +194,13 @@ Each gold-tier cited repo gets a **satellite**: a SHA-pinned deep digest (`KNOWL
 
 | Satellite | Upstream | Stars | Digest | Status |
 |---|---|---|---|---|
-| [use-trellis-2](skills/use-trellis-2/SKILL.md) | [microsoft/TRELLIS.2](https://github.com/microsoft/TRELLIS.2) | 8,799 | [`75fbf0183001`](skills/use-trellis-2/KNOWLEDGE.md) | fresh |
-| [use-blender-mcp](skills/use-blender-mcp/SKILL.md) | [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp) | 24,462 | [`6641189231ca`](skills/use-blender-mcp/KNOWLEDGE.md) | fresh |
-| [use-spatiallm](skills/use-spatiallm/SKILL.md) | [manycore-research/SpatialLM](https://github.com/manycore-research/SpatialLM) | 4,615 | [`8913c44d84a4`](skills/use-spatiallm/KNOWLEDGE.md) | fresh |
+| [use-trellis-2](skills/use-trellis-2/SKILL.md) | [microsoft/TRELLIS.2](https://github.com/microsoft/TRELLIS.2) | 8,806 | [`75fbf0183001`](skills/use-trellis-2/KNOWLEDGE.md) | fresh |
+| [use-blender-mcp](skills/use-blender-mcp/SKILL.md) | [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp) | 24,489 | [`6641189231ca`](skills/use-blender-mcp/KNOWLEDGE.md) | STALE |
+| [use-spatiallm](skills/use-spatiallm/SKILL.md) | [manycore-research/SpatialLM](https://github.com/manycore-research/SpatialLM) | 4,616 | [`8913c44d84a4`](skills/use-spatiallm/KNOWLEDGE.md) | fresh |
 | [use-seamly2d](skills/use-seamly2d/SKILL.md) | [FashionFreedom/Seamly2D](https://github.com/FashionFreedom/Seamly2D) | 913 | [`dacc5600e29f`](skills/use-seamly2d/KNOWLEDGE.md) | fresh |
 | [use-garmentcode](skills/use-garmentcode/SKILL.md) | [maria-korosteleva/GarmentCode](https://github.com/maria-korosteleva/GarmentCode) | 387 | [`d44962997902`](skills/use-garmentcode/KNOWLEDGE.md) | fresh |
 
-*Facts fetched 2026-07-19 by the weekly freshness sync; STALE means upstream moved past the digest's pinned sha.*
+*Facts fetched 2026-07-20 by the weekly freshness sync; STALE means upstream moved past the digest's pinned sha.*
 <!-- END:satellites -->
 
 ## The landscape — curated tools

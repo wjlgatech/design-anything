@@ -90,7 +90,7 @@ output is never "ready" until **our** gate says so. Current list compiled from
 | Satellite | Serves | When to load | Status |
 |---|---|---|---|
 | `skills/use-trellis-2/SKILL.md` | 3D-print / mesh generation (repair before ready_gate) | Open (MIT) 4B image-to-3D flow-matching model; any topology, full PBR, GLB/PLY/OBJ export. | fresh |
-| `skills/use-blender-mcp/SKILL.md` | execution backbone — any route that needs a DCC | Drive Blender from any LLM via MCP — the natural execution backbone from agent to printable geometry. | fresh |
+| `skills/use-blender-mcp/SKILL.md` | execution backbone — any route that needs a DCC | Drive Blender from any LLM via MCP — the natural execution backbone from agent to printable geometry. | STALE |
 | `skills/use-spatiallm/SKILL.md` | photo/scan input → construction route | LLM for structured indoor modeling — point cloud/scene to walls, doors, and furniture layout as structured output. | fresh |
 | `skills/use-seamly2d/SKILL.md` | garment route (patterns, markers, interop) | Open-source parametric pattern-making CAD — the most active open pattern tool. | fresh |
 | `skills/use-garmentcode/SKILL.md` | garment route (patterns, markers, interop) | Sewing patterns as programs — the substrate the AI pattern-generation wave targets. | fresh |
