@@ -8,11 +8,11 @@
     export.
   category: text/image-to-3D
   license: MIT
-  stars: 8799
+  stars: 11069
   pushed_at: '2026-07-10'
   latest_release: none
   head_sha: 75fbf0183001
-  fetched_at: '2026-07-19'
+  fetched_at: '2026-09-07'
   digest_sha: 75fbf0183001
   status: fresh
 - repo: ahujasid/blender-mcp
@@ -23,13 +23,13 @@
     agent to printable geometry.
   category: agent-infrastructure
   license: MIT
-  stars: 24462
-  pushed_at: '2026-07-14'
+  stars: 27465
+  pushed_at: '2026-09-05'
   latest_release: none
-  head_sha: 6641189231ca
-  fetched_at: '2026-07-19'
+  head_sha: c5f35d9cc544
+  fetched_at: '2026-09-07'
   digest_sha: 6641189231ca
-  status: fresh
+  status: STALE
 - repo: manycore-research/SpatialLM
   slug: spatiallm
   name: SpatialLM
@@ -38,11 +38,11 @@
     furniture layout as structured output.
   category: interior-design
   license: NOASSERTION
-  stars: 4615
+  stars: 4730
   pushed_at: '2026-06-26'
   latest_release: v0.1.1
   head_sha: 8913c44d84a4
-  fetched_at: '2026-07-19'
+  fetched_at: '2026-09-07'
   digest_sha: 8913c44d84a4
   status: fresh
 - repo: FashionFreedom/Seamly2D
@@ -53,13 +53,13 @@
     tool.
   category: garment-design
   license: GPL-3.0
-  stars: 913
-  pushed_at: '2026-07-18'
-  latest_release: v2026.7.13.214
-  head_sha: dacc5600e29f
-  fetched_at: '2026-07-19'
+  stars: 958
+  pushed_at: '2026-09-07'
+  latest_release: v2026.9.7.144
+  head_sha: c24b74c75c14
+  fetched_at: '2026-09-07'
   digest_sha: dacc5600e29f
-  status: fresh
+  status: STALE
 - repo: maria-korosteleva/GarmentCode
   slug: garmentcode
   name: GarmentCode (ETH)
@@ -68,10 +68,10 @@
     targets.
   category: garment-design
   license: MIT
-  stars: 387
+  stars: 421
   pushed_at: '2025-06-29'
   latest_release: v2.0.1
   head_sha: d44962997902
-  fetched_at: '2026-07-19'
+  fetched_at: '2026-09-07'
   digest_sha: d44962997902
   status: fresh
